@@ -12,6 +12,7 @@ package model;
 /*
  * Implements the serializable interface to write class as a Java Bean
 */
+import java.io.Serializable;
 /**
  *
  * @author nrham
