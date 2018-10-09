@@ -2,7 +2,8 @@
  * The main() class file for the cityOfAaron project
  * CIT-260
  * Fall 2018
- *  Team members: Shane Artman, Nick Hammond, Jonathan Unga
+ * Team members: Shane Artman, Nick Hammond, Jonathan Unga
+ * All Classes are to be written as Java Beans (Serializable)
  */
 package cityofaaron;
 
