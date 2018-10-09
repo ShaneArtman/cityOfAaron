@@ -21,10 +21,6 @@ package model;
 */
 import java.io.Serializable;
 
-/**
- *
- * @author nrham
- */
 public class Game implements Serializable {
     
     private Player thePlayer;
@@ -32,10 +28,10 @@ public class Game implements Serializable {
     public Game () { }
 
     public void setPlayer(Player _thePlayer){
-        thePlayer = _thePlayer;
+        this.thePlayer = _thePlayer;
     }
     
     public Player getPlayer(){
-        return thePlayer;
+        return this.thePlayer;
     }
 }

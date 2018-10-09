@@ -20,10 +20,7 @@ package model;
  * Implements the serializable interface to write class as a Java Bean
 */
 import java.io.Serializable;
-/**
- *
- * @author nrham
- */
+
 public enum TeamMember {
     //Member of the enumeration (Commas seperate the members)
     JONATHAN("Jonathan Unga", "Master and ruler"),
@@ -38,16 +35,16 @@ public enum TeamMember {
     // Purpose: Initialize the value of name and title
     // Parameter: Name of the TeamMember and their title
     TeamMember(String _name, String _title) {
-        name = _name;
-        title = _title;
+        this.name = _name;
+        this.title = _title;
     }
     
     public String getName() {
-        return name;
+        return this.name;
     }
     
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
 }

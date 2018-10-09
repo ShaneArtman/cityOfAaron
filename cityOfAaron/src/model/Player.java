@@ -19,10 +19,7 @@ package model;
  * Implements the serializable interface to write class as a Java Bean
 */
 import java.io.Serializable;
-/**
- *
- * @author nrham
- */
+
 public class Player implements Serializable {
     
     private String name;
@@ -31,10 +28,10 @@ public class Player implements Serializable {
     public Player(){ }
     
     public String getName(){
-        return name;
+        return this.name;
     }
     
     public void setName(String _name) {
-        name = _name;
+        this.name = _name;
     }
 }
