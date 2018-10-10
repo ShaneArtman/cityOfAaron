@@ -31,6 +31,14 @@ public class CityOfAaron {
         System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
         System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
         
-    }
+        
+        //ListItem Class Instantiated
+        ListItem myItem = new ListItem();
+        myItem.setName("Hammer");
+        myItem.setNumber(3);
+        
+        System.out.println("You currently have " + myItem.getNumber() + " " + myItem.getName() + "/s on hand.");
+        
+    }   
     
 }
