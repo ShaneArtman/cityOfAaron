@@ -20,16 +20,26 @@ public class CityOfAaron {
         
         //Player Class instantiated
         Player myPlayer = new Player();
-        myPlayer.setName("Shane");
+        myPlayer.setName("Pudentane");
         
         //Game Class instantiated
         Game myGame = new Game();
         myGame.setPlayer(myPlayer);
         
         
+        //Location Class Instantiated
+        Location myLocation = new Location();
+        // Set values into the new location class - test.
+        // Later, these will be set in the Map Class
+        myLocation.setDescription("My Favorite Place");
+        myLocation.setSymbol("∆");
+        
         System.out.println("The player's name is: " + myGame.getPlayer().getName() + "\n");
         System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
         System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
+        System.out.println("myLocation description: " + myLocation.getDescription());
+        System.out.println("myLocation symbol = " + myLocation.getSymbol());
+    }
         
         
         //ListItem Class Instantiated
