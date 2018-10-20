@@ -14,7 +14,7 @@
  * Purpose: To store data for crops in the City of Aaron project
  */
 
-package model;
+package control;
 
 /*
  * implements serializable interface for Javabean
