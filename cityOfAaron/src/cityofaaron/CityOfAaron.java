@@ -8,7 +8,6 @@
  */
 package cityofaaron;
 //import the classes from the model package
-import control.CropData;
 import model.*;
 
 public class CityOfAaron {
