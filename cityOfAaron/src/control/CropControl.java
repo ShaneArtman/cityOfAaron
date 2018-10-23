@@ -19,6 +19,20 @@ package control;
 
 public class CropControl {
     
+    public static int buyLand(int landPrice, int acresToBuy, CropData _cropData) {
+        if (landPrice < 0 || acresToBuy < 0
+                || (landPrice * acresToBuy) > _cropData.getWheatInStore()) {
+            //The landPrice or acresToBuy had invalid values or the purchase price
+            //  was greater than the wheat available to purchase with
+            return -1;
+        }
+        //Update the CropData object with acres owned after purchase
+        //  and spent wheat from the store
+        _cropData.setAcresOwned(_cropData.getAcresOwned() + acresToBuy);
+        _cropData.setWheatInStore(_cropData.getWheatInStore()-(acresToBuy*landPrice));
+        
+    }
+    
     public static int feedPeople(int bushelsReservedForFood, CropData _cropData) {
         //Test to user input for invalid values
         if (bushelsReservedForFood < 0 || bushelsReservedForFood > _cropData.getWheatInStore()) {
