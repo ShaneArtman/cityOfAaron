@@ -30,7 +30,7 @@ public class CropControl {
         //  and spent wheat from the store
         _cropData.setAcresOwned(_cropData.getAcresOwned() + acresToBuy);
         _cropData.setWheatInStore(_cropData.getWheatInStore()-(acresToBuy*landPrice));
-        
+        return 0; //Success
     }
     
     public static int feedPeople(int bushelsReservedForFood, CropData _cropData) {
@@ -41,7 +41,7 @@ public class CropControl {
         //Update the data in CropData object
         _cropData.setWheatForFood(bushelsReservedForFood);
         _cropData.setWheatInStore(_cropData.getWheatInStore()-bushelsReservedForFood);
-        return 0;
+        return 0; //Success
     }
 
 }
