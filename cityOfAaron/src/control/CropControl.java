@@ -20,6 +20,7 @@
 package control;
 // Import random number generator class
 import java.util.Random;
+import model.*;
 
 public class CropControl {
     
