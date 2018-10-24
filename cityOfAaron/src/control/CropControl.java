@@ -137,7 +137,10 @@ public class CropControl {
      *
      */
     public static int calcEatenByRats(CropData _cropData) {
-        return 0;
+        double randomNumber = random.nextDouble();
+        int ratDamage = (int) Math.floor((randomNumber * .05) * _cropData.getWheatInStore());
+        _cropData.setWheatInStore(_cropData.getWheatInStore()-ratDamage);
+        return ratDamage;
     } 
 
     /**
