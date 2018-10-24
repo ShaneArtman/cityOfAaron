@@ -76,12 +76,12 @@ public class CropControl {
     }
     
     /**
-     * buyLand(int)
+     * buyLand(int):int
      * Purpose: To buy land
      * @param landPrice the price of land
      * @param acresToBuy the number of acres to buy
      * @param _cropData a reference to a CropData object
-     * @return result code of -1 is invalid and 0 is success
+     * @return (int) result code of -1 is invalid and 0 is success
      * Pre-conditions: acresToBuy must be greater than or equal to 0 and wheatInStore must be
      * greater than or equal to purchase price
      */
@@ -126,15 +126,56 @@ public class CropControl {
         return 0; //Success   
     }
     
+    /**
+     * 
+     * Purpose: To determine how much of the crop in storage was destroyed by rats and
+     * and update the storhouse
+     * <p>
+     * Pre-conditions: the random generator much generate a value > 0 and less or equal to 5%
+     * @param _cropData is a CropData object about this users crops
+     * @return return damage by rats of storage
+     *
+     */
+    public static int calcEatenByRats(CropData _cropData) {
+        return 0;
+    } 
+
+    /**
+     * Purpose: To determine how much of the population growth occurs and update the
+     * population after the growth.
+     * <p>
+     * Pre-conditions: the random generator much generate a value >= 1 and <= 5% of population
+     * 
+     * @param _cropData is a CropData object about this users crops
+     * @return (int) return population growth
+     *
+     */
+    public static int growPopulation(CropData _cropData) {
+        return 0;
+    }
+    
+    /**
+     * Purpose: To determine how many people starved and update the population.
+     * <p>
+     * Pre-conditions: no requirements as the CropData is the only input source
+     * @param _cropData is a CropData object about this users crops
+     * @return (int) return starved population
+     *
+     */
+    public static int calcStarved(CropData _cropData) {
+        return 0;
+    }
+
+    /**
+    * setOffering Method
+    * Purpose: To set the percentage to be used for an offering.
+    * @param percentOfOffering is percentage as a whole number
+    * @return Percentage as a whole number
+    * or return -1 If conditions are not met
+    * Pre-Conditions: Percentage must be >= 0 and <= 100
+    */
     public static int setOffering(int percentOfOffering) {  
-        /**
-        * setOffering Method
-        * Purpose: To set the percentage to be used for an offering.
-        * Parameters: Percentage as a whole number
-        * Returns: Percentage as a whole number
-        * Returns: -1 If conditions are not met
-        * Pre-Conditions: Percentage must be >= 0 and <= 100
-        */
+        
         
         // set min/max values as variables
         final int MIN_PERCENT = 0;
