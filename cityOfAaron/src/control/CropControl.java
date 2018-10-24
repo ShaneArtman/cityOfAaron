@@ -96,7 +96,7 @@ public class CropControl {
         //  and spent wheat from the store
         _cropData.setAcresOwned(_cropData.getAcresOwned() + acresToBuy);
         _cropData.setWheatInStore(_cropData.getWheatInStore()-(acresToBuy*landPrice));
-        return 0; //Success
+        return _cropData.getAcresOwned(); //Success
     }
     
     /**
