@@ -43,8 +43,7 @@ public class CropControlTest {
         int expResult = 0;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -63,6 +62,7 @@ public class CropControlTest {
         int expResult = 110;
         int result = CropControl.buyLand(landPrice, acresToBuy, _cropData);
         assertEquals(expResult, result);
+
     }
     
     /**
@@ -148,6 +148,20 @@ public class CropControlTest {
         int expResult = 0;
         int result = CropControl.feedPeople(bushelsReservedForFood, _cropData);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of buyLand method, of class CropControl.
+     */
+    @Test
+    public void testBuyLand() {
+        System.out.println("buyLand");
+        int landPrice = 0;
+        int acresToBuy = 0;
+        CropData _cropData = null;
+        int expResult = 0;
+        int result = CropControl.buyLand(landPrice, acresToBuy, _cropData);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -208,6 +222,56 @@ public class CropControlTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+
+     * Test of setOffering method, of class CropControl.
+     */
+    @Test
+    public void testSetOffering1() {
+        System.out.println("setOffering1");
+        int percentOfOffering = 50;
+        int expResult = 50;
+        int result = CropControl.setOffering(percentOfOffering);
+        assertEquals(expResult, result);
+        
     }
     
+    @Test
+    public void testSetOffering2() {
+        System.out.println("setOffering2");
+        int percentOfOffering = -20;
+        int expResult = -1;
+        int result = CropControl.setOffering(percentOfOffering);
+        assertEquals(expResult, result);
+        
+    }
+    
+    @Test
+    public void testSetOffering3() {
+        System.out.println("setOffering3");
+        int percentOfOffering = 130;
+        int expResult = -1;
+        int result = CropControl.setOffering(percentOfOffering);
+        assertEquals(expResult, result);
+        
+    }
+    
+    @Test
+    public void testSetOffering4() {
+        System.out.println("setOffering4");
+        int percentOfOffering = 0;
+        int expResult = 0;
+        int result = CropControl.setOffering(percentOfOffering);
+        assertEquals(expResult, result);
+        
+    }
+    
+    @Test
+    public void testSetOffering5() {
+        System.out.println("setOffering5");
+        int percentOfOffering = 100;
+        int expResult = 100;
+        int result = CropControl.setOffering(percentOfOffering);
+        assertEquals(expResult, result);
+        
+    }
 }

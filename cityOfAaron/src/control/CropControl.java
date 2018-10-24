@@ -169,4 +169,33 @@ public class CropControl {
         return 0;
     }
 
+    /**
+    * setOffering Method
+    * Purpose: To set the percentage to be used for an offering.
+    * @param percentOfOffering is percentage as a whole number
+    * @return Percentage as a whole number
+    * or return -1 If conditions are not met
+    * Pre-Conditions: Percentage must be >= 0 and <= 100
+    */
+    public static int setOffering(int percentOfOffering) {  
+        
+        
+        // set min/max values as variables
+        final int MIN_PERCENT = 0;
+        final int MAX_PERCENT = 100;
+        
+        // if percentOfOffering < 0, return -1;
+        if (percentOfOffering < MIN_PERCENT) {
+            return -1;
+        }
+
+        // if percentOfOffering > 100, return -1;
+        if (percentOfOffering > MAX_PERCENT) {
+            return -1;
+        }
+
+        // return percentOfOffering;
+        return percentOfOffering;
+
+    }
 }
