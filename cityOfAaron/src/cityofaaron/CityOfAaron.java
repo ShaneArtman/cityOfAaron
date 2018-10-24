@@ -9,6 +9,7 @@
 package cityofaaron;
 //import the classes from the model package
 import model.*;
+import control.*;
 
 public class CityOfAaron {
 
@@ -47,6 +48,27 @@ public class CityOfAaron {
         myItem.setNumber(3);
         
         System.out.println("You currently have " + myItem.getNumber() + " " + myItem.getName() + "/s on hand.");
+        
+        //CropData Class Instantiated
+        CropData myCropData = new CropData();
+        //setting test values
+        myCropData.setYear(2018);
+        myCropData.setPopulation(100);
+        myCropData.setAcresOwned(200);
+        myCropData.setCropYield(500);
+        myCropData.setWheatInStore(1000);
+        myCropData.setNumberWhoDied(10);
+        myCropData.setNewPoeple(5);
+        myCropData.setHarvest(600);
+        myCropData.setWheatForFood(300);
+        myCropData.setAcresPlanted(150);
+        
+        System.out.println("The year is " + myCropData.getYear() + ". Our population is " + myCropData.getPopulation() 
+        + " people on " + myCropData.getAcresOwned() + " acres of land. Crops yield " + myCropData.getCropYield() + " with "
+        + myCropData.getWheatInStore() + " wheat in store.");
+        System.out.println("We lost " + myCropData.getNumberWhoDied() + " people and welcomed " + myCropData.getNewPeople() 
+        + " newcomers. Our harvest produced " + myCropData.getHarvest() + " with " + myCropData.getWheatForFood() 
+        + " wheat for food. For the next harvest we have " + myCropData.getAcresPlanted() + " acres planted!");
         
     }
      
