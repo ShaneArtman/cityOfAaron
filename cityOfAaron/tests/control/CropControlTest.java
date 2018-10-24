@@ -43,8 +43,7 @@ public class CropControlTest {
         int expResult = 0;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -53,16 +52,17 @@ public class CropControlTest {
     @Test
     public void testBuyLand() {
         System.out.println("buyLand");
-        int landPrice = 20;
-        int acresToBuy = 10;
+        
         CropData _cropData = new CropData();
         _cropData.setWheatInStore(1000);
         _cropData.setAcresOwned(100);
+        
+        int landPrice = 20;
+        int acresToBuy = 10;
         int expResult = 110;
         int result = CropControl.buyLand(landPrice, acresToBuy, _cropData);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -76,8 +76,6 @@ public class CropControlTest {
         int expResult = 0;
         int result = CropControl.feedPeople(bushelsReservedForFood, _cropData);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
