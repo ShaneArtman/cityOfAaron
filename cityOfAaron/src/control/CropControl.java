@@ -125,4 +125,33 @@ public class CropControl {
         _cropData.setWheatInStore(_cropData.getWheatInStore()-bushelsReservedForFood);
         return 0; //Success   
     }
+    
+    public static int setOffering(int percentOfOffering) {  
+        /**
+        * setOffering Method
+        * Purpose: To set the percentage to be used for an offering.
+        * Parameters: Percentage as a whole number
+        * Returns: Percentage as a whole number
+        * Returns: -1 If conditions are not met
+        * Pre-Conditions: Percentage must be >= 0 and <= 100
+        */
+        
+        // set min/max values as variables
+        final int MIN_PERCENT = 0;
+        final int MAX_PERCENT = 100;
+        
+        // if percentOfOffering < 0, return -1;
+        if (percentOfOffering < MIN_PERCENT) {
+            return -1;
+        }
+
+        // if percentOfOffering > 100, return -1;
+        if (percentOfOffering > MAX_PERCENT) {
+            return -1;
+        }
+
+        // return percentOfOffering;
+        return percentOfOffering;
+
+    }
 }
