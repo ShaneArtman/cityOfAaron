@@ -151,5 +151,63 @@ public class CropControlTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of buyLand method, of class CropControl.
+     */
+    @Test
+    public void testBuyLand() {
+        System.out.println("buyLand");
+        int landPrice = 0;
+        int acresToBuy = 0;
+        CropData _cropData = null;
+        int expResult = 0;
+        int result = CropControl.buyLand(landPrice, acresToBuy, _cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of calcEatenByRats method, of class CropControl.
+     */
+    @Test
+    public void testCalcEatenByRats() {
+        System.out.println("calcEatenByRats");
+        CropData RatTestCropData = new CropData();
+        RatTestCropData.setWheatInStore(4111);
+        System.out.println("Wheat in the store: " + RatTestCropData.getWheatInStore());
+        int expResult = 0;
+        int result = (CropControl.calcEatenByRats(RatTestCropData)) >= 0? 0:1;
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of growPopulation method, of class CropControl.
+     */
+    @Test
+    public void testGrowPopulation() {
+        System.out.println("growPopulation");
+        CropData _cropData = null;
+        int expResult = 0;
+        int result = CropControl.growPopulation(_cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of calcStarved method, of class CropControl.
+     */
+    @Test
+    public void testCalcStarved() {
+        System.out.println("calcStarved");
+        CropData _cropData = null;
+        int expResult = 0;
+        int result = CropControl.calcStarved(_cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
