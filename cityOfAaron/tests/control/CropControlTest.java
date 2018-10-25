@@ -33,17 +33,19 @@ public class CropControlTest {
 
     /**
      * Test of sellLand method, of class CropControl.
+     * Test case 1
      */
     @Test
-    public void testSellLand() {
-        System.out.println("sellLand");
-        int landPrice = 10;
-        int acresToSell = 20;
-        CropData cropData = null;
-        int expResult = 0;
+    public void testSellLandCase1() {
+        System.out.println("sellLand - Test Case 1");
+        CropData cropData = new CropData();
+        cropData.setAcresOwned(2800);
+        
+        int acresToSell = 10;
+        int landPrice = 20;
+        int expResult = 2790;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
-       
     }
 
     /**
@@ -151,38 +153,6 @@ public class CropControlTest {
     }
 
     /**
-     * Test of buyLand method, of class CropControl.
-     */
-    @Test
-    public void testBuyLand() {
-        System.out.println("buyLand");
-        int landPrice = 0;
-        int acresToBuy = 0;
-        CropData _cropData = null;
-        int expResult = 0;
-        int result = CropControl.buyLand(landPrice, acresToBuy, _cropData);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyLand method, of class CropControl.
-     */
-    @Test
-    public void testBuyLand() {
-        System.out.println("buyLand");
-        int landPrice = 0;
-        int acresToBuy = 0;
-        CropData _cropData = null;
-        int expResult = 0;
-        int result = CropControl.buyLand(landPrice, acresToBuy, _cropData);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of calcEatenByRats method, of class CropControl.
      */
     @Test
@@ -222,7 +192,9 @@ public class CropControlTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-
+    }
+    
+    /**
      * Test of setOffering method, of class CropControl.
      */
     @Test
@@ -273,5 +245,152 @@ public class CropControlTest {
         int result = CropControl.setOffering(percentOfOffering);
         assertEquals(expResult, result);
         
+    }
+    
+    /**
+     * Test of plantCrops method, of class CropControl.
+     * Test Case 1
+     */
+    @Test
+    public void testPlantCropsCase1() {
+        System.out.println("plantCrops - Test Case 1");
+        CropData _cropData = new CropData();
+        _cropData.setAcresOwned(1500);
+        _cropData.setWheatInStore(500);
+        _cropData.setPopulation(100);
+        _cropData.setAcresPlanted(0);
+        
+        int acresToPlant = 200;
+        int wheatNeeded = 100;
+        int popNeeded = 20;
+        int expResult = 200;
+        int result = CropControl.plantCrops(acresToPlant, _cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of plantCrops method, of class CropControl.
+     * Test Case 2
+     */
+    @Test
+    public void testPlantCropsCase2() {
+        System.out.println("plantCrops - Test Case 2");
+        CropData _cropData = new CropData();
+        _cropData.setAcresOwned(1500);
+        _cropData.setWheatInStore(500);
+        _cropData.setPopulation(100);
+        _cropData.setAcresPlanted(0);
+        
+        int acresToPlant = -100;
+        int wheatNeeded = -50;
+        int popNeeded = -10;
+        int expResult = -1;
+        int result = CropControl.plantCrops(acresToPlant, _cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of plantCrops method, of class CropControl.
+     * Test Case 3
+     */
+    @Test
+    public void testPlantCropsCase3() {
+        System.out.println("plantCrops - Test Case 3");
+        CropData _cropData = new CropData();
+        _cropData.setAcresOwned(1500);
+        _cropData.setWheatInStore(1000);
+        _cropData.setPopulation(200);
+        _cropData.setAcresPlanted(0);
+        
+        int acresToPlant = 2000;
+        int wheatNeeded = 1000;
+        int popNeeded = 200;
+        int expResult = -1;
+        int result = CropControl.plantCrops(acresToPlant, _cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of plantCrops method, of class CropControl.
+     * Test Case 4
+     */
+    @Test
+    public void testPlantCropsCase4() {
+        System.out.println("plantCrops - Test Case 4");
+        CropData _cropData = new CropData();
+        _cropData.setAcresOwned(2500);
+        _cropData.setWheatInStore(1000);
+        _cropData.setPopulation(100);
+        _cropData.setAcresPlanted(0);
+        
+        int acresToPlant = 2000;
+        int wheatNeeded = 1000;
+        int popNeeded = 200;
+        int expResult = -1;
+        int result = CropControl.plantCrops(acresToPlant, _cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of plantCrops method, of class CropControl.
+     * Test Case 5
+     */
+    @Test
+    public void testPlantCropsCase5() {
+        System.out.println("plantCrops - Test Case 5");
+        CropData _cropData = new CropData();
+        _cropData.setAcresOwned(2500);
+        _cropData.setWheatInStore(500);
+        _cropData.setPopulation(250);
+        _cropData.setAcresPlanted(0);
+        
+        int acresToPlant = 2000;
+        int wheatNeeded = 1000;
+        int popNeeded = 200;
+        int expResult = -1;
+        int result = CropControl.plantCrops(acresToPlant, _cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of plantCrops method, of class CropControl.
+     * Test Case 6
+     */
+    @Test
+    public void testPlantCropsCase6() {
+        System.out.println("plantCrops - Test Case 6");
+        CropData _cropData = new CropData();
+        _cropData.setAcresOwned(1000);
+        _cropData.setWheatInStore(500);
+        _cropData.setPopulation(100);
+        _cropData.setAcresPlanted(0);
+        
+        int acresToPlant = 1000;
+        int wheatNeeded = 500;
+        int popNeeded = 100;
+        int expResult = 1000;
+        int result = CropControl.plantCrops(acresToPlant, _cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of plantCrops method, of class CropControl.
+     * Test Case 7
+     */
+    @Test
+    public void testPlantCropsCase7() {
+        System.out.println("plantCrops - Test Case 7");
+        CropData _cropData = new CropData();
+        _cropData.setAcresOwned(1000);
+        _cropData.setWheatInStore(500);
+        _cropData.setPopulation(100);
+        _cropData.setAcresPlanted(0);
+        
+        int acresToPlant = 0;
+        int wheatNeeded = 0;
+        int popNeeded = 0;
+        int expResult = 0;
+        int result = CropControl.plantCrops(acresToPlant, _cropData);
+        assertEquals(expResult, result);
     }
 }

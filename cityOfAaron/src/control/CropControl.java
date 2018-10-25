@@ -198,4 +198,37 @@ public class CropControl {
         return percentOfOffering;
 
     }
+    
+    /**
+     * plantCrops Method
+     * Purpose: determine how many acres and wheat owned is used to plant crops
+     * @param acresToPlant is number of acres to be used for planting
+     * @param _cropData cropData object
+     * @return the number of acres planted and amount of wheat left in storage
+     * Pre-conditions: acres being planed must be positive and <= acresOwned,
+     * population must be >= (acres planted/10), and wheat in store must be >=
+     * (acres planted/2)
+     */
+    public static int plantCrops(int acresToPlant, CropData _cropData){
+        int owned = _cropData.getAcresOwned();
+        int pop = _cropData.getPopulation();
+        int wheat = _cropData.getWheatInStore();
+        int planted = _cropData.getAcresPlanted();
+        //wheat needed = acresToPlant/2
+        int wheatNeeded = acresToPlant / 2;
+        //pop needed = acresToPlant/10
+        int popNeeded = acresToPlant / 10;
+        //If acresToPlant<0 or acresToPlant>owned or pop<needed or wheat<needed
+        // return -1
+        if(acresToPlant < 0 || acresToPlant > owned || pop < popNeeded ||
+                wheat < wheatNeeded)
+            return -1;
+        //subtract wheat needed from wheat in store
+        wheat -= wheatNeeded;
+        _cropData.setWheatInStore(wheat);
+        //add acresToPlant to acresPlanted
+        planted += acresToPlant;
+        _cropData.setAcresPlanted(planted);
+        return planted;
+    }
 }

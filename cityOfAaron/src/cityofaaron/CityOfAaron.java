@@ -63,12 +63,11 @@ public class CityOfAaron {
         myCropData.setWheatForFood(300);
         myCropData.setAcresPlanted(150);
         
-        System.out.println("The year is " + myCropData.getYear() + ". Our population is " + myCropData.getPopulation() 
-        + " people on " + myCropData.getAcresOwned() + " acres of land. Crops yield " + myCropData.getCropYield() + " with "
-        + myCropData.getWheatInStore() + " wheat in store.");
-        System.out.println("We lost " + myCropData.getNumberWhoDied() + " people and welcomed " + myCropData.getNewPeople() 
-        + " newcomers. Our harvest produced " + myCropData.getHarvest() + " with " + myCropData.getWheatForFood() 
-        + " wheat for food. For the next harvest we have " + myCropData.getAcresPlanted() + " acres planted!");
+        System.out.println("The year is " + myCropData.getYear() + ".\nOur population: " + myCropData.getPopulation() 
+        + "\nAcres owned: " + myCropData.getAcresOwned() + "\nCrop yield: " + myCropData.getCropYield() + "\nWheat in Store: "
+        + myCropData.getWheatInStore() + "\nNumbers died: " + myCropData.getNumberWhoDied() + "\nNewcomers: " + myCropData.getNewPeople() 
+        + "\nHarvest: " + myCropData.getHarvest() + "\nWheat for food: " + myCropData.getWheatForFood() 
+        + "\nAcres Planted: " + myCropData.getAcresPlanted());
         
     }
      
