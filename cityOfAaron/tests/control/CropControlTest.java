@@ -27,25 +27,78 @@ public class CropControlTest {
         int expResult = 0;
         int result = CropControl.calcLandCost();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
      * Test of sellLand method, of class CropControl.
      */
     @Test
-    public void testSellLand() {
-        System.out.println("sellLand");
-        int landPrice = 10;
-        int acresToSell = 20;
-        CropData cropData = null;
-        int expResult = 0;
+    public void testSellLand1() {
+        System.out.println("sellLand1");
+        int landPrice = 18;
+        int acresToSell = 100;
+        CropData cropData = new CropData();
+        cropData.setAcresOwned(3000);
+        int expResult = 2900;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
        
     }
 
+    @Test
+    public void testSellLand2() {
+        System.out.println("sellLand2");
+        int landPrice = 20;
+        int acresToSell = -500;
+        CropData cropData = new CropData();
+        cropData.setAcresOwned(3000);
+        int expResult = -1;
+        int result = CropControl.sellLand(landPrice, acresToSell, cropData);
+        assertEquals(expResult, result);
+       
+    }
+    
+    @Test
+    public void testSellLand3() {
+        System.out.println("sellLand3");
+        int landPrice = 22;
+        int acresToSell = 3100;
+        CropData cropData = new CropData();
+        cropData.setAcresOwned(3000);
+        int expResult = -1;
+        int result = CropControl.sellLand(landPrice, acresToSell, cropData);
+        assertEquals(expResult, result);
+       
+    }
+    
+    @Test
+    public void testSellLand4() {
+        System.out.println("sellLand4");
+        int landPrice = 24;
+        int acresToSell = 0;
+        CropData cropData = new CropData();
+        cropData.setAcresOwned(3000);
+        int expResult = 3000;
+        int result = CropControl.sellLand(landPrice, acresToSell, cropData);
+        assertEquals(expResult, result);
+       
+    }
+    
+    @Test
+    public void testSellLand5() {
+        System.out.println("sellLand5");
+        int landPrice = 18;
+        int acresToSell = 3000;
+        CropData cropData = new CropData();
+        cropData.setAcresOwned(3000);
+        int expResult = 0;
+        int result = CropControl.sellLand(landPrice, acresToSell, cropData);
+        assertEquals(expResult, result);
+       
+    }
+    
+    
     /**
      * Test of buyLand method, of class CropControl.
      * Test Case 1

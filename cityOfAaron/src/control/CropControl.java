@@ -40,13 +40,15 @@ public class CropControl {
         return landPrice;                        
     }
 
-    // The sellLand method
-    // Purpose: To sell land
-    // Parameters: the price of land, the number of acres to sell, and
-    // a reference to a CropData object
-    // Returns: the number of acres owned after the sale
-    // Pre-conditions: acres to sell must be positive
-    // and <= acresOwned
+    /** The sellLand method
+    * Purpose: To sell land
+    * @param landPrice the price of land, 
+    * @param acresToSell the number of acres to sell, and
+    * @param cropData a reference to a CropData object
+    * @return (int) the number of acres owned after the sale
+    * Pre-conditions: acres to sell must be positive
+    * and <= acresOwned
+    */
 
     public static int sellLand(int landPrice, int acresToSell, CropData cropData){
         
