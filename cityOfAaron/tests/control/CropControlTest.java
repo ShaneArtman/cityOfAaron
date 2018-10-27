@@ -22,14 +22,50 @@ public class CropControlTest {
      * Test of calcLandCost method, of class CropControl.
      */
     @Test
-    public void testCalcLandCost() {
-        System.out.println("calcLandCost");
-        int expResult = 0;
+    public void testCalcLandCost1() {
+        int base = 17;
+        int range = 10;
         int result = CropControl.calcLandCost();
-        assertEquals(expResult, result);
-        
+        System.out.println("calcLandCost1 test result: " + result);
+        assertTrue(result >= base && result <= (base + range));
+    }
+    
+    @Test
+    public void testCalcLandCost2() {
+        int base = 17;
+        int range = 10;
+        int result = CropControl.calcLandCost();
+        System.out.println("calcLandCost2 test result: " + result);
+        assertTrue(result >= base && result <= (base + range));
     }
 
+    @Test
+    public void testCalcLandCost3() {
+        int base = 17;
+        int range = 10;
+        int result = CropControl.calcLandCost();
+        System.out.println("calcLandCost3 test result: " + result);
+        assertTrue(result >= base && result <= (base + range));
+    }
+    
+    @Test
+    public void testCalcLandCost4() {
+        int base = 17;
+        int range = 10;
+        int result = CropControl.calcLandCost();
+        System.out.println("calcLandCost4 test result: " + result);
+        assertTrue(result >= base && result <= (base + range));
+    }
+    
+    @Test
+    public void testCalcLandCost5() {
+        int base = 17;
+        int range = 10;
+        int result = CropControl.calcLandCost();
+        System.out.println("calcLandCost5 test result: " + result);
+        assertTrue(result >= base && result <= (base + range));
+    }
+    
     /**
      * Test of sellLand method, of class CropControl.
      * Test case 1
@@ -56,7 +92,6 @@ public class CropControlTest {
         int expResult = -1;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
-       
     }
     
     @Test
@@ -69,7 +104,6 @@ public class CropControlTest {
         int expResult = -1;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
-       
     }
     
     @Test
@@ -82,7 +116,6 @@ public class CropControlTest {
         int expResult = 3000;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
-       
     }
     
     @Test
@@ -95,7 +128,6 @@ public class CropControlTest {
         int expResult = 0;
         int result = CropControl.sellLand(landPrice, acresToSell, cropData);
         assertEquals(expResult, result);
-       
     }
     
     
@@ -255,7 +287,6 @@ public class CropControlTest {
         int expResult = 50;
         int result = CropControl.setOffering(percentOfOffering);
         assertEquals(expResult, result);
-        
     }
     
     @Test
@@ -265,7 +296,6 @@ public class CropControlTest {
         int expResult = -1;
         int result = CropControl.setOffering(percentOfOffering);
         assertEquals(expResult, result);
-        
     }
     
     @Test
@@ -275,7 +305,6 @@ public class CropControlTest {
         int expResult = -1;
         int result = CropControl.setOffering(percentOfOffering);
         assertEquals(expResult, result);
-        
     }
     
     @Test
@@ -285,7 +314,6 @@ public class CropControlTest {
         int expResult = 0;
         int result = CropControl.setOffering(percentOfOffering);
         assertEquals(expResult, result);
-        
     }
     
     @Test
@@ -295,7 +323,6 @@ public class CropControlTest {
         int expResult = 100;
         int result = CropControl.setOffering(percentOfOffering);
         assertEquals(expResult, result);
-        
     }
     
     /**
