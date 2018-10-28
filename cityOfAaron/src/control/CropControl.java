@@ -143,7 +143,7 @@ public class CropControl {
         double randomNumber = random.nextDouble();
         int ratDamage = (int) Math.floor((randomNumber * .05) * _cropData.getWheatInStore());
         _cropData.setWheatInStore(_cropData.getWheatInStore()-ratDamage);
-        return ratDamage;
+        return 0;
     } 
 
     /**
@@ -157,6 +157,11 @@ public class CropControl {
      *
      */
     public static int growPopulation(CropData _cropData) {
+        double randomNumber = random.nextDouble();
+        //round down a random growth number of population
+        int popGrowth = (int) Math.floor((randomNumber * .05) * _cropData.getPopulation());
+        _cropData.setPopulation(popGrowth);
+        //temp return population growth - could be 0/-1
         return 0;
     }
     
@@ -169,7 +174,20 @@ public class CropControl {
      *
      */
     public static int calcStarved(CropData _cropData) {
-        return 0;
+        int peopleFed = (int) Math.floor(_cropData.getWheatForFood()/20);
+        //likely, we are not to calculate other veriables like the number of remaining population
+        //  thus, we will not determine that at this time
+        if ( _cropData.getPopulation() > peopleFed ) {
+            _cropData.setNumberWhoDied(_cropData.getPopulation()-peopleFed);
+        // because we are only calculating here, not sure that we should kill the people here
+        // _cropData.setPopulation(peopleFed); 
+        }
+        else
+        {
+            _cropData.setNumberWhoDied(0);
+        }
+        //temp return population growth - could be 0/-1
+        return _cropData.getNumberWhoDied();
     }
 
     /**
