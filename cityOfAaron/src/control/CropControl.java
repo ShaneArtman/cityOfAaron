@@ -81,12 +81,13 @@ public class CropControl {
     /**
      * buyLand(int):int
      * Purpose: To buy land
+     * <p>
+     * Pre-conditions: acresToBuy must be greater than or equal to 0 and wheatInStore must be
+     * greater than or equal to purchase price
      * @param landPrice the price of land
      * @param acresToBuy the number of acres to buy
      * @param _cropData a reference to a CropData object
      * @return (int) result code of -1 is invalid and 0 is success
-     * Pre-conditions: acresToBuy must be greater than or equal to 0 and wheatInStore must be
-     * greater than or equal to purchase price
      */
     public static int buyLand(int landPrice, int acresToBuy, CropData _cropData) {
         if (landPrice < 0 || acresToBuy < 0
@@ -104,12 +105,13 @@ public class CropControl {
     
     /**
      * Purpose: Set aside grain to feed the people of the City of Aaron
-     * 
+     * <p>
+     * Pre-Conditions: bushelsReservedForFood {@literal > 0 and <} wheat that is in the store
+     * @author Shane Artman
      * @param bushelsReservedForFood of food to reserve : int
      * @param _cropData CropData object
      * @return result code of -1 is invalid and 0 is success
      * 
-     * Pre-Conditions: bushelsReservedForFood > 0 and < wheat that is in the store
      */
     public static int feedPeople(int bushelsReservedForFood, CropData _cropData) {
         // Receive input for the amount of grain to set aside (# bushels) as int
@@ -135,6 +137,7 @@ public class CropControl {
      * and update the storhouse
      * <p>
      * Pre-conditions: the random generator much generate a value > 0 and less or equal to 5%
+     * @author Shane Artman
      * @param _cropData is a CropData object about this users crops
      * @return return damage by rats of storage
      *
@@ -150,8 +153,8 @@ public class CropControl {
      * Purpose: To determine how much of the population growth occurs and update the
      * population after the growth.
      * <p>
-     * Pre-conditions: the random generator much generate a value >= 1 and <= 5% of population
-     * 
+     * Pre-conditions: the random generator much generate a value {@literal >= 0 and <=} 5% of population
+     * @author Shane Artman
      * @param _cropData is a CropData object about this users crops
      * @return (int) return population growth
      *
@@ -169,6 +172,7 @@ public class CropControl {
      * Purpose: To determine how many people starved and update the population.
      * <p>
      * Pre-conditions: no requirements as the CropData is the only input source
+     * @author Shane Artman
      * @param _cropData is a CropData object about this users crops
      * @return (int) return starved population
      *
