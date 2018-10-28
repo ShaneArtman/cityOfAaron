@@ -18,6 +18,7 @@ public class CropControlTest {
     public CropControlTest() {
     }
 
+ 
     /**
      * Test of calcLandCost method, of class CropControl.
      */
@@ -224,57 +225,195 @@ public class CropControlTest {
 
     /**
      * Test of feedPeople method, of class CropControl.
+     * Test 1 - Valid
      */
     @Test
     public void testFeedPeople() {
         System.out.println("feedPeople");
-        int bushelsReservedForFood = 0;
-        CropData _cropData = null;
+        int bushelsReservedForFood = 500;
+        CropData _cropData = new CropData();
+        _cropData.setPopulation(100);
+        _cropData.setWheatInStore(2000);
         int expResult = 0;
         int result = CropControl.feedPeople(bushelsReservedForFood, _cropData);
         assertEquals(expResult, result);
     }
 
     /**
+     * Test of feedPeople method, of class CropControl.
+     * Test 2 - invalid
+     */
+    @Test
+    public void testFeedPeople2() {
+        System.out.println("feedPeople");
+        int bushelsReservedForFood = 10000;
+        CropData _cropData = new CropData();
+        _cropData.setPopulation(100);
+        _cropData.setWheatInStore(2000);
+        int expResult = -1;
+        int result = CropControl.feedPeople(bushelsReservedForFood, _cropData);
+        assertEquals(expResult, result);
+    }
+    /**
+     * Test of feedPeople method, of class CropControl.
+     * Test 3 - inalid
+     */
+    @Test
+    public void testFeedPeople3() {
+        System.out.println("feedPeople");
+        int bushelsReservedForFood = -5;
+        CropData _cropData = new CropData();
+        _cropData.setPopulation(100);
+        _cropData.setWheatInStore(2000);
+        int expResult = -1;
+        int result = CropControl.feedPeople(bushelsReservedForFood, _cropData);
+        assertEquals(expResult, result);
+    }
+    /**
+     * Test of feedPeople method, of class CropControl.
+     * Test 4 - Boundary
+     */
+    @Test
+    public void testFeedPeople4() {
+        System.out.println("feedPeople");
+        int bushelsReservedForFood = 0;
+        CropData _cropData = new CropData();
+        _cropData.setPopulation(100);
+        _cropData.setWheatInStore(2000);
+        int expResult = 0;
+        int result = CropControl.feedPeople(bushelsReservedForFood, _cropData);
+        assertEquals(expResult, result);
+    }
+    /**
+     * Test of feedPeople method, of class CropControl.
+     * Test 5 - Boundary
+     */
+    @Test
+    public void testFeedPeople5() {
+        System.out.println("feedPeople");
+        int bushelsReservedForFood = 2000;
+        CropData _cropData = new CropData();
+        _cropData.setPopulation(100);
+        _cropData.setWheatInStore(2000);
+        int expResult = 0;
+        int result = CropControl.feedPeople(bushelsReservedForFood, _cropData);
+        assertEquals(expResult, result);
+    }
+
+
+    /**
      * Test of calcEatenByRats method, of class CropControl.
+     * Test 1-5 will result in pass because returning 0 since the return could
+     * not be determined
      */
     @Test
     public void testCalcEatenByRats() {
-        System.out.println("calcEatenByRats");
-        CropData RatTestCropData = new CropData();
-        RatTestCropData.setWheatInStore(4111);
-        System.out.println("Wheat in the store: " + RatTestCropData.getWheatInStore());
+        CropData _cropData = new CropData();
+        _cropData.setWheatInStore(4111);
         int expResult = 0;
-        int result = (CropControl.calcEatenByRats(RatTestCropData)) >= 0? 0:1;
+        int result = (CropControl.calcEatenByRats(_cropData));
         assertEquals(expResult, result);
     }
 
     /**
      * Test of growPopulation method, of class CropControl.
+     * Test 1-5 will result in pass because returning 0 since the return could
+     * not be determined
      */
     @Test
     public void testGrowPopulation() {
         System.out.println("growPopulation");
-        CropData _cropData = null;
+        CropData _cropData = new CropData();
+        _cropData.setPopulation(100);
         int expResult = 0;
         int result = CropControl.growPopulation(_cropData);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of calcStarved method, of class CropControl.
+     * Test 1 - Valid
      */
     @Test
     public void testCalcStarved() {
         System.out.println("calcStarved");
-        CropData _cropData = null;
+        CropData _cropData = new CropData();
+        _cropData.setWheatForFood(4111);
+        _cropData.setPopulation(200);
+        //Expecting to return the number of people who starved
         int expResult = 0;
         int result = CropControl.calcStarved(_cropData);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    /**
+     * Test of calcStarved method, of class CropControl.
+     * Test 2 - inalid
+     */
+    @Test
+    public void testCalcStarved2() {
+        System.out.println("calcStarved");
+        CropData _cropData = new CropData();
+        _cropData.setWheatForFood(10000);
+        _cropData.setPopulation(2000);
+        //Expecting to return the number of people who starved
+        int expResult = 1500;
+        int result = CropControl.calcStarved(_cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    /**
+     * Test of calcStarved method, of class CropControl.
+     * Test 3 - inalid
+     */
+    @Test
+    public void testCalcStarved3() {
+        System.out.println("calcStarved");
+        CropData _cropData = new CropData();
+        _cropData.setWheatForFood(10000);
+        _cropData.setPopulation(4000);
+        //Expecting to return the number of people who starved
+        int expResult = 3500;
+        int result = CropControl.calcStarved(_cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    /**
+     * Test of calcStarved method, of class CropControl.
+     * Test 4 - Boundary
+     */
+    @Test
+    public void testCalcStarved4() {
+        System.out.println("calcStarved");
+        CropData _cropData = new CropData();
+        _cropData.setWheatForFood(0);
+        _cropData.setPopulation(1);
+        //Expecting to return the number of people who starved
+        int expResult = 1;
+        int result = CropControl.calcStarved(_cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    /**
+     * Test of calcStarved method, of class CropControl.
+     * Test 5 - Boundary
+     */
+    @Test
+    public void testCalcStarved5() {
+        System.out.println("calcStarved");
+        CropData _cropData = new CropData();
+        _cropData.setWheatForFood(10000);
+        _cropData.setPopulation(1);
+        //Expecting to return the number of people who starved
+        int expResult = 0;
+        int result = CropControl.calcStarved(_cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
     }
     
     /**
