@@ -27,6 +27,8 @@ public class CropControl {
     // Constants
     private static final int LAND_BASE = 17;
     private static final int LAND_RANGE = 10;
+    private static final int YIELD_BASE = 2;
+    private static final int YIELD_RANGE = 4;
 
     // Random number generator
     private static Random random = new Random();
@@ -226,6 +228,7 @@ public class CropControl {
     /**
      * plantCrops Method
      * Purpose: determine how many acres and wheat owned is used to plant crops
+     * @author Jonathan Unga
      * @param acresToPlant is number of acres to be used for planting
      * @param _cropData cropData object
      * @return the number of acres planted and amount of wheat left in storage
@@ -254,5 +257,40 @@ public class CropControl {
         planted += acresToPlant;
         _cropData.setAcresPlanted(planted);
         return planted;
+    }
+    
+     /**
+     * harvestCrops Method
+     * Purpose: determine how much crops yielded and update wheat in store
+     * @author Jonathan Unga
+     * @param _cropData cropData object
+     * @return amount of crops yielded
+     * Pre-conditions: random generator must generate number >=2 and <=5 for 
+     * crops yielded per acre
+     */
+    public static int harvestCrops(CropData _cropData){
+        //generate randome yield number from 2 to 5
+        int cropsYield = random.nextInt(YIELD_RANGE) + YIELD_BASE;
+        int acresHarvested = _cropData.getAcresPlanted();
+        int wheat = _cropData.getWheatInStore();
+        //multiply random yield by acres being harvested to get harvest total
+        int harvest = cropsYield * acresHarvested;
+        wheat += harvest;
+        _cropData.setWheatInStore(wheat);
+        return harvest;
+    }
+    
+     /**
+     * storeWheat Method
+     * Purpose: set the amount of wheat in store
+     * @author Jonathan Unga
+     * @param _cropData cropData object
+     * @return amount of wheat in store
+     * Pre-conditions: none as number of wheat in beginning is set to 2700
+     */
+    public static int storeWheat(CropData _cropData){
+        //setting initial wheat in store to 2700
+        _cropData.setWheatInStore(2700);
+        return _cropData.getWheatInStore();
     }
 }
