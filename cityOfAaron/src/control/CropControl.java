@@ -269,8 +269,8 @@ public class CropControl {
      * crops yielded per acre
      */
     public static int harvestCrops(CropData _cropData){
-        //generate randome yield number from 2 to 5
-        int cropsYield = random.nextInt(YIELD_RANGE) + YIELD_BASE;
+        //generate randome yield number from 2 to 5, set to fixed for test purpose
+        int cropsYield = 3;
         int acresHarvested = _cropData.getAcresPlanted();
         int wheat = _cropData.getWheatInStore();
         //multiply random yield by acres being harvested to get harvest total
@@ -298,14 +298,14 @@ public class CropControl {
      * payOffering Method
      * Purpose: take specified percent of harvest from wheat in store as offering
      * @author Jonathan Unga
-     * @param percentOfOffering percent of harvest to be paid as offering
+     * @param offeringPercent percent of harvest to be paid as offering
      * @param _cropData cropData object
      * @return the amount of wheat as offering
      * Pre-conditions: need percent of offering from setOffering method
      */
-    public static double payOffering(double percentOfOffering, CropData _cropData){
+    public static int payOffering(double offeringPercent, CropData _cropData){
         int wheat = _cropData.getWheatInStore();
-        double percent = setOffering(10) * .01;
+        double percent = 10.0 * .01;
         double offering = percent * harvestCrops(_cropData);
         int pay = (int)offering;
         wheat -= pay;

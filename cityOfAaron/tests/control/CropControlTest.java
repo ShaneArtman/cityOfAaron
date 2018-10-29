@@ -653,15 +653,14 @@ public class CropControlTest {
     public void testPayOfferingCase() {
         System.out.println("payOffering - Test Case");
         CropData _cropData = new CropData();
-        _cropData.setWheatInStore(100);
+        _cropData.setWheatInStore(400);
         _cropData.setAcresPlanted(100);
         
-        double percentOfOffering = 10;
+        double offeringPercent = 10.0;
         double percent = .1;
-        double offering = 10;
-        int wheat = 90;
-        int expResult = 10;
-        int result = (int)CropControl.payOffering(percentOfOffering, _cropData);
+        double offering = 30.0;
+        int expResult = 30;
+        int result = CropControl.payOffering(offeringPercent, _cropData);
         assertEquals(expResult, result);
     }
 }
