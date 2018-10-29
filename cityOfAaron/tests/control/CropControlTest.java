@@ -610,4 +610,58 @@ public class CropControlTest {
         int result = CropControl.plantCrops(acresToPlant, _cropData);
         assertEquals(expResult, result);
     }
+    
+    /**
+     * Test of harvestCrops method, of class CropControl.
+     * Test Case
+     */
+    @Test
+    public void testharvestCropsCase() {
+        System.out.println("harvestCrops - Test Case");
+        CropData _cropData = new CropData();
+        _cropData.setWheatInStore(100);
+        _cropData.setAcresPlanted(100);
+        
+        int cropsYield = 3;
+        int acresHarvested = 100;
+        int wheat = 400;
+        int expResult = 300;
+        int result = CropControl.harvestCrops(_cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of storeWheat method, of class CropControl.
+     * Test Case
+     */
+    @Test
+    public void testStoreWheatCase() {
+        System.out.println("storeWheat - Test Case");
+        CropData _cropData = new CropData();
+        _cropData.setWheatInStore(2700);
+        
+        int expResult = 2700;
+        int result = CropControl.storeWheat(_cropData);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of payOffering method, of class CropControl.
+     * Test Case
+     */
+    @Test
+    public void testPayOfferingCase() {
+        System.out.println("payOffering - Test Case");
+        CropData _cropData = new CropData();
+        _cropData.setWheatInStore(100);
+        _cropData.setAcresPlanted(100);
+        
+        double percentOfOffering = 10;
+        double percent = .1;
+        double offering = 10;
+        int wheat = 90;
+        int expResult = 10;
+        int result = (int)CropControl.payOffering(percentOfOffering, _cropData);
+        assertEquals(expResult, result);
+    }
 }

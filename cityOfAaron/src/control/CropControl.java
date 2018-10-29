@@ -293,4 +293,23 @@ public class CropControl {
         _cropData.setWheatInStore(2700);
         return _cropData.getWheatInStore();
     }
+    
+     /**
+     * payOffering Method
+     * Purpose: take specified percent of harvest from wheat in store as offering
+     * @author Jonathan Unga
+     * @param percentOfOffering percent of harvest to be paid as offering
+     * @param _cropData cropData object
+     * @return the amount of wheat as offering
+     * Pre-conditions: need percent of offering from setOffering method
+     */
+    public static double payOffering(double percentOfOffering, CropData _cropData){
+        int wheat = _cropData.getWheatInStore();
+        double percent = setOffering(10) * .01;
+        double offering = percent * harvestCrops(_cropData);
+        int pay = (int)offering;
+        wheat -= pay;
+        _cropData.setWheatInStore(wheat);
+        return pay;
+    }
 }
