@@ -34,6 +34,7 @@ public class CropData implements Serializable {
     private int harvest;
     private int wheatForFood;
     private int acresPlanted;
+    private int offering;
     
     //empty public constructor
     public CropData() { }

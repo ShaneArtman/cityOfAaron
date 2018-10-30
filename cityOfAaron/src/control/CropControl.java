@@ -34,6 +34,7 @@ public class CropControl {
     private static Random random = new Random();
 
     /** calcLandCost() method
+    * @author Nick
     * Purpose: Calculate a random land price between 17 and 26 bushels/acre
     * Parameters: none
     * @return landPrice the land cost
@@ -43,38 +44,34 @@ public class CropControl {
         return landPrice;                        
     }
 
-    /** The sellLand method ;
+    /** The sellLand method 
+    * @author Nick
     * Purpose: To sell land
     * @param landPrice the price of land, 
     * @param acresToSell the number of acres to sell, and
     * @param cropData a reference to a CropData object
     * @return (int) the number of acres owned after the sale
-    * Pre-conditions: acres to sell must be positive
+    * Preconditions: acres to sell must be positive
     * and <= acresOwned
     */
 
     public static int sellLand(int landPrice, int acresToSell, CropData cropData){
-        
         //if acresToSell < 0, return -1
         if(acresToSell < 0){
               return -1;
         }
-        
         //if acresToSell > acresOwned, return -1
         int owned = cropData.getAcresOwned();
         if(acresToSell > owned){
              return -1;
         }
-
         //acresOwned = acresOwned - acresToSell
         owned -= acresToSell;
         cropData.setAcresOwned(owned);
-
         //wheatInStore = wheatInStore + acresToSell * landPrice
         int wheat = cropData.getWheatInStore();
         wheat+= (acresToSell * landPrice);
         cropData.setWheatInStore(wheat);
-
         //return acresOwned
         return owned;
 
@@ -198,31 +195,26 @@ public class CropControl {
 
     /**
     * setOffering Method
+    * @author Nick
     * Purpose: To set the percentage to be used for an offering.
     * @param percentOfOffering is percentage as a whole number
     * @return Percentage as a whole number
-    * or return -1 If conditions are not met
-    * Pre-Conditions: Percentage must be >= 0 and <= 100
+    * @PreConditions: Percentage must be >= 0 and <= 100
     */
     public static int setOffering(int percentOfOffering) {  
-        
         // set min/max values as variables
         final int MIN_PERCENT = 0;
         final int MAX_PERCENT = 100;
-        
         // if percentOfOffering < 0, return -1;
         if (percentOfOffering < MIN_PERCENT) {
             return -1;
         }
-
         // if percentOfOffering > 100, return -1;
         if (percentOfOffering > MAX_PERCENT) {
             return -1;
         }
-
         // return percentOfOffering;
         return percentOfOffering;
-
     }
     
     /**
