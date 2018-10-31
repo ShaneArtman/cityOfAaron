@@ -120,4 +120,11 @@ public class CropData implements Serializable {
         this.acresPlanted = _acresPlanted;
     }
     
+    public int getOfferint() {
+        return this.offering;
+    }
+    
+    public void setOffering(int _offering) {
+        this.offering = _offering;
+    }
 }
