@@ -253,9 +253,8 @@ public class CropControl {
         //subtract wheat needed from wheat in store
         wheat -= wheatNeeded;
         _cropData.setWheatInStore(wheat);
-        //add acresToPlant to acresPlanted
-        planted += acresToPlant;
-        _cropData.setAcresPlanted(planted);
+        //set acresPlanted
+        _cropData.setAcresPlanted(acresToPlant);
         return planted;
     }
     
@@ -270,7 +269,7 @@ public class CropControl {
      */
     public static int harvestCrops(CropData _cropData){
         //generate randome yield number from 2 to 5, set to fixed for test purpose
-        int cropsYield = 3;
+        int cropsYield = random.nextInt(YIELD_RANGE) + YIELD_BASE;
         int acresHarvested = _cropData.getAcresPlanted();
         int wheat = _cropData.getWheatInStore();
         //multiply random yield by acres being harvested to get harvest total
@@ -303,10 +302,11 @@ public class CropControl {
      * @return the amount of wheat as offering
      * Pre-conditions: need percent of offering from setOffering method
      */
-    public static int payOffering(double offeringPercent, CropData _cropData){
+    public static int payOffering(CropData _cropData){
         int wheat = _cropData.getWheatInStore();
-        double percent = 10.0 * .01;
-        double offering = percent * harvestCrops(_cropData);
+        int percent = _cropData.offering;
+        double payPercent = (double)percent * .01;
+        double offering = payPercent * harvestCrops(_cropData);
         int pay = (int)offering;
         wheat -= pay;
         _cropData.setWheatInStore(wheat);
