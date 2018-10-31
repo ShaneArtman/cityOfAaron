@@ -34,6 +34,7 @@ public class CropData implements Serializable {
     private int harvest;
     private int wheatForFood;
     private int acresPlanted;
+    private int offering;
     
     //empty public constructor
     public CropData() { }
@@ -119,4 +120,11 @@ public class CropData implements Serializable {
         this.acresPlanted = _acresPlanted;
     }
     
+    public int getOfferint() {
+        return this.offering;
+    }
+    
+    public void setOffering(int _offering) {
+        this.offering = _offering;
+    }
 }
