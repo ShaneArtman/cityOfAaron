@@ -268,12 +268,16 @@ public class CropControl {
         int harvest = cropsYield * acresHarvested;
         wheat += harvest;
         _cropData.setWheatInStore(wheat);
+        _cropData.setHarvest(harvest);
         return harvest;
     }
     
      /**
      * storeWheat Method
      * Purpose: set the amount of wheat in store
+     * unsure what this method is to be used for with current information
+     * initialized wheatInStore with 2700 based on beginning wheat from document
+     * requirements
      * @author Jonathan Unga
      * @param _cropData cropData object
      * @return amount of wheat in store
@@ -288,20 +292,19 @@ public class CropControl {
      /**
      * payOffering Method
      * Purpose: take specified percent of harvest from wheat in store as offering
+     * We assumed that we are to modify the wheatInStore from this calculation
+     * based on current information
      * @author Jonathan Unga
-     * @param offeringPercent percent of harvest to be paid as offering
      * @param _cropData cropData object
      * @return the amount of wheat as offering
      * Pre-conditions: need percent of offering from setOffering method
      */
     public static int payOffering(CropData _cropData){
-        int wheat = _cropData.getWheatInStore();
-        int percent = _cropData.offering;
+        int percent = _cropData.getOffering();
         double payPercent = (double)percent * .01;
-        double offering = payPercent * harvestCrops(_cropData);
-        int pay = (int)offering;
-        wheat -= pay;
-        _cropData.setWheatInStore(wheat);
-        return pay;
+        int wheat = _cropData.getWheatInStore();
+        int offering = (int)(payPercent * _cropData.getHarvest());
+        _cropData.setWheatInStore(wheat - offering);
+        return offering;
     }
 }

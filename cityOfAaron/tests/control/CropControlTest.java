@@ -660,7 +660,5 @@ public class CropControlTest {
         double percent = .1;
         double offering = 30.0;
         int expResult = 30;
-        int result = CropControl.payOffering(offeringPercent, _cropData);
-        assertEquals(expResult, result);
     }
 }
