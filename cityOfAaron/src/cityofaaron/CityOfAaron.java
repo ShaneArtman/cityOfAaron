@@ -9,6 +9,7 @@
 package cityofaaron;
 //import the classes from the model package
 import model.*;
+import view.*;
 import control.*;
 
 public class CityOfAaron {
@@ -69,6 +70,9 @@ public class CityOfAaron {
         + "\nHarvest: " + myCropData.getHarvest() + "\nWheat for food: " + myCropData.getWheatForFood() 
         + "\nAcres Planted: " + myCropData.getAcresPlanted());
         
+        // Create instance of MainMenuView
+        MainMenuView mmv = new MainMenuView();
+        mmv.displayMenuView();
     }
      
 }
