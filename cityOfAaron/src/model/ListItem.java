@@ -26,7 +26,9 @@ public class ListItem implements Serializable {
     private int number;
     
     // public constructor
-    public ListItem(){ }
+    public ListItem(){
+      
+    }
     
     public String getName(){
         return this.name;

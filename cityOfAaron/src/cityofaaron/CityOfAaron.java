@@ -10,9 +10,13 @@ package cityofaaron;
 //import the classes from the model package
 import model.*;
 import view.*;
-import control.*;
+import control.*; //This may not be needed?
 
 public class CityOfAaron {
+
+    
+    //variable to keep reference to the game object
+    private static Game theGame = null;
 
     /**
      * @param args the command line arguments
@@ -52,6 +56,7 @@ public class CityOfAaron {
         
         //CropData Class Instantiated
         CropData myCropData = new CropData();
+
         //setting test values
         myCropData.setYear(2018);
         myCropData.setPopulation(100);
@@ -74,5 +79,25 @@ public class CityOfAaron {
         MainMenuView mmv = new MainMenuView();
         mmv.displayMenuView();
     }
-     
+
+    /**
+     * Purpose: To get the reference to the game object outside this class
+     * @author Shane Artman
+     * @param none
+     * @return theGame object
+     */
+    public static Game getTheGame() {
+        return theGame;
+    }
+
+    /**
+     * Purpose: To set reference to theGame object
+     * @author Shane Artman
+     * @param theGame 
+     * @return theGame object
+     */
+    public static void setTheGame(Game theGame) {
+        CityOfAaron.theGame = theGame;
+    }
+    
 }

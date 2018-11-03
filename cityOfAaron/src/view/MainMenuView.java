@@ -21,11 +21,32 @@
 package view;
 
 import java.util.Scanner;
+//Import the cityofaaron package CityOfAaron class
+import cityofaaron.CityOfAaron;
 
 public class MainMenuView {
     Scanner keyboard = new Scanner(System.in);
     private String theMenu;
     private int max;
+    private final String BANNER_PAGE =
+            "\tGovernor, welcome. Before you arrived the people of the City of Aaron have \n" +
+        "suffered famine, pestilence and death. Our lives are in your hands. Please serve \n" +
+        "us well and we will care for your well-being. We are giving you 10 years to help us \n" +
+        "recover and each year we will evaluate your progress. We have lost so many of our family \n" +
+        "and friends; we have placed a review at the end of each year. If you fail to feed us, \n" +
+        "we will banish you from your position. If you feed us well, we will work hard for you. \n" +
+        "Please do not forget who really provides for all of us and pay your tithes and offerings; \n" +
+        "do not become prideful.\n\n" +
+        "\tWe have enabled you to manage all aspects of the development of our town for feeding \n" +
+        "our people. You can purchase and sell land using our most valuable treasure, wheat. You can \n" +
+        "then plant new crops, decide how much of the harvest is to be set aside for food for the \n" +
+        "following year and use the remaining amount to buy more land. Be wary of our rat problems \n" +
+        "and the vast changes in climate that have impacts on the harvest and how much wheat is left \n" +
+        "in the store at the end of the year.\n\n" +
+        "\tWe also have many of our women big with child and nomads that meander into town. We do not \n" +
+        "let anyone go hungry. So, make sure that you plan for growth of people every year.\n\n" +
+        "sFor all the people who starve, you will be less able to put up the harvest and plant \n" +
+        "new fields. Good luck and may God bless you.\n\n";
     
     // The MainMenuView constructor
     // Purpose: Initialize the menu data
@@ -145,15 +166,30 @@ public class MainMenuView {
     } 
 
     /**
-    * startNewGame method
-    * Purpose: Creates new game object and starts the game
-    * Parameters: none
-    * Returns: none
-    * ===================================  
-    */
+     * startNewGame method
+     * Purpose: Creates new game object and starts the game
+     * @Param none
+     * @Return none
+     * ===================================  
+     */
      public void startNewGame() {
-         System.out.println("\nStart new game option selected.");
-    }
+        // Display the Banner Page.
+        System.out.println(BANNER_PAGE);
+        
+        // Prompt for and get the user’s name.
+        String name;
+        System.out.println("Please tell us your name:\n");
+        name = keyboard.next();
+        
+        // Call the createNewGame() method in the GameControl class
+        GameControl.createNewGame();
+        
+        // Display a welcome message
+        System.out.println("Welcome, " + name + " have fun!!!");
+        
+        // Display the Game menu
+        
+     }
 
     /** 
     * startSavedGame Method
