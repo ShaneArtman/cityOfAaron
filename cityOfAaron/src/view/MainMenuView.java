@@ -183,7 +183,7 @@ public class MainMenuView {
         name = keyboard.next();
         
         // Call the createNewGame() method in the GameControl class
-        GameControl.createNewGame();
+        // GameControl.createNewGame();
         
         // Display a welcome message
         System.out.println("Welcome, " + name + " have fun!!!");
