@@ -32,7 +32,7 @@ public class MainMenuView {
     private String theMenu;
     private int max;
     private final String BANNER_PAGE =
-            "\tGovernor, welcome. Before you arrived the people of the City of Aaron have \n" +
+        "\tGovernor, welcome. Before you arrived the people of the City of Aaron have \n" +
         "suffered famine, pestilence and death. Our lives are in your hands. Please serve \n" +
         "us well and we will care for your well-being. We are giving you 10 years to help us \n" +
         "recover and each year we will evaluate your progress. We have lost so many of our family \n" +
@@ -84,7 +84,7 @@ public class MainMenuView {
             menuOption = getMenuOption();
             //Perform the desired action
             doAction(menuOption);
-            
+
         } while (menuOption != max);
     }
     
@@ -103,7 +103,9 @@ public class MainMenuView {
         // declare a variable to hold user’s input
         int userInput = 0;
         final int MAX = 5;
-        Scanner keyboard = new Scanner(System.in);
+
+        //Shane - Already created in the class. Remove...
+        //Scanner keyboard = new Scanner(System.in);
 
         // begin loop
         do
@@ -184,10 +186,9 @@ public class MainMenuView {
     } 
 
     /**
-     * startNewGame method
-     * Purpose: Creates new game object and starts the game
-     * @Param none
-     * @Return none
+     * startNewGame method<p>
+     * Purpose: Creates new game object and starts the game<p>
+     * @prarm none
      * ===================================  
      */
      public void startNewGame() {
