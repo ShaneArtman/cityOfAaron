@@ -21,6 +21,7 @@
 package view;
 
 import java.util.Scanner;
+import cityofaaron.CityOfAaron;
 
 public class MainMenuView {
     Scanner keyboard = new Scanner(System.in);
@@ -67,8 +68,8 @@ public class MainMenuView {
     
     /** The getMenuOption method
     * Purpose: gets the user's input
-    * @Parameters none
-    * @Return integer - the option selected
+    * @parameters none
+    * @return userInput - the option selected
     * ===================================     
     */
     public int getMenuOption()
@@ -79,6 +80,7 @@ public class MainMenuView {
         // declare a variable to hold user’s input
         int userInput = 0;
         final int MAX = 5;
+        // Slide 15 says to add scanner here. It is already called on line 26.
         Scanner keyboard = new Scanner(System.in);
 
         // begin loop
@@ -112,13 +114,13 @@ public class MainMenuView {
                 System.out.println("Thanks for playing ... goodbye.");
                 return 0;
         }
-        //Missing Return - SAA 11.2.18
-        return 0;
+        // Return user input
+        return userInput;
     } 
     
     /** The doAction method
     * Purpose: performs the selected action
-    * Parameters: none
+    * @param option integer 1-5
     * Returns: none
     * ===================================  
     */
