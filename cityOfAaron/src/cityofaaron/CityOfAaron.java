@@ -60,7 +60,7 @@ public class CityOfAaron {
      * @param none
      * @return theGame object
      */
-    public static Game getTheGame() {
+    public static Game getGame() {
         return theGame;
     }
 
@@ -70,7 +70,7 @@ public class CityOfAaron {
      * @param theGame reference
      * @return theGame object
      */
-    public static void setTheGame(Game theGame) {
+    public static void setGame(Game theGame) {
         CityOfAaron.theGame = theGame;
     }
     

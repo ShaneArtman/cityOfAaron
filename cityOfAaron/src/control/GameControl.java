@@ -59,7 +59,7 @@ public class GameControl {
         game.setCropData(cropData);
         
         // Save a reference to the Game object in the static variable
-        
+        CityOfAaron.setGame(game);
 
         // declared in the CityOfAaron class.
         

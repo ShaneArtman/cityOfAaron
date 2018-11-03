@@ -22,8 +22,10 @@ package view;
 
 import java.util.Scanner;
 //Import the cityofaaron package CityOfAaron class
+// Comment - Shane - Why are we doing this here?
 import cityofaaron.CityOfAaron;
 import control.*;
+import model.*;
 
 public class MainMenuView {
     Scanner keyboard = new Scanner(System.in);
@@ -46,7 +48,7 @@ public class MainMenuView {
         "in the store at the end of the year.\n\n" +
         "\tWe also have many of our women big with child and nomads that meander into town. We do not \n" +
         "let anyone go hungry. So, make sure that you plan for growth of people every year.\n\n" +
-        "sFor all the people who starve, you will be less able to put up the harvest and plant \n" +
+        "\tFor all the people who starve, you will be less able to put up the harvest and plant \n" +
         "new fields. Good luck and may God bless you.\n\n";
     
     // The MainMenuView constructor
@@ -163,6 +165,8 @@ public class MainMenuView {
         {
             case 1: // create and start a new game
                 startNewGame();
+                //Shane - Display some test data - remove later...
+                testData();
                 break;
             case 2: // get and start a saved game
                 startSavedGame();
@@ -202,7 +206,6 @@ public class MainMenuView {
         System.out.println("Welcome, " + name + " have fun!!!");
         
         // Display the Game menu
-        
      }
 
     /** 
@@ -213,20 +216,7 @@ public class MainMenuView {
     * ===================================  
     */
     public void startSavedGame( ) {
-         System.out.println("\nStart saved game option selected.");
-        //From initial testing - will remove later - Shane 11.3.18
-        /*
-        System.out.println("The year is " + cropData.getYear() + ".\nOur population: " + cropData.getPopulation() 
-        + "\nAcres owned: " + cropData.getAcresOwned() + "\nCrop yield: " + cropData.getCropYield() + "\nWheat in Store: "
-        + cropData.getWheatInStore() + "\nNumbers died: " + cropData.getNumberWhoDied() + "\nNewcomers: " + cropData.getNewPeople() 
-        + "\nHarvest: " + cropData.getHarvest() + "\nWheat for food: " + cropData.getWheatForFood() 
-        + "\nAcres Planted: " + cropData.getAcresPlanted());
-        System.out.println("The player's name is: " + game.getPlayer().getName() + "\n");
-        System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
-        System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
-        */
-
-
+        System.out.println("\nStart saved game option selected.");
     }
 
     /** 
@@ -280,5 +270,23 @@ public class MainMenuView {
     public void saveGame() {
         System.out.println("This is the saveGame method");
     }
-    
+    private static void testData() {
+        // Display test data
+        System.out.println("\n\nDisplaying some test data for development - Remove later...");
+        Game myGame = CityOfAaron.getGame();
+        CropData myCropData = myGame.getCropData();
+        Player myPlayer = myGame.getPlayer();
+
+        //From initial testing - will remove later - Shane 11.3.18
+        System.out.println("The year is " + myCropData.getYear() + ".\nOur population: " + myCropData.getPopulation()
+                + "\nAcres owned: " + myCropData.getAcresOwned() + "\nCrop yield: " + myCropData.getCropYield() + "\nWheat in Store: "
+                + myCropData.getWheatInStore() + "\nNumbers died: " + myCropData.getNumberWhoDied() + "\nNewcomers: " + myCropData.getNewPeople()
+                + "\nHarvest: " + myCropData.getHarvest() + "\nWheat for food: " + myCropData.getWheatForFood()
+                + "\nAcres Planted: " + myCropData.getAcresPlanted());
+        System.out.println("The player's name is: " + myPlayer.getName() + "\n");
+        System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
+        System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
+
+
+    }
 }
