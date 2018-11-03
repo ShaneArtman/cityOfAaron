@@ -22,17 +22,15 @@ public class CityOfAaron {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Create an instance of the player and game classes
+        /*
+            Creating instances of the player and game classes moved to GameControl 
+            class in control layer
+        */
         
-        //Player Class instantiated
-        Player myPlayer = new Player();
-        myPlayer.setName("Pudentane");
-        
-        //Game Class instantiated
-        Game myGame = new Game();
-        myGame.setPlayer(myPlayer);
-        
-        
+        // Create instance of MainMenuView
+        MainMenuView mmv = new MainMenuView();
+        mmv.displayMenuView();
+
         //Location Class Instantiated
         Location myLocation = new Location();
         // Set values into the new location class - test.
@@ -40,9 +38,6 @@ public class CityOfAaron {
         myLocation.setDescription("My Favorite Place");
         myLocation.setSymbol("∆");
         
-        System.out.println("The player's name is: " + myGame.getPlayer().getName() + "\n");
-        System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
-        System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
         System.out.println("myLocation description: " + myLocation.getDescription());
         System.out.println("myLocation symbol = " + myLocation.getSymbol());
         
@@ -54,30 +49,9 @@ public class CityOfAaron {
         
         System.out.println("You currently have " + myItem.getNumber() + " " + myItem.getName() + "/s on hand.");
         
-        //CropData Class Instantiated
-        CropData myCropData = new CropData();
-
-        //setting test values
-        myCropData.setYear(2018);
-        myCropData.setPopulation(100);
-        myCropData.setAcresOwned(200);
-        myCropData.setCropYield(500);
-        myCropData.setWheatInStore(1000);
-        myCropData.setNumberWhoDied(10);
-        myCropData.setNewPoeple(5);
-        myCropData.setHarvest(600);
-        myCropData.setWheatForFood(300);
-        myCropData.setAcresPlanted(150);
-        
-        System.out.println("The year is " + myCropData.getYear() + ".\nOur population: " + myCropData.getPopulation() 
-        + "\nAcres owned: " + myCropData.getAcresOwned() + "\nCrop yield: " + myCropData.getCropYield() + "\nWheat in Store: "
-        + myCropData.getWheatInStore() + "\nNumbers died: " + myCropData.getNumberWhoDied() + "\nNewcomers: " + myCropData.getNewPeople() 
-        + "\nHarvest: " + myCropData.getHarvest() + "\nWheat for food: " + myCropData.getWheatForFood() 
-        + "\nAcres Planted: " + myCropData.getAcresPlanted());
-        
-        // Create instance of MainMenuView
-        MainMenuView mmv = new MainMenuView();
-        mmv.displayMenuView();
+        //Moved instantiation of cropData to the GameControl class in the control layer
+        //Shane - 11.3.18
+                
     }
 
     /**
@@ -93,7 +67,7 @@ public class CityOfAaron {
     /**
      * Purpose: To set reference to theGame object
      * @author Shane Artman
-     * @param theGame 
+     * @param theGame reference
      * @return theGame object
      */
     public static void setTheGame(Game theGame) {

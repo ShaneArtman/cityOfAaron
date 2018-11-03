@@ -23,6 +23,7 @@ package view;
 import java.util.Scanner;
 //Import the cityofaaron package CityOfAaron class
 import cityofaaron.CityOfAaron;
+import control.*;
 
 public class MainMenuView {
     Scanner keyboard = new Scanner(System.in);
@@ -105,6 +106,12 @@ public class MainMenuView {
         // begin loop
         do
         {
+            /*
+                Shane - Comments - I would think that we should display the menu
+                here. Otherwise the user will eventually scroll past the menu and
+                will not see the options.
+            */
+            
             // get user input from the keyboard
             userInput = keyboard.nextInt();
             // if it is not a valid value, output an error message
@@ -114,6 +121,10 @@ public class MainMenuView {
             // loop back to the top of the loop if input was not valid
             // end loop
         } while (userInput < 1 || userInput > MAX);
+
+        /*
+            *** Shane - Comments - Why are we running the switch here and in the 
+            *** doAction method?
 
         switch(userInput)
         {
@@ -133,8 +144,11 @@ public class MainMenuView {
                 System.out.println("Thanks for playing ... goodbye.");
                 return 0;
         }
+        */
+        
+        
         //Missing Return - SAA 11.2.18
-        return 0;
+        return userInput;
     } 
     
     /** The doAction method
@@ -145,7 +159,7 @@ public class MainMenuView {
     */
     public void doAction(int option)
     {
-                switch(option)
+        switch(option)
         {
             case 1: // create and start a new game
                 startNewGame();
@@ -174,7 +188,7 @@ public class MainMenuView {
      */
      public void startNewGame() {
         // Display the Banner Page.
-        System.out.println(BANNER_PAGE);
+        System.out.println("\n\n" + BANNER_PAGE + "\n\n");
         
         // Prompt for and get the user’s name.
         String name;
@@ -182,7 +196,7 @@ public class MainMenuView {
         name = keyboard.next();
         
         // Call the createNewGame() method in the GameControl class
-        GameControl.createNewGame();
+        GameControl.createNewGame(name);
         
         // Display a welcome message
         System.out.println("Welcome, " + name + " have fun!!!");
@@ -200,6 +214,19 @@ public class MainMenuView {
     */
     public void startSavedGame( ) {
          System.out.println("\nStart saved game option selected.");
+        //From initial testing - will remove later - Shane 11.3.18
+        /*
+        System.out.println("The year is " + cropData.getYear() + ".\nOur population: " + cropData.getPopulation() 
+        + "\nAcres owned: " + cropData.getAcresOwned() + "\nCrop yield: " + cropData.getCropYield() + "\nWheat in Store: "
+        + cropData.getWheatInStore() + "\nNumbers died: " + cropData.getNumberWhoDied() + "\nNewcomers: " + cropData.getNewPeople() 
+        + "\nHarvest: " + cropData.getHarvest() + "\nWheat for food: " + cropData.getWheatForFood() 
+        + "\nAcres Planted: " + cropData.getAcresPlanted());
+        System.out.println("The player's name is: " + game.getPlayer().getName() + "\n");
+        System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
+        System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
+        */
+
+
     }
 
     /** 

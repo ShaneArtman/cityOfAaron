@@ -16,11 +16,15 @@
 
 package model;
 
+import java.io.Serializable;
 
-public class Map {
-private int rowCount;
-private int colCount;
-private int[][] location;
+public class Map implements Serializable {
+    
+    private int rowCount;
+    private int colCount;
+    private int[][] location;
+
+    public Map() {};
 
     public int getRowCount() {
         return rowCount;
