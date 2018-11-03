@@ -1,9 +1,23 @@
-/*
+/**
  * The MainMenuView class - part of the view layer
- * Purpose of class - manage the main menu
- * Author: Team
- * Date last modified: 10/30/18
+ * Purpose: View layer for main menu
+ * 
+ * MainMenuView.java
+ *
+ * The MainMenuView Class for the cityOfAaron project
+ * Created in the view package.
+ * 
+ * Created on Oct 30, 2018
+ * Created by Team
+ *
+ * CIT-260: 08
+ * Fall 2018
+ * Team members: Shane Artman, Nick Hammond, Jonathan Unga
+ *
+ * 
+ *  
  */
+
 package view;
 
 import java.util.Scanner;
@@ -53,8 +67,8 @@ public class MainMenuView {
     
     /** The getMenuOption method
     * Purpose: gets the user's input
-    * Parameters: none
-    * Returns: integer - the option selected
+    * @Parameters none
+    * @Return integer - the option selected
     * ===================================     
     */
     public int getMenuOption()
@@ -65,7 +79,7 @@ public class MainMenuView {
         // declare a variable to hold user’s input
         int userInput = 0;
         final int MAX = 5;
-        Scanner keyboard = new Scanner( );
+        Scanner keyboard = new Scanner(System.in);
 
         // begin loop
         do
@@ -73,8 +87,9 @@ public class MainMenuView {
             // get user input from the keyboard
             userInput = keyboard.nextInt();
             // if it is not a valid value, output an error message
-            if(userInput < 1 || userInput > MAX)
-                 System.out.println(“Error: you must select 1, 2, 3, 4, or 5”;
+            if(userInput < 1 || userInput > MAX) {
+                 System.out.println("Error: you must select 1, 2, 3, 4, or 5");
+            }
             // loop back to the top of the loop if input was not valid
             // end loop
         } while (userInput < 1 || userInput > MAX);
@@ -95,7 +110,10 @@ public class MainMenuView {
                 break;
             case 5:
                 System.out.println("Thanks for playing ... goodbye.");
+                return 0;
         }
+        //Missing Return - SAA 11.2.18
+        return 0;
     } 
     
     /** The doAction method
@@ -170,4 +188,34 @@ public class MainMenuView {
          System.out.println("\nDisplay save game option selected.");
     }
 
+    /**
+     * loadSavedGame Method
+     * Purpose: loading a previously saved game
+     * @Param none
+     * @Return none
+     */
+    public void loadSavedGame() {
+        System.out.println("This is the loadSavedGame method");
+    }
+    
+    /**
+     * displayHelpMenu Method
+     * Purpose: display help menu
+     * @Param none
+     * @Return none
+     */
+    public void displayHelpMenu() {
+        System.out.println("This is the displayHelpMenu method");
+    }
+    
+    /**
+     * saveGame Method
+     * Purpose: save the existing game
+     * @Param none
+     * @Return none
+     */
+    public void saveGame() {
+        System.out.println("This is the saveGame method");
+    }
+    
 }
