@@ -81,6 +81,7 @@ public class Game implements Serializable {
     public void setMap(Map map) {
         this.map = map;
     }
+    //a change by Jon
 
 
 }
