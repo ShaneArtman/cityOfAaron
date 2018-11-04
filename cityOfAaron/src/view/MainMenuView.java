@@ -104,9 +104,6 @@ public class MainMenuView {
         int userInput = 0;
         final int MAX = 5;
 
-        //Shane - Already created in the class. Remove...
-        //Scanner keyboard = new Scanner(System.in);
-
         // begin loop
         do
         {
@@ -125,33 +122,7 @@ public class MainMenuView {
             // loop back to the top of the loop if input was not valid
             // end loop
         } while (userInput < 1 || userInput > MAX);
-
-        /*
-            *** Shane - Comments - Why are we running the switch here and in the 
-            *** doAction method?
-
-        switch(userInput)
-        {
-            case 1: // create and start a new game
-                startNewGame();
-                break;
-            case 2: // get and start a saved game
-                loadSavedGame();
-                break;
-            case 3: // get help menu
-                displayHelpMenu();
-                break;
-            case 4: // save game
-                saveGame();
-                break;
-            case 5:
-                System.out.println("Thanks for playing ... goodbye.");
-                return 0;
-        }
-        */
         
-        
-        //Missing Return - SAA 11.2.18
         return userInput;
     } 
     

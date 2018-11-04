@@ -24,8 +24,8 @@ import java.io.Serializable;
 
 public class Game implements Serializable {
     
-    private Player thePlayer;
-    private Map theMap;
+    private Player player;
+    private Map map;
     private CropData cropData;
     private ArrayList<ListItem> animals;
     private ArrayList<ListItem> tools;
@@ -65,14 +65,22 @@ public class Game implements Serializable {
     public void setProvisions(ArrayList<ListItem> _provisions) {
         this.provisions = _provisions;
     }
-    
 
     public void setPlayer(Player _thePlayer){
-        this.thePlayer = _thePlayer;
+        this.player = _thePlayer;
     }
     
     public Player getPlayer(){
-        return this.thePlayer;
+        return this.player;
     }
+    
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
 
 }
