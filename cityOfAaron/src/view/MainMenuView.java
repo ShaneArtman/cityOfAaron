@@ -23,6 +23,7 @@ package view;
 import java.util.Scanner;
 //Import the cityofaaron package CityOfAaron class
 import cityofaaron.CityOfAaron;
+import control.GameControl;
 
 public class MainMenuView {
     Scanner keyboard = new Scanner(System.in);
@@ -89,7 +90,7 @@ public class MainMenuView {
     /** The getMenuOption method
     * Purpose: gets the user's input
     * @Parameters none
-    * @Return integer - the option selected
+    * @return userInput - the option selected
     * ===================================     
     */
     public int getMenuOption()
@@ -183,7 +184,7 @@ public class MainMenuView {
         name = keyboard.next();
         
         // Call the createNewGame() method in the GameControl class
-        // GameControl.createNewGame();
+        GameControl.createNewGame();
         
         // Display a welcome message
         System.out.println("Welcome, " + name + " have fun!!!");
