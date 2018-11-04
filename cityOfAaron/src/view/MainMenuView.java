@@ -22,15 +22,17 @@ package view;
 
 import java.util.Scanner;
 //Import the cityofaaron package CityOfAaron class
+// Comment - Shane - Why are we doing this here?
 import cityofaaron.CityOfAaron;
-import control.GameControl;
+import control.*;
+import model.*;
 
 public class MainMenuView {
     Scanner keyboard = new Scanner(System.in);
     private String theMenu;
     private int max;
     private final String BANNER_PAGE =
-            "\tGovernor, welcome. Before you arrived the people of the City of Aaron have \n" +
+        "\tGovernor, welcome. Before you arrived the people of the City of Aaron have \n" +
         "suffered famine, pestilence and death. Our lives are in your hands. Please serve \n" +
         "us well and we will care for your well-being. We are giving you 10 years to help us \n" +
         "recover and each year we will evaluate your progress. We have lost so many of our family \n" +
@@ -46,7 +48,7 @@ public class MainMenuView {
         "in the store at the end of the year.\n\n" +
         "\tWe also have many of our women big with child and nomads that meander into town. We do not \n" +
         "let anyone go hungry. So, make sure that you plan for growth of people every year.\n\n" +
-        "sFor all the people who starve, you will be less able to put up the harvest and plant \n" +
+        "\tFor all the people who starve, you will be less able to put up the harvest and plant \n" +
         "new fields. Good luck and may God bless you.\n\n";
     
     // The MainMenuView constructor
@@ -82,7 +84,7 @@ public class MainMenuView {
             menuOption = getMenuOption();
             //Perform the desired action
             doAction(menuOption);
-            
+
         } while (menuOption != max);
     }
     
@@ -90,7 +92,7 @@ public class MainMenuView {
     /** The getMenuOption method
     * Purpose: gets the user's input
     * @Parameters none
-    * @return userInput - the option selected
+    * @Return integer - the option selected
     * ===================================     
     */
     public int getMenuOption()
@@ -101,12 +103,19 @@ public class MainMenuView {
         // declare a variable to hold user’s input
         int userInput = 0;
         final int MAX = 5;
-        // Slide 15 says to add scanner here. It is already called on line 26.
-        Scanner keyboard = new Scanner(System.in);
+
+        //Shane - Already created in the class. Remove...
+        //Scanner keyboard = new Scanner(System.in);
 
         // begin loop
         do
         {
+            /*
+                Shane - Comments - I would think that we should display the menu
+                here. Otherwise the user will eventually scroll past the menu and
+                will not see the options.
+            */
+            
             // get user input from the keyboard
             userInput = keyboard.nextInt();
             // if it is not a valid value, output an error message
@@ -116,6 +125,10 @@ public class MainMenuView {
             // loop back to the top of the loop if input was not valid
             // end loop
         } while (userInput < 1 || userInput > MAX);
+
+        /*
+            *** Shane - Comments - Why are we running the switch here and in the 
+            *** doAction method?
 
         switch(userInput)
         {
@@ -135,7 +148,10 @@ public class MainMenuView {
                 System.out.println("Thanks for playing ... goodbye.");
                 return 0;
         }
-        // return user input
+        */
+        
+        
+        //Missing Return - SAA 11.2.18
         return userInput;
     } 
     
@@ -147,10 +163,12 @@ public class MainMenuView {
     */
     public void doAction(int option)
     {
-                switch(option)
+        switch(option)
         {
             case 1: // create and start a new game
                 startNewGame();
+                //Shane - Display some test data - remove later...
+                testData();
                 break;
             case 2: // get and start a saved game
                 startSavedGame();
@@ -168,15 +186,14 @@ public class MainMenuView {
     } 
 
     /**
-     * startNewGame method
-     * Purpose: Creates new game object and starts the game
-     * @Param none
-     * @Return none
+     * startNewGame method<p>
+     * Purpose: Creates new game object and starts the game<p>
+     * @prarm none
      * ===================================  
      */
      public void startNewGame() {
         // Display the Banner Page.
-        System.out.println(BANNER_PAGE);
+        System.out.println("\n\n" + BANNER_PAGE + "\n\n");
         
         // Prompt for and get the user’s name.
         String name;
@@ -184,13 +201,12 @@ public class MainMenuView {
         name = keyboard.next();
         
         // Call the createNewGame() method in the GameControl class
-        GameControl.createNewGame();
+        GameControl.createNewGame(name);
         
         // Display a welcome message
         System.out.println("Welcome, " + name + " have fun!!!");
         
         // Display the Game menu
-        
      }
 
     /** 
@@ -201,7 +217,7 @@ public class MainMenuView {
     * ===================================  
     */
     public void startSavedGame( ) {
-         System.out.println("\nStart saved game option selected.");
+        System.out.println("\nStart saved game option selected.");
     }
 
     /** 
@@ -255,5 +271,23 @@ public class MainMenuView {
     public void saveGame() {
         System.out.println("This is the saveGame method");
     }
-    
+    private static void testData() {
+        // Display test data
+        System.out.println("\n\nDisplaying some test data for development - Remove later...");
+        Game myGame = CityOfAaron.getGame();
+        CropData myCropData = myGame.getCropData();
+        Player myPlayer = myGame.getPlayer();
+
+        //From initial testing - will remove later - Shane 11.3.18
+        System.out.println("The year is " + myCropData.getYear() + ".\nOur population: " + myCropData.getPopulation()
+                + "\nAcres owned: " + myCropData.getAcresOwned() + "\nCrop yield: " + myCropData.getCropYield() + "\nWheat in Store: "
+                + myCropData.getWheatInStore() + "\nNumbers died: " + myCropData.getNumberWhoDied() + "\nNewcomers: " + myCropData.getNewPeople()
+                + "\nHarvest: " + myCropData.getHarvest() + "\nWheat for food: " + myCropData.getWheatForFood()
+                + "\nAcres Planted: " + myCropData.getAcresPlanted());
+        System.out.println("The player's name is: " + myPlayer.getName() + "\n");
+        System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
+        System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
+
+
+    }
 }

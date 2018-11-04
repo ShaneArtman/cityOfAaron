@@ -261,7 +261,7 @@ public class CropControl {
      */
     public static int harvestCrops(CropData _cropData){
         //generate randome yield number from 2 to 5, set to fixed for test purpose
-        int cropsYield = random.nextInt(YIELD_RANGE) + YIELD_BASE;
+        int cropsYield = 3;
         int acresHarvested = _cropData.getAcresPlanted();
         int wheat = _cropData.getWheatInStore();
         //multiply random yield by acres being harvested to get harvest total

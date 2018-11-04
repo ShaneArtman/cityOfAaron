@@ -475,7 +475,7 @@ public class CropControlTest {
         _cropData.setAcresOwned(1500);
         _cropData.setWheatInStore(500);
         _cropData.setPopulation(100);
-        _cropData.setAcresPlanted(0);
+        _cropData.setAcresPlanted(200);
         
         int acresToPlant = 200;
         int wheatNeeded = 100;
@@ -580,7 +580,7 @@ public class CropControlTest {
         _cropData.setAcresOwned(1000);
         _cropData.setWheatInStore(500);
         _cropData.setPopulation(100);
-        _cropData.setAcresPlanted(0);
+        _cropData.setAcresPlanted(1000);
         
         int acresToPlant = 1000;
         int wheatNeeded = 500;

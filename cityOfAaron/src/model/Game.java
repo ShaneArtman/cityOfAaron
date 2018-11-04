@@ -35,7 +35,7 @@ public class Game implements Serializable {
 
 
     public CropData getCropData() {
-        return cropData;
+        return this.cropData;
     }
 
     public void setCropData(CropData _cropData) {
@@ -43,7 +43,7 @@ public class Game implements Serializable {
     }
 
     public ArrayList<ListItem> getAnimals() {
-        return animals;
+        return this.animals;
     }
 
     public void setAnimals(ArrayList<ListItem> _animals) {
@@ -59,7 +59,7 @@ public class Game implements Serializable {
     }
 
     public ArrayList<ListItem> getProvisions() {
-        return provisions;
+        return this.provisions;
     }
 
     public void setProvisions(ArrayList<ListItem> _provisions) {
