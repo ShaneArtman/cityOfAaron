@@ -24,7 +24,7 @@ public class Map implements Serializable {
     private int colCount;
     private int[][] location;
 
-    public Map() {};
+    public Map() { }
 
     public int getRowCount() {
         return rowCount;
