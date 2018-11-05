@@ -51,11 +51,12 @@ public class MainMenuView {
         "\tFor all the people who starve, you will be less able to put up the harvest and plant \n" +
         "new fields. Good luck and may God bless you.\n\n";
     
-    // The MainMenuView constructor
-    // Purpose: Initialize the menu data
-    // Parameters: none
-    //Returns: none
-    // =====================================================================
+    /** 
+    * The MainMenuView constructor
+    * Purpose: Initialize the menu data
+    * @parameters: none
+    * @returns: none
+    */
     public MainMenuView() {
         theMenu = "\n" +
                 "*********************************\n" +
@@ -69,12 +70,13 @@ public class MainMenuView {
         max = 5;   
     }
     
-    // The displayMenuView method
-    // Purpose: dislpays the menu, gets the user's input, and does the selected
-    // action
-    // Paramters: none
-    // Returns: none
-    // ========================================================================
+    /** 
+    * displayMenuView method
+    * Purpose: displays the menu, gets the user's input, and does the selected
+    * action
+    * @parameters: none
+    * @returns: none
+    */
     public void displayMenuView() {
         int menuOption;
         do {
@@ -92,8 +94,7 @@ public class MainMenuView {
     /** The getMenuOption method
     * Purpose: gets the user's input
     * @Parameters none
-    * @Return integer - the option selected
-    * ===================================     
+    * @Returns integer - the option selected     
     */
     public int getMenuOption()
     {
@@ -159,7 +160,7 @@ public class MainMenuView {
     /**
      * startNewGame method<p>
      * Purpose: Creates new game object and starts the game<p>
-     * @prarm none
+     * @param none
      * ===================================  
      */
      public void startNewGame() {
