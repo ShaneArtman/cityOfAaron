@@ -72,6 +72,6 @@ public class CropView {
     CropControl.buyLand(price, toBuy, cropData);
     
     // output how much land we now own
-    System.out.format("You now own %d acres of land. ", cropData.getAcresOwned());
+    System.out.format("You now own acres of land. ", cropData.getAcresOwned());
     }
 }
