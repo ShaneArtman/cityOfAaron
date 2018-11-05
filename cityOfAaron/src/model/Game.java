@@ -73,14 +73,15 @@ public class Game implements Serializable {
     public Player getPlayer(){
         return this.player;
     }
-    
+ 
     public Map getMap() {
-        return map;
+        return this.map;
     }
 
-    public void setMap(Map map) {
-        this.map = map;
+    public void setMap(Map _map) {
+        this.map = _map;
     }
+
     //a change by Jon
 
 
