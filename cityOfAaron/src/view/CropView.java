@@ -2,7 +2,7 @@
  * CropView.java
  *
  * The Player Class for the cityOfAaron project
- * Created in the model package.
+ * Created in the view package.
  * 
  * Created on Nov 5, 2018, 11:51:51 AM
  * Created by Team
