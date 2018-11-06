@@ -138,7 +138,8 @@ public class GameMenuView {
      * ====================================================================
      */
     public void viewList() {
-        System.out.println("This is the viewList method");
+        ListMenuView lmv = new ListMenuView();
+        lmv.displayMenuView();
     }
 
     /**
@@ -162,7 +163,8 @@ public class GameMenuView {
      * ====================================================================
      */
     public void manageCrops() {
-        System.out.println("This is the manageCrops method.");
+        //Display the crop management view
+        CropView.runCropView();
     }
 
 }
