@@ -162,7 +162,8 @@ public class GameMenuView {
      * ====================================================================
      */
     public void manageCrops() {
-        System.out.println("This is the manageCrops method.");
+        //Display the crop management view
+        CropView.runCropView();
     }
 
 }
