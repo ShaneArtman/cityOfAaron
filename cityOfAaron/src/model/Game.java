@@ -51,7 +51,7 @@ public class Game implements Serializable {
     }
 
     public ArrayList<ListItem> getTools() {
-        return tools;
+        return this.tools;
     }
 
     public void setTools(ArrayList<ListItem> _tools) {
