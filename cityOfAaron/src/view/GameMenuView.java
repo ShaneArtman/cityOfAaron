@@ -137,7 +137,8 @@ public class GameMenuView {
      * ====================================================================
      */
     public void viewList() {
-        System.out.println("This is the viewList method");
+        ListMenuView lmv = new ListMenuView();
+        lmv.displayMenuView();
     }
 
     /**
