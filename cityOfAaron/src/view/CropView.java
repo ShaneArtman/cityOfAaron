@@ -38,8 +38,10 @@ public class CropView {
     public static void runCropView()
     {
         // call the buyLandView( ) method
+        sellLandView();
         feedPeopleView();
         buyLandView( );
+        plantCropsView();
 
         /** add calls to the other crop view methods
         * as they are written:
@@ -81,7 +83,7 @@ public class CropView {
      int price = CropControl.calcLandCost();
 
     // Prompt the user to enter the number of acres to buy
-    System.out.format("Land is selling for %d bushels per acre.%n",price);
+    System.out.format("\n\nLand is selling for %d bushels per acre.%n",price);
     System.out.print("\nHow many acres of land do you wish to buy? "); 
 
     //  Get the user’s input and save it.
@@ -92,7 +94,7 @@ public class CropView {
     CropControl.buyLand(price, toBuy, cropData);
     
     // output how much land we now own
-    System.out.format("You now own %d acres of land. ", cropData.getAcresOwned());
+    System.out.format("You now own %d acres of land.\n", cropData.getAcresOwned());
     }
     
     /**
@@ -165,5 +167,52 @@ public class CropView {
                 game.getCropData().getWheatInStore() + "\n" +
                 "and the food for feeding people is now " + 
                 game.getCropData().getWheatForFood());
+    }
+    
+    /**
+     * sellLandView method
+     * Purpose: display price land sells for per acre to user and prompt for input on how
+     * much to sell. input must be between 0 and acres owned and amount.
+     * @param none
+     */
+    public static void sellLandView() {
+        //get the cost of land for this round
+        int price = CropControl.calcLandCost();
+        //prompt the user to enter the number of acres to sell
+        System.out.format("\nLand is selling for %d bushels per acre.%n", price);
+        System.out.println("\nHow man acres of land do you wish to sell? ");
+        //get user's input and save it
+        int toSell;
+        toSell = keyboard.nextInt();
+        //call sellLand() method in the control layer to sell the land
+        CropControl.sellLand(price, toSell, cropData);
+        //output updated land owned and wheat in storehouse
+        System.out.format("\nCurrent acres owned: %d", cropData.getAcresOwned());
+        System.out.format("\nCurrent wheat in storehoues: %d\n", cropData.getWheatInStore());        
+    }
+    
+    /**
+     * plantCropsView method
+     * Purpose: Display acres owned and wheat in store then prompt user for amount
+     * they wish to use to plant crops
+     * @param none
+     */
+    public static void plantCropsView() {
+        //display current land, wheat, and population
+        System.out.format("\n\nHow much land needed for crops?\nAcres of land owned: %d\n", cropData.getAcresOwned());
+        System.out.format("Bushels of Wheat in storehouse: %d\n", cropData.getWheatInStore());
+        System.out.format("Current city population: %d\n", cropData.getPopulation());
+        //display conditions needed to care for crops and prompt user for input
+        System.out.println("\n1 bushel of wheat can plant 2 acres, " +
+                           "while 1 person can take care of 10 acres planted.\n" +
+                           "How many acres of land do you wish to plant? ");
+        //get input and save
+        int toPlant;
+        toPlant = keyboard.nextInt();
+        //call plantCrops() method to plant crops
+        CropControl.plantCrops(toPlant, cropData);
+        //output acres planted for future harvest
+        System.out.format("\nYou have planted %d acres of land for next year's harvest.", cropData.getAcresPlanted());
+        System.out.format("\nCurrent wheat in storehoues: %d\n", cropData.getWheatInStore());
     }
 }
