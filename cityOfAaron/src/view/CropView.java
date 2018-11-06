@@ -75,7 +75,15 @@ public class CropView {
     // output how much land we now own
     System.out.format("You now own %d acres of land. ", cropData.getAcresOwned());
     }
-   
+    
+    /**
+     * Purpose: To feed the people, the user muse input the amount of wheat to
+     * to feed them. The options will force values between 0 and wheat in the storehouse
+     * as well as force multiples of 20 as it takes 20 bushels to feed 1 person<p>
+     * Once the player decides on the amount of food, decrement the food from the store
+     * @param none
+     * @return none
+     */
     public static void feedPeopleView()
     {
         /*
@@ -94,24 +102,34 @@ public class CropView {
          * 5. Display the results
          *
         */
-        
+        //Initializing userInput to a 0 value
         int userInput = 0;
+        
+        //The amount of wheat in the storehouse before feeding people
         int wheatInStorehouse = game.getCropData().getWheatInStore();
+        
         System.out.println("\n\nGlad you are thinking of all of those that have\n" +
                 "worked so hard and provided food for the town. Now it\n" +
                 "is time to feed them. Remember that it takes 20 bushels\n " +
                 "per person to keep them from starving. Based on this year's \n" +
                 "harvest, we have the following:\n");
+        
         //Do this loop while the user is inputting incorrect options for wheat
         do {
+            // Display to the user what is in the store
             System.out.println("----------------------------------\nPopulation: " + 
                     game.getCropData().getPopulation() + "\n" +
                     "Wheat in storehouse: " + 
                     wheatInStorehouse + "\n" +
                     "How much wheat do you want to set aside for food?\n" +
                     "Please enter in multiples of 20.");
+
+            // Collect input from the user
             userInput = keyboard.nextInt();
+
+            // Test for error in user input
             if (userInput > wheatInStorehouse || userInput < 0 || userInput % 20 != 0) {
+                //The user has input an incorrect value. Display error message
                 System.out.println("\n\nYou Entered: " + userInput + "\n" +
                         "You must select a value between " +
                         "0 (starve us all) and " + wheatInStorehouse + 
@@ -119,6 +137,14 @@ public class CropView {
                         "\nPlease enter a valid amount of wheat\n");
             }
         } while (userInput > wheatInStorehouse || userInput < 0 || (userInput > 0 && userInput % 20 != 0));
-        System.out.println("Need to set cropdata now");
+        
+        // Need to now set the wheat for food
+        CropControl.feedPeople(userInput, game.getCropData());
+        
+        //Display the result to the user
+        System.out.println("The food in the storehouse is now: " + 
+                game.getCropData().getWheatInStore() + "\n" +
+                "and the food for feeding people is now " + 
+                game.getCropData().getWheatForFood());
     }
 }
