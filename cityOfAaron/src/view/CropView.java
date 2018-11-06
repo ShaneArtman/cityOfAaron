@@ -47,6 +47,25 @@ public class CropView {
         * feedPeopleView()
         * plantCropsView()
         * displayCropsReportView()
+        * 
+        * Shane - Comments
+        * Without giving too much away, we may want to display the population
+        * growth, amount of food that is required to feed all people, 
+        * the amount of wheat in the storehouse, the amount of land available 
+        * for sale and the population growth before they make a decision to buy 
+        * land, feed people, etc. 
+        * 
+        * Also, I would think that the order would be something like:
+        * 
+        * Eaten by rats (limited to what is in the storehouse today)
+        * Harvest
+        * growPopulation
+        * Sell Land
+        * Feed People
+        * Calc Starved - Not sure that happens here
+        * Buy Land
+        * 
+        * 
         */
     }
 
