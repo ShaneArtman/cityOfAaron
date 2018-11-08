@@ -92,7 +92,7 @@ public class CropData implements Serializable {
         return this.newPeople;
     }
     
-    public void setNewPoeple(int _newPeople) {
+    public void setNewPeople(int _newPeople) {
         this.newPeople = _newPeople;
     }
     

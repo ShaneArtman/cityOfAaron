@@ -47,15 +47,15 @@ public class GameControl {
         //setting test values
         cropData.setYear(0);
         cropData.setPopulation(100);
-        cropData.setNewPoeple(5);
+        cropData.setNewPeople(5);
         cropData.setCropYield(3);
         cropData.setNumberWhoDied(0);
         cropData.setWheatInStore(2700);
         cropData.setAcresOwned(1000);
         cropData.setAcresPlanted(1000);
         cropData.setHarvest(3000);
-        // added to get CropView working
-        cropData.setWheatForFood(200);
+        // added to get CropView working - Nick
+        cropData.setWheatForFood(2000);
         
         // Save a reference to the CropData object in the Game object
         game.setCropData(cropData);

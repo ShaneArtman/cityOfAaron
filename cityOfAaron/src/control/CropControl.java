@@ -145,7 +145,8 @@ public class CropControl {
         double randomNumber = random.nextDouble();
         int ratDamage = (int) Math.floor((randomNumber * .05) * _cropData.getWheatInStore());
         _cropData.setWheatInStore(_cropData.getWheatInStore()-ratDamage);
-        return 0;
+        // Changed from "return 0" - Nick
+        return ratDamage;
     } 
 
     /**
@@ -162,9 +163,9 @@ public class CropControl {
         double randomNumber = random.nextDouble();
         //round down a random growth number of population
         int popGrowth = (int) Math.floor((randomNumber * .05) * _cropData.getPopulation());
-        _cropData.setPopulation(popGrowth);
-        //temp return population growth - could be 0/-1
-        return 0;
+        _cropData.setNewPeople(popGrowth);
+        // Changed from "return 0" - Nick
+        return _cropData.getNewPeople();
     }
     
     /**
