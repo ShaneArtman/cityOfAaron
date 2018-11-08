@@ -225,6 +225,7 @@ public class CropView {
      */
     public static void displayCropsReportView() {
         // The year number (model)
+        cropData.setYear(cropData.getYear() + 1);
         System.out.println("In year " + cropData.getYear() + ":\n");
         // How many people starved (control)
         System.out.println(CropControl.calcStarved(cropData) + " People starved.\n");
