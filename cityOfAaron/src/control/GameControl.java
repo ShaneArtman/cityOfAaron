@@ -54,6 +54,8 @@ public class GameControl {
         cropData.setAcresOwned(1000);
         cropData.setAcresPlanted(1000);
         cropData.setHarvest(3000);
+        // added to get CropView working
+        cropData.setWheatForFood(200);
         
         // Save a reference to the CropData object in the Game object
         game.setCropData(cropData);
