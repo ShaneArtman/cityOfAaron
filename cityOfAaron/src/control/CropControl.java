@@ -105,7 +105,7 @@ public class CropControl {
     /**
      * Purpose: Set aside grain to feed the people of the City of Aaron
      * <p>
-     * Pre-Conditions: bushelsReservedForFood {@literal > 0 and <} wheat that is in the store
+     * Preconditions: bushelsReservedForFood {@literal > 0 and <} wheat that is in the store
      * @author Shane Artman
      * @param bushelsReservedForFood of food to reserve : int
      * @param _cropData CropData object
@@ -240,8 +240,9 @@ public class CropControl {
         //If acresToPlant<0 or acresToPlant>owned or pop<needed or wheat<needed
         // return -1
         if(acresToPlant < 0 || acresToPlant > owned || pop < popNeeded ||
-                wheat < wheatNeeded)
+                wheat < wheatNeeded) {
             return -1;
+        }
         //subtract wheat needed from wheat in store
         wheat -= wheatNeeded;
         _cropData.setWheatInStore(wheat);

@@ -73,7 +73,7 @@ public class ListMenuView {
                 System.out.println("Error, please enter an option 1 to 5\n");
             }
         } while (userInput < 0 || userInput > MAX);
-        return userInput;
+        return userInput;        
     }
     
     /**
@@ -118,8 +118,7 @@ public class ListMenuView {
     /**
      * Purpose: Display the list the provisions that the player has<p>
      * @Param none
-
-*/
+     */
     public void listProvisions() {
         System.out.println("Display a list of provisions here");
     }
