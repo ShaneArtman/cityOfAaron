@@ -263,6 +263,9 @@ public class CropControl {
      */
     public static int harvestCrops(CropData _cropData){
         //generate randome yield number from 2 to 5, set to fixed for test purpose
+        /*
+         * Shane - Comments - Need to have this as a random number, not a static value
+        */
         int cropsYield = 3;
         int acresHarvested = _cropData.getAcresPlanted();
         int wheat = _cropData.getWheatInStore();
