@@ -38,6 +38,7 @@ public class CropView {
     public static void runCropView()
     {
         // call the buyLandView( ) method
+        displayCropsReportView();
         sellLandView();
         feedPeopleView();
         buyLandView( );
@@ -214,5 +215,44 @@ public class CropView {
         //output acres planted for future harvest
         System.out.format("\nYou have planted %d acres of land for next year's harvest.", cropData.getAcresPlanted());
         System.out.format("\nCurrent wheat in storehoues: %d\n", cropData.getWheatInStore());
+    }
+    
+    /**
+     * displayCropsReportView method
+     * purpose: display annual report
+     * parameters: none
+     * returns: none
+     */
+    public static void displayCropsReportView() {
+             
+        // Calc annual changes
+        // Set year by adding 1 each iteration
+        cropData.setYear(cropData.getYear() + 1);
+        int year = cropData.getYear();
+        // Calc how many people starved
+        int starved = CropControl.calcStarved(cropData);
+        // Random growth to population
+        int growth = CropControl.growPopulation(cropData);
+        // New population = Existing + Growth - Starved
+        cropData.setPopulation(cropData.getPopulation() + growth - starved);        
+        
+        // The year number (model)
+        System.out.println("In year " + year + ":");
+        // How many people starved (control)
+        System.out.println(starved + " People starved.");
+        // How many people came to the city (control)
+        System.out.println(growth + " people came to the city.");
+        // The current population (model)
+        System.out.println("The current population is " + cropData.getPopulation() + ".");
+        // The number of acres of crop land owned by the city (model)
+        System.out.println("The city now owns " + cropData.getAcresOwned() + " acres of land.");
+        // The number of bushels per acre in this years harvest ????
+        // ?? Does this need its own CropControl method for randomly setting bushels per acre???
+        // The total number of bushels of wheat harvested (control)
+        System.out.println("You harvested " + CropControl.harvestCrops(cropData) + " bushels of wheat.");
+        // The number of bushels eaten by rats (control)
+        System.out.println(CropControl.calcEatenByRats(cropData) + " bushels were eaten by rats.");
+        // The number of bushels of wheat in store (model)
+        System.out.println("You now have " + cropData.getWheatInStore() + " bushels of wheat in store.");
     }
 }

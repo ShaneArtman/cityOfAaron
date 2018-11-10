@@ -15,6 +15,7 @@
  */
 package view;
 
+import cityofaaron.CityOfAaron;
 import java.util.Scanner;
 import model.*;
 
@@ -23,7 +24,7 @@ public class GameMenuView {
     private String gameMenu;
     private int max;
     private static Scanner keyboard = new Scanner(System.in);
-    private Game theGame;
+    private Game theGame = CityOfAaron.getGame();
 
     public GameMenuView() {
         gameMenu = "\n"
@@ -92,7 +93,7 @@ public class GameMenuView {
      * doAction Method 
      * Purpose: Perform action selected by user
      * Pre-Conditions:
-     * @param
+     * @param option user input 1-5
      * @returns none
      * ====================================================================
      */
