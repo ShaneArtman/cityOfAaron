@@ -226,13 +226,17 @@ public class CropView {
     public static void displayCropsReportView() {
              
         // Calc annual changes
-        int year = cropData.getYear() + 1;
+        // Set year by adding 1 each iteration
+        cropData.setYear(cropData.getYear() + 1);
+        int year = cropData.getYear();
+        // Calc how many people starved
         int starved = CropControl.calcStarved(cropData);
+        // Random growth to population
         int growth = CropControl.growPopulation(cropData);
+        // New population = Existing + Growth - Starved
         cropData.setPopulation(cropData.getPopulation() + growth - starved);        
         
         // The year number (model)
-        cropData.setYear(cropData.getYear() + 1);
         System.out.println("In year " + year + ":");
         // How many people starved (control)
         System.out.println(starved + " People starved.");

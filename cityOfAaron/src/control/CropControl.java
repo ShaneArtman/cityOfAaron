@@ -211,7 +211,7 @@ public class CropControl {
             return -1;
         }
         // if percentOfOffering > 100, return -1;
-        if (percentOfOffering > MAX_PERCENT) {
+        else if (percentOfOffering > MAX_PERCENT) {
             return -1;
         }
         // return percentOfOffering;
