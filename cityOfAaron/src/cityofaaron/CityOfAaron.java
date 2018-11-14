@@ -29,7 +29,7 @@ public class CityOfAaron {
         
         // Create instance of MainMenuView
         MainMenuView mmv = new MainMenuView();
-        mmv.displayMenuView();
+        mmv.displayMenu();
 
         //Location Class Instantiated
         Location myLocation = new Location();

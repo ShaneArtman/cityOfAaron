@@ -70,7 +70,7 @@ public class HelpMenuView {
     /**
      * doAction method
      * Purpose: performs selected action
-     * @param none
+     * @param option
      */
     public void doAction(int option) {
         switch (option) {

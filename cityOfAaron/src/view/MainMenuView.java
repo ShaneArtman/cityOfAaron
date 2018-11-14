@@ -27,10 +27,7 @@ import cityofaaron.CityOfAaron;
 import control.*;
 import model.*;
 
-public class MainMenuView {
-    Scanner keyboard = new Scanner(System.in);
-    private String theMenu;
-    private int max;
+public class MainMenuView extends MenuView {
     private final String BANNER_PAGE =
         "\tGovernor, welcome. Before you arrived the people of the City of Aaron have \n" +
         "suffered famine, pestilence and death. Our lives are in your hands. Please serve \n" +
@@ -58,7 +55,7 @@ public class MainMenuView {
     * @returns: none
     */
     public MainMenuView() {
-        theMenu = "\n" +
+        super("\n" +
                 "*********************************\n" +
                 "* CITY OF AARON: MAIN GAME MENU *\n" +
                 "*********************************\n" +
@@ -66,74 +63,16 @@ public class MainMenuView {
                 " 2 - Get and start a saved game\n" +
                 " 3 - Get help on playing the game\n" +
                 " 4 - Save game\n" +
-                " 5 - Quit\n";
-        max = 5;   
+                " 5 - Quit\n", 5);   
     }
-    
-    /** 
-    * displayMenuView method
-    * Purpose: displays the menu, gets the user's input, and does the selected
-    * action
-    * @parameters: none
-    * @returns: none
-    */
-    public void displayMenuView() {
-        int menuOption;
-        do {
-            //display the menu
-            System.out.println(theMenu);            
-            //prompt the user and get the user's input
-            menuOption = getMenuOption();
-            //Perform the desired action
-            doAction(menuOption);
-
-        } while (menuOption != max);
-    }
-    
-    
-    /** The getMenuOption method
-    * Purpose: gets the user's input
-    * @Parameters none
-    * @Returns integer - the option selected     
-    */
-    public int getMenuOption()
-    {
-        // Slide 45 says code for this comes earlier in slideshow.
-        // Code taken from slides 10 - 19
-
-        // declare a variable to hold user’s input
-        int userInput = 0;
-        final int MAX = 5;
-
-        // begin loop
-        do
-        {
-            /*
-                Shane - Comments - I would think that we should display the menu
-                here. Otherwise the user will eventually scroll past the menu and
-                will not see the options.
-            */
-            
-            // get user input from the keyboard
-            userInput = keyboard.nextInt();
-            // if it is not a valid value, output an error message
-            if(userInput < 1 || userInput > MAX) {
-                 System.out.println("Error: you must select 1, 2, 3, 4, or 5");
-            }
-            // loop back to the top of the loop if input was not valid
-            // end loop
-        } while (userInput < 1 || userInput > MAX);
-        
-        return userInput;
-    } 
     
     /** The doAction method
     * Purpose: performs the selected action
-    * Parameters: none
+    * Parameters: option
     * Returns: none
     * ===================================  
     */
-    public void doAction(int option)
+    @Override public void doAction(int option)
     {
         switch(option)
         {
