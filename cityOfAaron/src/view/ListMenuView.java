@@ -6,6 +6,9 @@
  * 
  * Created on Nov 5, 2018, 9:55:27 PM
  * Created by artieman1
+ * Updated on Nov 15, 2018
+ * Updated by artieman1
+ *
  *
  * CIT-260: 08
  * Fall 2018
@@ -15,13 +18,22 @@
  */
 
 package view;
-import cityofaaron.CityOfAaron;
-import model.*;
+import cityofaaron.CityOfAaron; //Importing the CityOfAaron class for the GAME objec
+import model.*; //Importing the model packages for the reference to the Game model
 
 
 public class ListMenuView extends MenuView {
         
     private Game game = CityOfAaron.getGame();
+    
+    /**
+     * Purpose: Public constructor for the ListMenuView
+     * Creates a menu specific to the List Menu
+     * We pass the menu as a string and the number of menu options to be processed
+     * in the Menu View display menu and get options methods.
+     * @Param none
+     * @Return none
+     */
     public ListMenuView () {
     super(  "\n" +
             "*********************************\n" +
@@ -31,7 +43,8 @@ public class ListMenuView extends MenuView {
             " 2 - List the tools in the storehouse\n" +
             " 3 - List the provisions in the storehouse\n" +
             " 4 - List the Developers\n" +
-            " 5 - Return to the Main menu\n",5);
+            " 5 - Return to the Main menu\n"
+            ,5);
     }
     
     /**
