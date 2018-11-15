@@ -19,15 +19,18 @@ import cityofaaron.CityOfAaron;
 import java.util.Scanner;
 import model.*;
 
-public class GameMenuView {
+public class GameMenuView extends MenuView {
 
-    private String gameMenu;
-    private int max;
-    private static Scanner keyboard = new Scanner(System.in);
-    private Game theGame = CityOfAaron.getGame();
+private Game theGame = CityOfAaron.getGame();
 
+    /** 
+    * The GameMenuView constructor
+    * Purpose: Initialize the game menu data
+    * @parameters: none
+    * @returns: none
+    */
     public GameMenuView() {
-        gameMenu = "\n"
+        super( "\n"
                 + "*********************************\n"
                 + "** CITY OF AARON: IN-GAME MENU **\n"
                 + "*********************************\n"
@@ -35,58 +38,8 @@ public class GameMenuView {
                 + " 2 - View/Print a list\n"
                 + " 3 - Move to a new location\n"
                 + " 4 - Manage the crops\n"
-                + " 5 - Return to the Main menu\n";
-        max = 5;
-    }
-
-    /**
-     * displayMenuView Method 
-     * Purpose: Dislay the Game Menu
-     * Pre-Conditions:
-     * @param
-     * @returns none
-     * ====================================================================
-     */
-    public void displayMenuView() {
-        int menuOption;
-        do {
-            // display the game menu
-            System.out.println(gameMenu);            
-            // get user input
-            menuOption = getMenuOption();
-            // perform user action
-            doAction(menuOption);
-
-        } while (menuOption != max);
-    }
-
-    /**
-     * getMenuOption Method 
-     * Purpose:  Get users input for menu option
-     * Pre-Conditions:
-     * @param
-     * @returns none
-     * ====================================================================
-     */
-    public int getMenuOption() {
-        int userInput = 0;
-        final int MAX = 5;
-
-        // begin loop
-        do
-        {
-            // get user input from the keyboard
-            userInput = keyboard.nextInt();
-            // if it is not a valid value, output an error message
-            if(userInput < 1 || userInput > MAX) {
-                 System.out.println("Error: you must select 1, 2, 3, 4, or 5");
-            }
-            // loop back to the top of the loop if input was not valid
-            // end loop
-        } while (userInput < 1 || userInput > MAX);
-        
-        // return userinput
-        return userInput;
+                + " 5 - Return to the Main menu\n"
+                , 5);
     }
 
     /**
@@ -96,8 +49,8 @@ public class GameMenuView {
      * @param option user input 1-5
      * @returns none
      * ====================================================================
-     */
-    public void doAction(int option) {
+     */    
+    @Override public void doAction(int option) {
         switch(option)
         {
             case 1: // view map
