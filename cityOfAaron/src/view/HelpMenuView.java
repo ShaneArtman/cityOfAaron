@@ -19,8 +19,17 @@ import model.*;
 import control.*;
 import java.util.Scanner;
 
-public class HelpMenuView {
-    private String helpMenu = "\n" +
+public class HelpMenuView extends MenuView {
+    private Game game = CityOfAaron.getGame();
+    
+    /*
+    * HelpMenu constructor
+    * Purpose: initialize help menu data
+    * @param none
+    * @return none
+    */
+    public HelpMenuView() { 
+        super( "\n" +
             "****************************\n" +
             "* CITY OF AARON: HELP MENU *\n" +
             "****************************\n" +
@@ -29,42 +38,7 @@ public class HelpMenuView {
             " 3 - How do I view the map?\n" +
             " 4 - How do I move to another Location?\n" +
             " 5 - How do I display a list of animals, provisions and tools in the city storehouse?\n" +
-            " 6 - Return to the Main Menu\n";
-    private final int max = 6;
-    private static Scanner keyboard = new Scanner(System.in);
-    private Game game = CityOfAaron.getGame();
-    
-    public HelpMenuView() { }
-    
-    /**
-     * displayMenuView method
-     * Purpose: display the Help Menu
-     * @param none
-     */
-    public void displayMenuView() {
-        int menuOption = 0;
-        do {
-            //display the help menu
-            System.out.println(helpMenu);
-            //get user's input
-            menuOption = getMenuOption();
-            //perform selected action
-            doAction(menuOption);
-        } while(menuOption != max);
-    }
-    
-    public int getMenuOption() {
-        int userInput = 0;
-        //check for valid user input
-        do {
-            userInput = keyboard.nextInt();
-            //error message for invalid input
-            if (userInput < 1 || userInput > max) {
-                System.out.println("Error, please enter an option from 1 to 6\n");
-                //loop back to top of loop for invalid input
-            }
-        } while (userInput < 1 || userInput > max);
-        return userInput;
+            " 6 - Return to the Main Menu\n", 6);
     }
     
     /**
@@ -72,7 +46,7 @@ public class HelpMenuView {
      * Purpose: performs selected action
      * @param option
      */
-    public void doAction(int option) {
+    @Override public void doAction(int option) {
         switch (option) {
             case 1: //message on what game goals are
                 viewGoals();
