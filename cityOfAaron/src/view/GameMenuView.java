@@ -92,7 +92,7 @@ private Game theGame = CityOfAaron.getGame();
      */
     public void viewList() {
         ListMenuView lmv = new ListMenuView();
-        lmv.displayMenuView();
+        lmv.displayMenu();
     }
 
     /**

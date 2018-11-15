@@ -17,12 +17,13 @@
 package view;
 import cityofaaron.CityOfAaron;
 import model.*;
-import control.*;
-import java.util.Scanner;
 
 
-public class ListMenuView {
-    private String listMenu = "\n" +
+public class ListMenuView extends MenuView {
+        
+    private Game game = CityOfAaron.getGame();
+    public ListMenuView () {
+    super(  "\n" +
             "*********************************\n" +
             "** CITY OF AARON: IN-LIST MENU **\n" +
             "*********************************\n" +
@@ -30,57 +31,14 @@ public class ListMenuView {
             " 2 - List the tools in the storehouse\n" +
             " 3 - List the provisions in the storehouse\n" +
             " 4 - List the Developers\n" +
-            " 5 - Return to the Main menu\n";
-    private final int MAX = 5;
-    private Scanner keyboard = new Scanner(System.in);
-    private Game game = CityOfAaron.getGame();
-    public ListMenuView () {
-        
-    }
-    
-    /**
-     * Purpose: Display the menuView<p>
-     * @Param none
-     */
-    public void displayMenuView() {
-        int menuOption = 0;
-        /*
-         * Shane - Comment
-         * The game instructions are to test for user input and return to this
-         * menu before returning to the main. It would feel un-natural if we were
-         * to simply display the list and return to the calling menu rather than
-         * to the list menu...
-        */
-        do {
-            System.out.println(listMenu);
-            menuOption = getMenuOption();
-            doAction(menuOption);            
-        } while (menuOption != MAX);
-    }
-
-    /**
-     * Purpose: To collect user input<p>
-     * @Param none
-     * @return User selected menu option as int
-     */
-    public int getMenuOption() {
-        int userInput = 0;
-        // Loop to check for proper input from the user
-        do {
-            userInput = keyboard.nextInt();
-            if (userInput < 0 || userInput > MAX)
-            {
-                System.out.println("Error, please enter an option 1 to 5\n");
-            }
-        } while (userInput < 0 || userInput > MAX);
-        return userInput;        
+            " 5 - Return to the Main menu\n",5);
     }
     
     /**
      * Purpose: To perform the player's desired action<p>
      * @Param none
      */
-    public void doAction(int option) {
+    @Override public void doAction(int option) {
         switch (option) {
             case 1: //List the animals
                 listAnimals();
