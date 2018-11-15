@@ -39,6 +39,7 @@ public class CropView {
     {
         // call the buyLandView( ) method
         displayCropsReportView();
+        payOfferingView();
         sellLandView();
         feedPeopleView();
         buyLandView( );
@@ -71,7 +72,62 @@ public class CropView {
         * 
         */
     }
+    
+    /**
+     * payOfferingView method
+     * @author Nick
+     * Purpose: Have player pay an offering from last years harvest
+     * Parameters: none
+     * Returns: none
+     */
+    public static void payOfferingView() {
+            // Get las years harvest
+            int harvest = cropData.getHarvest(); 
+            // Player input variable for offering
+            int toOffer;
 
+            // Run do loop while offering input is invalid
+            do {
+            // Prompt user for offering
+            System.out.format("\n\n Last year you harvested %d bushels.\n" 
+                    + "What percent would you like to give as an offering?\n", harvest);
+
+            // Get offering percent from player
+            toOffer = keyboard.nextInt();
+            
+            // Verify entry is valid
+            if(CropControl.setOffering(toOffer) == -1) {
+                System.out.println(toOffer + " is not a valid entry. \n"
+                        + "Please re-enter percentage you wish to offer\n\n");
+            }
+        // Display input loop while input is not valid
+        } while (CropControl.setOffering(toOffer) == -1);
+                
+        // Set offering for cropData
+        cropData.setOffering(toOffer);
+        
+        // Pay offering through payOffering method
+        int bushelsOffered = CropControl.payOffering(cropData);
+        
+        // Display amount offered
+        System.out.format("You have offered %d bushels.\n", bushelsOffered);
+        
+        // Display comment about ammount offered
+        if (toOffer <= 5) {
+            System.out.println("Remember that the Lord has blessed you with this harvest.");
+        }
+        else if (toOffer <= 10) {
+            System.out.println("The Lord blesses those that remember Him.");
+        }
+        else if (toOffer <= 30) {
+            System.out.println("A very generous offer indeed!");
+        }
+        else {
+            System.out.println("May the Lord bless this people!");
+        }
+                
+    }
+    
     /** The buyLandView method
     * Purpose: interface with the user input for buying land
     * Parameters: none
