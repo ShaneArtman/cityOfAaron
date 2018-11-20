@@ -19,35 +19,51 @@ package model;
 import java.io.Serializable;
 
 public class Map implements Serializable {
-    
+    // stores the number of rows
     private int rowCount;
+    // stores the number of columns
     private int colCount;
-    private int[][] location;
+    // reference to a 2-dimensional array of location objects
+    private Location[][] locations;
 
-    public Map() { }
+    /*
+    * Map constructor
+    * Purpose: Set data members to default values
+    * @param none
+    * @return none
+    */
+    public Map(int _rows, int _cols) {
+        rowCount = _rows;
+        colCount = _cols;
+        // creat the array of location objects
+        locations = new Location[_rows][_cols];
+    }
 
     public int getRowCount() {
         return rowCount;
-    }
-
-    public void setRowCount(int rowCount) {
-        this.rowCount = rowCount;
     }
 
     public int getColCount() {
         return colCount;
     }
 
-    public void setColCount(int colCount) {
-        this.colCount = colCount;
+   /*
+    * getLocation method
+    * Purpose: returns the location object at the given row and column
+    * @param row and column
+    * @return location object
+    */
+    public Location getLocation(int row, int col) {
+        return locations[row][col];
     }
-
-    public int[][] getLocation() {
-        return location;
+    
+    /*
+    * setLocation method
+    * Purpose: stores a location object at the row and column
+    * @param row and column, reference to a location object
+    * @return void
+    */
+    public void setLocation(int row, int col, Location _location){
+        locations[row][col] = _location;
     }
-
-    public void setLocation(int[][] location) {
-        this.location = location;
-    }
-
 }

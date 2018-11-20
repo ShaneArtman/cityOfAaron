@@ -21,6 +21,10 @@ import cityofaaron.CityOfAaron;
 
 public class GameControl {
     
+    //size of the Locations array
+    private static final int MAX_ROW = 5;
+    private static final int MAX_COL = 5;
+    
     /**
      * Purpose: Create the Game object and starts the game
      * Created: 11.3.18
