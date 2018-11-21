@@ -71,5 +71,41 @@ public class GameControl {
         
 
     }
+    
+    public static void createMap() {
+        // Create the map object, it is 5x5
+        // Refer to the Map constructor
+        Map map = new Map(MAX_ROW, MAX_COL);
+        
+        Location loc = new Location();
+
+        // Create a string that will go into the Location object
+        // tha contain the river (0,0-0,4)
+        String river = "\nYou have arrived on the west border of the City.";
+        loc.setDescription(river);
+        loc.setSymbol("~~~");
+        
+        for (int i = 0;i<MAX_ROW; i++) {
+            map.setLocation(i, 0, loc);
+        }
+        
+        // Wheat Field (1,0-1,2) is the fertile land
+        String wheatField = "\nYou have arrived in the wheat fields";
+        // (4,1-4,4) Border of the lamenties
+        String borderLand = "\nYou have arrived in the Lamenite border";
+        // (3,1-3,4) Desert separating town from the lamenites
+        String desertLand = "\nYou have arrived in the desert. No crops grow here";
+        // (0,4) Ruler's court
+        String rulersCourt = "\nIn the rulers court, you are well received";
+        // (0,3) Grainiery
+        String grainery = "Here you will find the grainery guarded by the city's best";
+        // (0,2-1,2;1,3-1,4) Pesant Village
+        String village = "\nIn the village, you can rest from your work";
+        // (2,2-2,4) Forest
+        String forest = "\nThe forest is where we harvest our lumbar";
+        
+        
+
+    }
 
 }
