@@ -26,10 +26,10 @@ public class Map implements Serializable {
     // reference to a 2-dimensional array of location objects
     private Location[][] locations;
 
-    /*
-    * Map constructor
+    /**
+    * parameterized Map constructor
     * Purpose: Set data members to default values
-    * @param none
+    * @param 
     * @return none
     */
     public Map(int _rows, int _cols) {
@@ -47,7 +47,7 @@ public class Map implements Serializable {
         return colCount;
     }
 
-   /*
+   /**
     * getLocation method
     * Purpose: returns the location object at the given row and column
     * @param row and column
@@ -57,7 +57,7 @@ public class Map implements Serializable {
         return locations[row][col];
     }
     
-    /*
+    /**
     * setLocation method
     * Purpose: stores a location object at the row and column
     * @param row and column, reference to a location object

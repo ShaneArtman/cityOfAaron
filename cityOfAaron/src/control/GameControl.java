@@ -24,7 +24,8 @@ public class GameControl {
     //size of the Locations array
     private static final int MAX_ROW = 5;
     private static final int MAX_COL = 5;
-    
+      // Create a new Game object.
+    private static Game game = new Game();
     /**
      * Purpose: Create the Game object and starts the game
      * Created: 11.3.18
@@ -32,8 +33,7 @@ public class GameControl {
      * @param _name 
      */
     public static void createNewGame (String _name) {
-        // Create a new Game object.
-        Game game = new Game();
+      
 
         // Create a new Player object
         Player player = new Player();
@@ -44,6 +44,19 @@ public class GameControl {
         // Store a reference to the Player object in the Game object
         game.setPlayer(player);
         
+        // Save a reference to the Game object in the static variable
+        CityOfAaron.setGame(game);
+
+        // declared in the CityOfAaron class.
+    }
+    
+    /**
+     * createCropDataObject method
+     * Purpose: create cropData object and set initial values for cropData
+     * @param none
+     * @return none
+     */
+    public static void createCropDataObject() {
         // Create a CropData object
         CropData cropData = new CropData();
         
@@ -63,13 +76,18 @@ public class GameControl {
         
         // Save a reference to the CropData object in the Game object
         game.setCropData(cropData);
+    }
+    
+    /**
+     * createMap method
+     * Purpose: creates the location objects and the map
+     * @param none
+     * @return none
+     */
+    public static void createMap() {
+        //creat the map object, 5x5. refer to the Map constructor
+        Map theMap = new Map(MAX_ROW, MAX_COL);
         
-        // Save a reference to the Game object in the static variable
-        CityOfAaron.setGame(game);
-
-        // declared in the CityOfAaron class.
-        
-
     }
 
 }
