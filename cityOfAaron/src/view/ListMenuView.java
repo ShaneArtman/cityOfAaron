@@ -99,7 +99,12 @@ public class ListMenuView extends MenuView {
      * @Param none
      */
     public void listTeam() {
-        System.out.println("Display the team members here");
+        System.out.println("Members of the development team:\n" +
+                "-----------------------------------------------------------");
+        for ( TeamMember teamMember : TeamMember.values() ) {
+            System.out.println( (teamMember.ordinal()+1) + ".) " + teamMember.getName() +
+                    "\tTitle: " + teamMember.getTitle());
+        }
     }
 
 }
