@@ -20,6 +20,7 @@
 package view;
 import cityofaaron.CityOfAaron; //Importing the CityOfAaron class for the GAME objec
 import model.*; //Importing the model packages for the reference to the Game model
+import java.util.ArrayList;
 
 
 public class ListMenuView extends MenuView {
@@ -75,7 +76,16 @@ public class ListMenuView extends MenuView {
      * @Param none
      */
     public void listAnimals() {
-        System.out.println("Display a list of animals here");
+        
+        // Variable for ArrayList to be displayed
+        ArrayList<ListItem> animals = game.getAnimals();
+        System.out.println("City of Aaron animal list");
+        
+        System.out.println("Here is a list of animals\n" +
+                "------------------------------------");
+        for (ListItem animal: animals) {
+            System.out.println(animal.getName() + "\t" + animal.getNumber());
+        }
     }
     
     /**

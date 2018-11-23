@@ -30,6 +30,12 @@ public class ListItem implements Serializable {
       
     }
     
+    // Paramaterized Constructor for animals
+    public ListItem(String _animals, int _qty) {
+        name = _animals;
+        number = _qty;
+    }
+    
     public String getName(){
         return this.name;
     }
