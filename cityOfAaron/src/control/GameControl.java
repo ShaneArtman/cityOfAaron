@@ -37,13 +37,10 @@ public class GameControl {
 
         // Create a new Player object
         Player player = new Player();
-
         //  Store the name of the player in the Player object
         player.setName(_name);
-
         // Store a reference to the Player object in the Game object
         game.setPlayer(player);
-
         // Save a reference to the Game object in the static variable
         CityOfAaron.setGame(game);
         //call to method
@@ -52,8 +49,9 @@ public class GameControl {
         createMap();
         // Create the list of animals
         createAnimalList();
+        // Create the tools list
+        createToolList();
         
-
         // declared in the CityOfAaron class.
     }
 
@@ -179,5 +177,27 @@ public class GameControl {
         // Set the animal list to the game object
         game.setAnimals(animals);
         
+    }
+    
+    /**
+     * @author Nick
+     * createToolList method
+     * purpose: Create ArrayList of tools
+     * @Param none
+     * @Return none
+     */
+    public static void createToolList () {
+        // Create ArrayList tools
+        ArrayList<ListItem> tools = new ArrayList<>();
+        
+        // Populate ArrayList with tools and quantities
+        tools.add(new ListItem("Hoe", 30));
+        tools.add(new ListItem("Shovel", 40));
+        tools.add(new ListItem("Plow", 20));
+        tools.add(new ListItem("Sickle", 60));
+        tools.add(new ListItem("Hammer", 50));
+        
+        // Set tools list in the game object
+        game.setTools(tools);
     }
 }

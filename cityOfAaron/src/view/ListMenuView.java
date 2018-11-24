@@ -89,11 +89,25 @@ public class ListMenuView extends MenuView {
     }
     
     /**
-     * Purpose: Display the list of tools that the player has<p>
+     * @author Nick
+     * Purpose: Display the list of tools that the player has
      * @Param none
+     * @Return none
      */
     public void listTools() {
-        System.out.println("Display a list of tools here");
+        
+        // Get tools list from game object
+        ArrayList<ListItem> tools = game.getTools();
+        
+        // Print off header
+        System.out.println("City of Aaron tool list");
+        System.out.println("Here is a list of tools\n" +
+                "------------------------------------");
+        
+        // Print off tools and quantities
+        for (ListItem tool: tools) {
+            System.out.println(tool.getName() + "\t" + tool.getNumber());
+        }
     }
 
     /**
