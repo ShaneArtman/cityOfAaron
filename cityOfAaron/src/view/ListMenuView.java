@@ -115,7 +115,18 @@ public class ListMenuView extends MenuView {
      * @Param none
      */
     public void listProvisions() {
-        System.out.println("Display a list of provisions here");
+        // get provisions list from game object
+        ArrayList<ListItem> provisions = game.getProvisions();
+        
+        // list header
+        System.out.println("City of Aaron Provisions List");
+        System.out.println("Here is a list of provisions\n" +
+                "---------------------------------------");
+        
+        // display provisions and quantities
+        for (ListItem provision: provisions) {
+            System.out.println(provision.getName() + "\t" + provision.getNumber());
+        }
     }
     
     /**
