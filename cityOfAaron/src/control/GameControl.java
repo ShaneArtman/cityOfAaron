@@ -51,6 +51,8 @@ public class GameControl {
         createAnimalList();
         // Create the tools list
         createToolList();
+        // create the provisions list
+        createProvisionList();
         
         // declared in the CityOfAaron class.
     }
@@ -199,5 +201,27 @@ public class GameControl {
         
         // Set tools list in the game object
         game.setTools(tools);
+    }
+    
+    /**
+     * createProvisionList method
+     * Purpose: create an array list of provisions
+     * @author Jon
+     * @param none
+     * @return none
+     */
+    public static void createProvisionList () {
+        //create an array list named provisions
+        ArrayList<ListItem> provisions = new ArrayList<>();
+        
+        //populate list with provisions and amounts
+        provisions.add(new ListItem("clothes", 500));
+        provisions.add(new ListItem("bedding", 500));
+        provisions.add(new ListItem("arms", 300));
+        provisions.add(new ListItem("water", 1000));
+        provisions.add(new ListItem("wood", 600));
+        
+        // set list to game object
+        game.setProvisions(provisions);
     }
 }
