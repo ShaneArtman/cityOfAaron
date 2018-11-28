@@ -151,10 +151,12 @@ public class CropView {
         paramsNotOkay = false;
         System.out.print("\nHow many acres of land do you wish to buy? \n");
         toBuy = keyboard.nextInt();
+        // try block calls method that could throw an exception
         try {
          // Call the buyLand( ) method in the control layer to buy the land
             CropControl.buyLand(price, toBuy, cropData);
         }
+        // to be executed when an exception is caught
         catch(CropException e) {
             System.out.println("I am sorry, I cannot do this.");
             System.out.println(e.getMessage());
