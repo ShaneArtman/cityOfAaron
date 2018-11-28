@@ -21,6 +21,7 @@ package control;
 // Import random number generator class
 import java.util.Random;
 import model.*;
+import exceptions.*;
 
 public class CropControl {
     
@@ -81,25 +82,25 @@ public class CropControl {
      * buyLand(int):int
      * Purpose: To buy land
      * <p>
-     * Pre-conditions: acresToBuy must be greater than or equal to 0 and wheatInStore must be
+     * Preconditions: acresToBuy must be greater than or equal to 0 and wheatInStore must be
      * greater than or equal to purchase price
      * @param landPrice the price of land
      * @param acresToBuy the number of acres to buy
      * @param _cropData a reference to a CropData object
-     * @return (int) result code of -1 is invalid and 0 is success
      */
-    public static int buyLand(int landPrice, int acresToBuy, CropData _cropData) {
-        if (landPrice < 0 || acresToBuy < 0
-                || (landPrice * acresToBuy) > _cropData.getWheatInStore()) {
-            //The landPrice or acresToBuy had invalid values or the purchase price
-            //  was greater than the wheat available to purchase with
-            return -1;
+    public static void buyLand(int landPrice, int acresToBuy, CropData _cropData) throws CropException {
+        if (acresToBuy < 0) {
+            // acres to buy input was a negative number
+            throw new CropException("A negative number was input. Cannot buy");
+        }
+        if ((landPrice * acresToBuy) > _cropData.getWheatInStore()) {
+            // purchase price is greater than wheat available to purchase with
+            throw new CropException("There is not enough wheat to buy this much land");
         }
         //Update the CropData object with acres owned after purchase
         //  and spent wheat from the store
         _cropData.setAcresOwned(_cropData.getAcresOwned() + acresToBuy);
         _cropData.setWheatInStore(_cropData.getWheatInStore()-(acresToBuy*landPrice));
-        return _cropData.getAcresOwned(); //Success
     }
     
     /**
@@ -225,7 +226,7 @@ public class CropControl {
      * @param acresToPlant is number of acres to be used for planting
      * @param _cropData cropData object
      * @return the number of acres planted and amount of wheat left in storage
-     * Pre-conditions: acres being planed must be positive and <= acresOwned,
+     * Preconditions: acres being planed must be positive and <= acresOwned,
      * population must be >= (acres planted/10), and wheat in store must be >=
      * (acres planted/2)
      */
@@ -258,7 +259,7 @@ public class CropControl {
      * @author Jonathan Unga
      * @param _cropData cropData object
      * @return amount of crops yielded
-     * Pre-conditions: random generator must generate number >=2 and <=5 for 
+     * Preconditions: random generator must generate number >=2 and <=5 for 
      * crops yielded per acre
      */
     public static int harvestCrops(CropData _cropData){
@@ -286,7 +287,7 @@ public class CropControl {
      * @author Jonathan Unga
      * @param _cropData cropData object
      * @return amount of wheat in store
-     * Pre-conditions: none as number of wheat in beginning is set to 2700
+     * Preconditions: none as number of wheat in beginning is set to 2700
      */
     public static int storeWheat(CropData _cropData){
         //setting initial wheat in store to 2700
@@ -302,7 +303,7 @@ public class CropControl {
      * @author Jonathan Unga
      * @param _cropData cropData object
      * @return the amount of wheat as offering
-     * Pre-conditions: need percent of offering from setOffering method
+     * Preconditions: need percent of offering from setOffering method
      */
     public static int payOffering(CropData _cropData){
         int percent = _cropData.getOffering();
