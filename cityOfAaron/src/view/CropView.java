@@ -248,17 +248,33 @@ public class CropView {
     public static void sellLandView() {
         //get the cost of land for this round
         int price = CropControl.calcLandCost();
-        //prompt the user to enter the number of acres to sell
-        System.out.format("\nLand is selling for %d bushels per acre.%n", price);
-        System.out.println("\nHow man acres of land do you wish to sell? ");
-        //get user's input and save it
-        int toSell;
-        toSell = keyboard.nextInt();
-        //call sellLand() method in the control layer to sell the land
-        CropControl.sellLand(price, toSell, cropData);
+        // Define variable for checking for exceptions
+        boolean paramsNotOkay;
+        
+        do {
+            // Set variable to check for exceptions
+            paramsNotOkay = false;
+            // Variable for getting user input
+            int toSell;
+            //prompt the user to enter the number of acres to sell
+            System.out.format("\nLand is selling for %d bushels per acre.%n", price);
+            System.out.println("\nHow man acres of land do you wish to sell? ");
+            //get user's input and save it
+            toSell = keyboard.nextInt();
+            try {
+                //call sellLand() method in the control layer to sell the land
+                CropControl.sellLand(price, toSell, cropData);
+            }
+            catch (CropException e) {
+                // Print exception report to user
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while (paramsNotOkay);
         //output updated land owned and wheat in storehouse
         System.out.format("\nCurrent acres owned: %d", cropData.getAcresOwned());
-        System.out.format("\nCurrent wheat in storehoues: %d\n", cropData.getWheatInStore());        
+        System.out.format("\nCurrent wheat in storehoues: %d\n", cropData.getWheatInStore());   
     }
     
     /**
