@@ -32,7 +32,8 @@ public class Map implements Serializable {
      * @param none
      * @return none
      */
-    public Map() { }
+    public Map() 
+    { }
 
     /**
     * parameterized Map constructor

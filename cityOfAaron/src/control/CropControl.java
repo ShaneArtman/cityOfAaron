@@ -115,28 +115,30 @@ public class CropControl {
      * @return result code of -1 is invalid and 0 is success
      * 
      */
-    public static int feedPeople(int bushelsReservedForFood, CropData _cropData) {
+    public static void feedPeople(int bushelsReservedForFood, CropData _cropData) throws CropException {
         // Receive input for the amount of grain to set aside (# bushels) as int
         // Validate that the #bushels to set aside exist in the grainary
         // If input > value in the grainary, return -1
         // If input < 0, return -1
-        if (bushelsReservedForFood < 0 || bushelsReservedForFood > _cropData.getWheatInStore()) {
-            return -1; //The user entered an invalid value or more wheat than was available
+        if (bushelsReservedForFood < 0) {
+            //The user entered an invalid value (negative)
+            throw new CropException("You cannot enter a negative value");
+        }
+        if (bushelsReservedForFood > _cropData.getWheatInStore()) {
+            // The user does not have that much grain
+            throw new CropException("You do not have that much grain in the storehouse.");
         }
 
-        // If input <= value in the grainary, return 0 and update the following:
         //Bushels in the Grainary remaing
         //Bushels set aside for food for currrent year in the game
-        //Update the data in CropData object
         _cropData.setWheatForFood(bushelsReservedForFood);
         _cropData.setWheatInStore(_cropData.getWheatInStore()-bushelsReservedForFood);
-        return 0; //Success   
     }
     
     /**
      * 
      * Purpose: To determine how much of the crop in storage was destroyed by rats and
-     * and update the storhouse
+     * and update the storehouse
      * <p>
      * Pre-conditions: the random generator much generate a value > 0 and less or equal to 5%
      * @author Shane Artman
