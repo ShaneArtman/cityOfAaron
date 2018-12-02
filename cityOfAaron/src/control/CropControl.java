@@ -229,12 +229,11 @@ public class CropControl {
      * @author Jonathan Unga
      * @param acresToPlant is number of acres to be used for planting
      * @param _cropData cropData object
-     * @return the number of acres planted and amount of wheat left in storage
      * Preconditions: acres being planed must be positive and <= acresOwned,
      * population must be >= (acres planted/10), and wheat in store must be >=
      * (acres planted/2)
      */
-    public static int plantCrops(int acresToPlant, CropData _cropData){
+    public static void plantCrops(int acresToPlant, CropData _cropData) throws CropException {
         int owned = _cropData.getAcresOwned();
         int pop = _cropData.getPopulation();
         int wheat = _cropData.getWheatInStore();
@@ -243,18 +242,28 @@ public class CropControl {
         int wheatNeeded = acresToPlant / 2;
         //pop needed = acresToPlant/10
         int popNeeded = acresToPlant / 10;
-        //If acresToPlant<0 or acresToPlant>owned or pop<needed or wheat<needed
-        // return -1
-        if(acresToPlant < 0 || acresToPlant > owned || pop < popNeeded ||
-                wheat < wheatNeeded) {
-            return -1;
+        //check preconditions and throw exception if they are not ok
+        if(acresToPlant < 0) {
+            //input was negative
+            throw new CropException("Cannot plant a negative value");
+        }
+        if(acresToPlant > owned) {
+            //input was more than acres owned
+            throw new CropException("The city does not own this much land");
+        }
+        if(pop < popNeeded) {
+            //not enough population to care for crops
+            throw new CropException("Not enough people to care for the crops");
+        }
+        if(wheat < wheatNeeded) {
+            //not enough wheat to plant acres input
+            throw new CropException("There is insufficient wheat to plant this many acres");
         }
         //subtract wheat needed from wheat in store
         wheat -= wheatNeeded;
         _cropData.setWheatInStore(wheat);
         //set acresPlanted
         _cropData.setAcresPlanted(acresToPlant);
-        return planted;
     }
     
      /**

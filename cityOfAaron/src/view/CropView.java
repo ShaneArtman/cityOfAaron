@@ -141,7 +141,7 @@ public class CropView {
                 CropControl.buyLand(price, toBuy, cropData);
             } // to be executed when an exception is caught
             catch (CropException e) {
-                System.out.println("I am sorry, I cannot do this.");
+                System.out.println("I am sorry, this cannot be done");
                 System.out.println(e.getMessage());
                 paramsNotOkay = true;
             }
@@ -246,8 +246,7 @@ public class CropView {
             System.out.format("\nLand is selling for %d bushels per acre.%n", price);
             System.out.println("\nHow man acres of land do you wish to sell? ");
             //get user's input and save it
-            toSell
-                    = keyboard.nextInt();
+            toSell = keyboard.nextInt();
 
             try {
                 //call sellLand() method in the control layer to sell the land
@@ -269,32 +268,38 @@ public class CropView {
     }
 
     /**
-     * plantCropsView method Purpose: Display acres owned and wheat in store
-     * then prompt user for amount they wish to use to plant crops
-     *
+     * plantCropsView method 
+     * Purpose: Display acres owned, wheat in store, and population then prompt
+     * player for input on how many acres are to be planted for crops.
      * @param none
      */
-    public static void plantCropsView() {
-        //display current land, wheat, and population
-        System.out.format("\n\nHow much land needed for crops?\nAcres of land owned: %d\n", cropData.getAcresOwned());
-        System.out.format("Bushels of Wheat in storehouse: %d\n", cropData.getWheatInStore());
-        System.out.format("Current city population: %d\n", cropData.getPopulation());
-        //display conditions needed to care for crops and prompt user for input
-        System.out.println("\n1 bushel of wheat can plant 2 acres, "
+    public static void plantCropsView() {        
+        int toPlant;
+        boolean paramsNotOkay;
+        do{
+            paramsNotOkay = false;
+            //display current land, wheat, and population
+            System.out.format("\n\nAcres of land owned: %d\n", cropData.getAcresOwned());
+            System.out.format("Bushels of Wheat in storehouse: %d\n", cropData.getWheatInStore());
+            System.out.format("Current city population: %d\n", cropData.getPopulation());
+            System.out.println("\n1 bushel of wheat can plant 2 acres, "
                 + "while 1 person can take care of 10 acres planted.\n"
                 + "How many acres of land do you wish to plant? ");
-        //get input and save
-
-        int toPlant;
-        toPlant
-                = keyboard.nextInt();
-        //call plantCrops() method to plant crops
-        CropControl
-                .plantCrops(toPlant, cropData);
+            toPlant = keyboard.nextInt();
+            try {
+                //call plantCrops() method to plant crops
+                CropControl.plantCrops(toPlant, cropData);
+            }
+            catch(CropException e) {
+                //error message to be displayed
+                System.out.println("I am sorry, this cannot be done.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);
         //output acres planted for future harvest
         System.out.format("\nYou have planted %d acres of land for next year's harvest.", cropData.getAcresPlanted());
         System.out.format("\nCurrent wheat in storehoues: %d\n", cropData.getWheatInStore());
-
     }
 
     /**
