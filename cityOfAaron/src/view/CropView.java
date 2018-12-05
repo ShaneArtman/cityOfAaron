@@ -39,9 +39,9 @@ public class CropView {
         // call the buyLandView( ) method
         displayCropsReportView();
         payOfferingView();
+        buyLandView();
         sellLandView();
         feedPeopleView();
-        buyLandView();
         plantCropsView();
 
         /**
