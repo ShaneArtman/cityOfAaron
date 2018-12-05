@@ -18,6 +18,7 @@ package control;
 import model.*;
 import cityofaaron.CityOfAaron;
 import java.util.ArrayList;
+import java.io.*;
 
 public class GameControl {
 
@@ -223,5 +224,55 @@ public class GameControl {
         
         // set list to game object
         game.setProvisions(provisions);
+    }
+    
+    // the getSavedGame method
+    // Purpose: load a saved game from disk
+    // Parameters: the file path
+    // Returns: none
+    // Side Effect: the game reference in the driver is updated
+    public static void getSavedGame(String _filePath)
+    {
+        // Create game object
+        Game game = null;
+        
+        // Create input stream
+        try (FileInputStream fips = new FileInputStream(_filePath))
+        {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            // Get saved game and save to game object in JVM
+            game = (Game)  input.readObject();
+            
+            // Load game object into curent game
+            CityOfAaron.setGame(game);
+        }
+        catch(Exception e)
+        {
+            System.out.println("\nThere was an error reading the saved game file");
+        }
+    }
+
+    /** saveGame method
+    * Purpose: save game object to file
+    * @param _game
+    * @param _filename
+    * @return none
+    */
+    public static void saveGame (Game _game, String _filename){
+        
+        // Create output stream
+        try(FileOutputStream fos = new FileOutputStream(_filename)){
+            ObjectOutputStream output = new ObjectOutputStream(fos);
+            
+            // Write game object to file
+            output.writeObject(_game);
+            
+            // Success message
+            System.out.println("Game was saved successfully.");
+        }
+        catch(Exception e){
+            System.out.println("There was an error saving the game.");
+        }
     }
 }

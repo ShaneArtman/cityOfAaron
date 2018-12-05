@@ -79,7 +79,6 @@ public class MainMenuView extends MenuView {
             case 1: // create and start a new game
                 startNewGame();
                 //Shane - Display some test data - remove later...
-                testData();
                 break;
             case 2: // get and start a saved game
                 startSavedGame();
@@ -88,7 +87,7 @@ public class MainMenuView extends MenuView {
                 displayHelpMenuView();
                 break;
             case 4: // save game
-                displaySaveGameView();
+                saveGame();
                 break;
             case 5: // display goodbye
                 System.out.println("Thanks for playing ... goodbye.");
@@ -131,6 +130,21 @@ public class MainMenuView extends MenuView {
     */
     public void startSavedGame( ) {
         System.out.println("\nStart saved game option selected.");
+        
+        // get rid of nl character left in the stream
+        keyboard.nextLine(); 
+        
+        // prompt user and get a file path
+        System.out.println("Enter file name.");
+        String filepath = keyboard.next();
+         
+        // call the getSavedGame( ) method in the GameControl class to load the game
+        GameControl.getSavedGame(filepath);
+        
+        // display the game menu for the loaded game
+        GameMenuView gmv = new GameMenuView();
+        gmv.displayMenu();
+
     }
 
     /** 
@@ -183,25 +197,29 @@ public class MainMenuView extends MenuView {
      * @Return none
      */
     public void saveGame() {
-        System.out.println("This is the saveGame method");
+        // Check if game exists
+        
+        if(CityOfAaron.getGame() != null){
+           
+            // Get game object
+            Game game = CityOfAaron.getGame();
+            String filename;
+            
+            // Ask user for file name
+            System.out.println("Please enter file name.");
+            filename = keyboard.next();
+            
+            // Send to control layer saveGame
+            GameControl.saveGame(game,filename);
+            
+            // Clear input
+            keyboard.nextLine();
+        }
+        else {
+            System.out.println("You must create a game before saving.");
+            }
     }
-    private static void testData() {
-        // Display test data
-        System.out.println("\n\nDisplaying some test data for development - Remove later...");
-        Game myGame = CityOfAaron.getGame();
-        CropData myCropData = myGame.getCropData();
-        Player myPlayer = myGame.getPlayer();
-
-        //From initial testing - will remove later - Shane 11.3.18
-        System.out.println("The year is " + myCropData.getYear() + ".\nOur population: " + myCropData.getPopulation()
-                + "\nAcres owned: " + myCropData.getAcresOwned() + "\nCrop yield: " + myCropData.getCropYield() + "\nWheat in Store: "
-                + myCropData.getWheatInStore() + "\nNumbers died: " + myCropData.getNumberWhoDied() + "\nNewcomers: " + myCropData.getNewPeople()
-                + "\nHarvest: " + myCropData.getHarvest() + "\nWheat for food: " + myCropData.getWheatForFood()
-                + "\nAcres Planted: " + myCropData.getAcresPlanted());
-        System.out.println("The player's name is: " + myPlayer.getName() + "\n");
-        System.out.println("One of the team members name is: " + TeamMember.SHANE.getName());
-        System.out.println("And their title is:" + TeamMember.SHANE.getTitle());
-
-
-    }
+        
+    
+    
 }

@@ -16,8 +16,9 @@
 
 package model;
 
+import java.io.Serializable;
 
-public class Location {
+public class Location implements Serializable {
 
     //Variables include the description and symbol of the location
     private String description;
