@@ -275,4 +275,36 @@ public class GameControl {
             System.out.println("There was an error saving the game.");
         }
     }
+    
+    /**
+     * printTools method
+     * @author Nick
+     * Purpose: print to file the tools array
+     * @param _filename
+     * @Return none
+     */
+    public static void printTools (String _filename) {
+        
+        // create the PrintWriter object and write to file
+        try(PrintWriter printWriter = new PrintWriter (new File(_filename));) {
+
+            // get a reference to the ArrayList
+            ArrayList<ListItem> tools = game.getTools();
+
+            // output a heading for the report
+            printWriter.println ("List of tools in inventory:\n");
+   
+            // Get the data from the ArrayList and write it to file
+            for (ListItem tool: tools) {
+                printWriter.println(tool.getName() + "\t" + tool.getNumber());
+            }
+            // Success message
+            System.out.println("List of tools successfully written to " 
+                    + _filename + ".txt");
+             
+        } catch (Exception e) {
+            // Output error message
+            System.out.println("Unable to save tools list to file");
+        }
+    }
 }

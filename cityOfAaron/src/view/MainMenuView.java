@@ -219,7 +219,5 @@ public class MainMenuView extends MenuView {
             System.out.println("You must create a game before saving.");
             }
     }
-        
-    
-    
+     
 }
