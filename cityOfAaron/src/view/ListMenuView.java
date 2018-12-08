@@ -79,14 +79,40 @@ public class ListMenuView extends MenuView {
      */
     public void listAnimals() {
         
+        // track valid answers to save to disk
+        boolean notValidInput = true;
+        // response to question yes/no
+        int response = 0;
+        // Reponse to question for filename
+        String strResponse;
         // Variable for ArrayList to be displayed
         ArrayList<ListItem> animals = game.getAnimals();
         System.out.println("City of Aaron animal list");
         
         System.out.println("Here is a list of animals\n" +
                 "------------------------------------");
+        // Itterate through animals
         for (ListItem animal: animals) {
             System.out.println(animal.getName() + "\t" + animal.getNumber());
+        }
+        
+        // Prompt for writing to file
+        while (notValidInput) {
+            System.out.println("\n\nWould you like to save a copy to file?\n" +
+                    "\t1 = Yes\t2 = No");
+            response = keyboard.nextInt();
+            if (response < 0 || response > 2) {
+                System.out.println("You must enter a value of 1 or 2");
+            }
+            else {
+                notValidInput = false;
+            }
+        }
+        if (response == 1) {
+            System.out.println("Please enter a filename");
+            strResponse = keyboard.next();
+            // call method to print to file
+            GameControl.printAnimals(strResponse);
         }
     }
     

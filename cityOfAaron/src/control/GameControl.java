@@ -307,4 +307,30 @@ public class GameControl {
             System.out.println("Unable to save tools list to file");
         }
     }
+    
+    /**
+     * printAnimals - Print animals to disk
+     * @author Artieman
+     * @param _filename
+     * @return none
+     * 
+     */
+    public static void printAnimals (String _filename) {
+        
+        // Use printwriter to output to disc
+        try (PrintWriter printWriter = new PrintWriter (new File(_filename))) {
+            ArrayList<ListItem> animals = game.getAnimals();
+            printWriter.println("List of Animals in inventory\n" + 
+                    "-----------------------------------");
+            // itterate through animals for printing to file
+            for (ListItem animal: animals) {
+                printWriter.println(animal.getName() + "\t" + animal.getNumber());
+            }
+            System.out.println("Successfully saved to: " + _filename);
+        }
+        catch (Exception e) {
+            // if there was an error writing to file, throw exception
+            System.out.println("There was an error writing to file");
+        }
+    }
 }
