@@ -161,17 +161,44 @@ public class ListMenuView extends MenuView {
      * @Param none
      */
     public void listProvisions() {
-        // get provisions list from game object
+        
+        boolean invalidInput = true;
+        //user's answer to saving list question
+        int answer = 0;
+        //user input for file name
+        String userInputFile;
+        //get provisions list from game object
         ArrayList<ListItem> provisions = game.getProvisions();
         
-        // list header
-        System.out.println("City of Aaron Provisions List");
+        //list header
+        System.out.println("\nCity of Aaron Provisions List");
         System.out.println("Here is a list of provisions\n" +
                 "---------------------------------------");
         
         // display provisions and quantities
         for (ListItem provision: provisions) {
             System.out.println(provision.getName() + "\t" + provision.getNumber());
+        }
+        //display prompt to save list to file
+        while (invalidInput) {
+            System.out.println("\nWould you like to save a copy of the list to a file?" +
+                     "\n1 - Yes \n2 - No");
+            //save input to variable
+            answer = keyboard.nextInt();
+            //check that input is valid
+            if (answer <= 0 || answer > 2) {
+                System.out.println("Please choose option 1 or 2");
+            }
+            else {
+                invalidInput = false;
+            }            
+        }
+        if (answer == 1) {
+            //prompt to enter filname
+            System.out.println("\nEnter name for File: ");
+            userInputFile = keyboard.next();
+            //call print method
+            GameControl.printProvisions(userInputFile);
         }
     }
     

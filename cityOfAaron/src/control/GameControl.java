@@ -333,4 +333,30 @@ public class GameControl {
             System.out.println("There was an error writing to file");
         }
     }
+    
+    /**
+     * printProvisions method
+     * Purpose: print provisions list to disk
+     * @author Jon Unga
+     * @param _filename
+     */
+    public static void printProvisions (String _filename) {
+        // printwriter to ouput to disk
+        try (PrintWriter printWriter = new PrintWriter (new File(_filename))) {
+            //reference to provisions list
+            ArrayList<ListItem> provisions = game.getProvisions();
+            //report heading
+            printWriter.println("List of Provisions in inventory\n" + 
+                    "--------------------------------------");
+            // itterate through provisions to write to file
+            for (ListItem provision: provisions) {
+                printWriter.println(provision.getName() + "\t" + provision.getNumber());
+            }
+            System.out.println("Provisions list successfully saved to: " + _filename);
+        }
+        catch (Exception e) {
+            //display error message when exception caught
+            System.out.println("An error has occurred, save unsuccessful");
+        }
+    }
 }
