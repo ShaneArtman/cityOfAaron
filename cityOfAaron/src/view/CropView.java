@@ -84,11 +84,11 @@ public class CropView {
                     System.out.println(
                             "\n\nSorry, game over...  You have allowed "
                             + cropData.getNumberWhoDied() + " people to die.\n\n"
-                            + "You will now be sent to your own peril by being \n"
-                            + "banished from our midst to fend for yourself.\n");
+                            + "You will now be sent to your own peril by being \n" +
+                            "banished from our midst to fend for yourself.\n");
                     game.setEndOfGame(true);
                 } else if (cropData.getYear() >= 10) {
-                    System.out.println("Congratulations! You have done well four our town\n"
+                    System.out.println("\n\nCongratulations! You have done well for our town\n"
                             + "Please accept our tribute to you to stay in our town and live\n"
                             + "in this wonderful home so long as you shall live, owing only\n"
                             + "to work along side us in the fields with your family.\n"
@@ -227,7 +227,7 @@ public class CropView {
         int userInput = 0;
 
         //The amount of wheat in the storehouse before feeding people
-        int wheatInStorehouse = game.getCropData().getWheatInStore();
+        int wheatInStorehouse = cropData.getWheatInStore();
 
         System.out.println("\n\nGlad you are thinking of all of those that have\n"
                 + "worked so hard and provided food for the town. Now it\n"
@@ -240,7 +240,7 @@ public class CropView {
             paramsNotOkay = false;
             // Display to the user what is in the store
             System.out.println("----------------------------------\nPopulation: "
-                    + game.getCropData().getPopulation() + "\n"
+                    + cropData.getPopulation() + "\n"
                     + "Wheat in storehouse: "
                     + wheatInStorehouse + "\n"
                     + "How much wheat do you want to set aside for food?\n");
@@ -249,7 +249,7 @@ public class CropView {
             userInput = keyboard.nextInt();
             try {
                 // Need to now set the wheat for food
-                CropControl.feedPeople(userInput, game.getCropData());
+                CropControl.feedPeople(userInput, cropData);
             } catch (CropException e) {
                 paramsNotOkay = true;
                 // Test for error in user input
@@ -262,9 +262,9 @@ public class CropView {
         //Display the result to the user
         System.out.println(
                 "The food in the storehouse is now: "
-                + game.getCropData().getWheatInStore() + "\n"
+                + cropData.getWheatInStore() + "\n"
                 + "and the food for feeding people is now "
-                + game.getCropData().getWheatForFood());
+                + cropData.getWheatForFood());
     }
 
     /**
