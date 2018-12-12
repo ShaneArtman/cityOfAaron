@@ -16,12 +16,11 @@
 package view;
 
 import cityofaaron.CityOfAaron;
-import java.util.Scanner;
 import model.*;
 
 public class GameMenuView extends MenuView {
 
-    private Game theGame = CityOfAaron.getGame();
+    Game theGame = CityOfAaron.getGame();
 
     /**
      * The GameMenuView constructor Purpose: Initialize the game menu data
@@ -63,17 +62,6 @@ public class GameMenuView extends MenuView {
                 break;
             case 4: // manage crops
                 manageCrops();
-                // Test for the end of game and return to calling method
-                //Game game = CityOfAaron.getGame();
-                // Test for the end of game and return to calling method
-                if (theGame != null) {
-                    if (theGame.getEndOfGame()) {
-                        System.out.println("You have reached the end of the game. Please \n"
-                                + "return to the main menu and start another journey\n\n");
-                        return;
-                    }
-                }
-
                 break;
             case 5: // return to main menu
                 return;
