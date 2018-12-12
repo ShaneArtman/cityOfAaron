@@ -54,7 +54,8 @@ public class GameControl {
         createToolList();
         // create the provisions list
         createProvisionList();
-        
+        // added to set end of game status at the start
+        game.setEndOfGame(false);
         // declared in the CityOfAaron class.
     }
 
@@ -82,7 +83,6 @@ public class GameControl {
         cropData.setHarvest(3000);
         // added to get CropView working - Nick
         cropData.setWheatForFood(2000);
-
         // Save a reference to the CropData object in the Game object
         game.setCropData(cropData);
     }

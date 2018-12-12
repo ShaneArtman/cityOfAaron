@@ -38,31 +38,76 @@ public class CropView {
     public static void runCropView() {
         // call the buyLandView( ) method
         displayCropsReportView();
-        payOfferingView();
         buyLandView();
         sellLandView();
         feedPeopleView();
         plantCropsView();
-
-        /**
-         * add calls to the other crop view methods as they are written:
-         * sellLandView() feedPeopleView() plantCropsView()
-         * displayCropsReportView()
-         *
-         * Shane - Comments Without giving too much away, we may want to display
-         * the population growth, amount of food that is required to feed all
-         * people, the amount of wheat in the storehouse, the amount of land
-         * available for sale and the population growth before they make a
-         * decision to buy land, feed people, etc.
-         *
-         * Also, I would think that the order would be something like:
-         *
-         * Eaten by rats (limited to what is in the storehouse today) Harvest
-         * growPopulation Sell Land Feed People Calc Starved - Not sure that
-         * happens here Buy Land
-         *
-         *
+        payOfferingView();
+        endOfGame();
+        /*
+         *  According to slides for wk 13, this is the order. Should we create new
+         *     methods?
+         * 
+         *  cropReportView
+         *  buyLand
+         *  sellLand
+         *  feedPeople
+         *  plantCrops
+         *  setOffering
+         *  harvestCrops
+         *  payOffering
+         *  calcEatenByRats
+         *  growPopulation
+         *  calcStarved
+         *  endOfGame
          */
+    }
+
+    /**
+     * endOfGame method
+     *
+     * @purpose The end of game method will be run every year. We will test for
+     * the number of years for the game duration, or if the player has allowed
+     * too many to die from starvation.
+     * @author Artieman1
+     * @param none
+     * @return none
+     */
+    public static void endOfGame() {
+        Game game = CityOfAaron.getGame();
+        CropData cropData = game.getCropData();
+        try {
+            int _numberWhoDied = cropData.getNumberWhoDied();
+            int _currPopulation = cropData.getPopulation();
+            if (_currPopulation > 0) {
+                if (_numberWhoDied / _currPopulation >= .5) {
+                    System.out.println(
+                            "\n\nSorry, game over...  You have allowed "
+                            + cropData.getNumberWhoDied() + " people to die.\n\n"
+                            + "You will now be sent to your own peril by being \n"
+                            + "banished from our midst to fend for yourself.\n");
+                    game.setEndOfGame(true);
+                } else if (cropData.getYear() >= 10) {
+                    System.out.println("Congratulations! You have done well four our town\n"
+                            + "Please accept our tribute to you to stay in our town and live\n"
+                            + "in this wonderful home so long as you shall live, owing only\n"
+                            + "to work along side us in the fields with your family.\n"
+                            + "Rest easy our friend and enjoy your success!");
+                    game.setEndOfGame(true);
+                }
+            } else {
+                System.out.println(
+                        "\n\nSorry, game over...  You have allowed"
+                        + cropData.getNumberWhoDied() + " people to die.\n\n"
+                        + "You will now be sent to your own peril by being banished "
+                        + "from our midst to fend for yourself.\n");
+                game.setEndOfGame(true);
+            }
+        } catch (Exception e) {
+            System.out.println("\n\nThere was an error. Ending Game...");
+            game.setEndOfGame(true);
+        }
+
     }
 
     /**
@@ -268,35 +313,35 @@ public class CropView {
     }
 
     /**
-     * plantCropsView method 
-     * Purpose: Display acres owned, wheat in store, and population then prompt
-     * player for input on how many acres are to be planted for crops.
+     * plantCropsView method Purpose: Display acres owned, wheat in store, and
+     * population then prompt player for input on how many acres are to be
+     * planted for crops.
+     *
      * @param none
      */
-    public static void plantCropsView() {        
+    public static void plantCropsView() {
         int toPlant;
         boolean paramsNotOkay;
-        do{
+        do {
             paramsNotOkay = false;
             //display current land, wheat, and population
             System.out.format("\n\nAcres of land owned: %d\n", cropData.getAcresOwned());
             System.out.format("Bushels of Wheat in storehouse: %d\n", cropData.getWheatInStore());
             System.out.format("Current city population: %d\n", cropData.getPopulation());
             System.out.println("\n1 bushel of wheat can plant 2 acres, "
-                + "while 1 person can take care of 10 acres planted.\n"
-                + "How many acres of land do you wish to plant? ");
+                    + "while 1 person can take care of 10 acres planted.\n"
+                    + "How many acres of land do you wish to plant? ");
             toPlant = keyboard.nextInt();
             try {
                 //call plantCrops() method to plant crops
                 CropControl.plantCrops(toPlant, cropData);
-            }
-            catch(CropException e) {
+            } catch (CropException e) {
                 //error message to be displayed
                 System.out.println("I am sorry, this cannot be done.");
                 System.out.println(e.getMessage());
                 paramsNotOkay = true;
             }
-        } while(paramsNotOkay);
+        } while (paramsNotOkay);
         //output acres planted for future harvest
         System.out.format("\nYou have planted %d acres of land for next year's harvest.", cropData.getAcresPlanted());
         System.out.format("\nCurrent wheat in storehoues: %d\n", cropData.getWheatInStore());

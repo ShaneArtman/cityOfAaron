@@ -21,16 +21,16 @@ import model.*;
 
 public class GameMenuView extends MenuView {
 
-private Game theGame = CityOfAaron.getGame();
+    private Game theGame = CityOfAaron.getGame();
 
-    /** 
-    * The GameMenuView constructor
-    * Purpose: Initialize the game menu data
-    * @parameters: none
-    * @returns: none
-    */
+    /**
+     * The GameMenuView constructor Purpose: Initialize the game menu data
+     *
+     * @parameters: none
+     * @returns: none
+     */
     public GameMenuView() {
-        super( "\n"
+        super("\n"
                 + "*********************************\n"
                 + "** CITY OF AARON: IN-GAME MENU **\n"
                 + "*********************************\n"
@@ -38,21 +38,20 @@ private Game theGame = CityOfAaron.getGame();
                 + " 2 - View/Print a list\n"
                 + " 3 - Move to a new location\n"
                 + " 4 - Manage the crops\n"
-                + " 5 - Return to the Main menu\n"
-                , 5);
+                + " 5 - Return to the Main menu\n",
+                5);
     }
 
     /**
-     * doAction Method 
-     * Purpose: Perform action selected by user
-     * Pre-Conditions:
+     * doAction Method Purpose: Perform action selected by user Pre-Conditions:
+     *
      * @param option user input 1-5
      * @returns none
      * ====================================================================
-     */    
-    @Override public void doAction(int option) {
-        switch(option)
-        {
+     */
+    @Override
+    public void doAction(int option) {
+        switch (option) {
             case 1: // view map
                 viewMap();
                 break;
@@ -64,6 +63,17 @@ private Game theGame = CityOfAaron.getGame();
                 break;
             case 4: // manage crops
                 manageCrops();
+                // Test for the end of game and return to calling method
+                //Game game = CityOfAaron.getGame();
+                // Test for the end of game and return to calling method
+                if (theGame != null) {
+                    if (theGame.getEndOfGame()) {
+                        System.out.println("You have reached the end of the game. Please \n"
+                                + "return to the main menu and start another journey\n\n");
+                        return;
+                    }
+                }
+
                 break;
             case 5: // return to main menu
                 return;
@@ -71,9 +81,8 @@ private Game theGame = CityOfAaron.getGame();
     }
 
     /**
-     * viewMap Method 
-     * Purpose: View map locations
-     * Pre-Conditions:
+     * viewMap Method Purpose: View map locations Pre-Conditions:
+     *
      * @param
      * @returns none
      * ====================================================================
@@ -83,9 +92,8 @@ private Game theGame = CityOfAaron.getGame();
     }
 
     /**
-     * viewList Method 
-     * Purpose: view list menu
-     * Pre-Conditions:
+     * viewList Method Purpose: view list menu Pre-Conditions:
+     *
      * @param
      * @returns none
      * ====================================================================
@@ -96,9 +104,8 @@ private Game theGame = CityOfAaron.getGame();
     }
 
     /**
-     * moveToNewLocation Method 
-     * Purpose: Change players location
-     * Pre-Conditions:
+     * moveToNewLocation Method Purpose: Change players location Pre-Conditions:
+     *
      * @param
      * @returns none
      * ====================================================================
@@ -108,9 +115,8 @@ private Game theGame = CityOfAaron.getGame();
     }
 
     /**
-     * manageCrops Method 
-     * Purpose: manage crops
-     * Pre-Conditions:
+     * manageCrops Method Purpose: manage crops Pre-Conditions:
+     *
      * @param
      * @returns none
      * ====================================================================

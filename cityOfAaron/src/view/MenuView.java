@@ -16,7 +16,9 @@
 
 package view;
 
+import cityofaaron.CityOfAaron;
 import java.util.Scanner;
+import model.Game;
 
 public abstract class MenuView implements ViewInterface {
     /*
