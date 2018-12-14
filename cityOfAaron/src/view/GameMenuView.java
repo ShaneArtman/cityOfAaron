@@ -69,14 +69,58 @@ public class GameMenuView extends MenuView {
     }
 
     /**
-     * viewMap Method Purpose: View map locations Pre-Conditions:
-     *
-     * @param
+     * viewMap Method
+     * @author Jon
+     * Purpose: Display the map in a table to user with legend for symbols
+     * @param none
      * @returns none
-     * ====================================================================
      */
     public void viewMap() {
-        System.out.println("This is the viewMap method.");
+        System.out.println("\n   ***   Village Map   ***\n");
+        //create 5x5 array for map display
+        String mapDisplayArray[][] = new String[5][5];
+        
+        //I was having difficulty getting my array to display correctly.
+        //I know this is not the most effecient code, but it was what made sense and
+        //displayed correctly for me..
+        
+        //assign string to each cell in array
+        mapDisplayArray[0][0] = "| ~~~ ";
+        mapDisplayArray[0][1] = "| !!! ";
+        mapDisplayArray[0][2] = "| *** ";
+        mapDisplayArray[0][3] = "| *** ";
+        mapDisplayArray[0][4] = "| $$$ |";
+        mapDisplayArray[1][0] = "| ~~~ ";
+        mapDisplayArray[1][1] = "| !!! ";
+        mapDisplayArray[1][2] = "| ### ";
+        mapDisplayArray[1][3] = "| ### ";
+        mapDisplayArray[1][4] = "| ### |";
+        mapDisplayArray[2][0] = "| ~~~ ";
+        mapDisplayArray[2][1] = "| !!! ";
+        mapDisplayArray[2][2] = "| ^^^ ";
+        mapDisplayArray[2][3] = "| ^^^ ";
+        mapDisplayArray[2][4] = "| ^^^ |";
+        mapDisplayArray[3][0] = "| ~~~ ";
+        mapDisplayArray[3][1] = "| ... ";
+        mapDisplayArray[3][2] = "| ... ";
+        mapDisplayArray[3][3] = "| ... ";
+        mapDisplayArray[3][4] = "| ... |";
+        mapDisplayArray[4][0] = "| ~~~ ";
+        mapDisplayArray[4][1] = "| --- ";
+        mapDisplayArray[4][2] = "| --- ";
+        mapDisplayArray[4][3] = "| --- ";
+        mapDisplayArray[4][4] = "| --- |";
+        //iterate through each array cell and display string to user
+        for (int i = 0; i < mapDisplayArray.length; i++) {
+            for (int j = 0; j < mapDisplayArray.length; j++) {
+                System.out.print(mapDisplayArray[i][j]);
+            }
+            System.out.println("");
+        }
+        System.out.println("\nKey:");
+        System.out.println("~~~ = River\n!!! = Wheat Fields\n--- = Lamanite Border\n"
+                + "... = Desert\n$$$ = Ruler's Court\n*** = Grainary\n"
+                + "### = The Village\n^^^ = Forest");
     }
 
     /**
