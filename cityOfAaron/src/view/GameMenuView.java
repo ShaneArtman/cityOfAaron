@@ -71,7 +71,7 @@ public class GameMenuView extends MenuView {
     /**
      * viewMap Method
      * @author Jon
-     * Purpose: Display the map in a table to user with legend for symbols
+     * Purpose: Display the map in a table to user with legend key for symbols
      * @param none
      * @returns none
      */
@@ -117,6 +117,7 @@ public class GameMenuView extends MenuView {
             }
             System.out.println("");
         }
+        //legend key for map symbols to display to user
         System.out.println("\nKey:");
         System.out.println("~~~ = River\n!!! = Wheat Fields\n--- = Lamanite Border\n"
                 + "... = Desert\n$$$ = Ruler's Court\n*** = Grainary\n"
