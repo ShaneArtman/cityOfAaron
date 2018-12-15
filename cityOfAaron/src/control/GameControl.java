@@ -359,4 +359,48 @@ public class GameControl {
             System.out.println("An error has occurred, save unsuccessful");
         }
     }
+    
+    /**
+     * buyTools method
+     * @author Nick
+     * Purpose: Increase amount of tools and improve planting and harvest returns
+     * @param cost Cost for each tool
+     * @param wheat Total wheat in store
+     * @param spend The amount of what user is spending to buy tools
+     * @param _cropData users cropData
+     * @Return none
+     */
+    public static void buyTools(int cost, int wheat, int spend, CropData _cropData){
+        // number of tools bought as a divisible by the cost
+        int toolsBought = (spend - (spend % cost)) / cost;
+        // reference to tools
+        ArrayList<ListItem> tools = game.getTools();
+        // variable used for getting current amount of tools per tool
+        int currentNum;
+        
+        // display number of tools purchased
+        System.out.println("You bought " + toolsBought + " of each tool.");
+        
+        // variable to adding perks to planting and harvesting
+        _cropData.setToolsBonus(toolsBought);
+        
+        // Deduct wheat from Store
+        _cropData.setWheatInStore(wheat - spend);
+        // get tools arraylist
+
+        // Increase amount of tools
+        for (ListItem tool : tools) {
+            currentNum = tool.getNumber();
+            tool.setNumber(currentNum + toolsBought);
+        }
+        
+        // Update tools list in the game object
+        game.setTools(tools);
+        
+        // Increase acres per citizen that can be planted
+        _cropData.setToolsBonus(toolsBought);
+        
+        // Increase amount of wheat that gets harvested
+        
+    }
 }

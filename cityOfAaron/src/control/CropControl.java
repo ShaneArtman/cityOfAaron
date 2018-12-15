@@ -281,6 +281,11 @@ public class CropControl {
          * Shane - Comments - Need to have this as a random number, not a static value
         */
         int cropsYield = 3;
+        
+        // Increase yield with toolsBonus - Nick 12-12-18
+        int toolsBonus = _cropData.getToolsBonus();
+        cropsYield += Math.floor(toolsBonus / 5);
+        
         int acresHarvested = _cropData.getAcresPlanted();
         int wheat = _cropData.getWheatInStore();
         //multiply random yield by acres being harvested to get harvest total

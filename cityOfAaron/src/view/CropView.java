@@ -20,6 +20,7 @@ import control.*;
 import exceptions.*;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
+import java.util.ArrayList;
 
 public class CropView {
 
@@ -43,6 +44,7 @@ public class CropView {
         sellLandView();
         feedPeopleView();
         plantCropsView();
+        wheatSurplusView();
 
         /**
          * add calls to the other crop view methods as they are written:
@@ -341,5 +343,66 @@ public class CropView {
         System.out.println(CropControl.calcEatenByRats(cropData) + " bushels were eaten by rats.");
         // The number of bushels of wheat in store (model)
         System.out.println("You now have " + cropData.getWheatInStore() + " bushels of wheat in store.");
+    }
+    /**
+     * wheatSurplusView method
+     * Purpose: Offer option to buy more tools to improve harvest
+     */
+    public static void wheatSurplusView() {
+        // Get current amount of wheat in store
+        int wheat = cropData.getWheatInStore();
+        // Ammount of wheat spent on tools
+        int spend;
+        // Cost per tool
+        int costPerTool = 50; 
+        
+        // Prompt if user wants to buy tools
+        System.out.println("\n\nYou have " + wheat + " extra wheat in store." 
+            + "\nWould you like to buy tools to improve harvesting" 
+            + " returns?\n 1 - Yes\n 2 - No");
+        
+        // get user input
+        spend = keyboard.nextInt();
+        
+        // If yes, run buyTools()
+        if (spend == 1) {
+            // Display current amount of tools
+            // Get tools list from game object
+            ArrayList<ListItem> tools = game.getTools();
+
+            // Print off header
+            System.out.println("\nHere is a list of tools in store\n" +
+                    "------------------------------------");
+
+            // Print off tools and quantities
+            for (ListItem tool: tools) {
+                System.out.println(tool.getName() + "\t" + tool.getNumber());
+            }
+            
+            // do while check variable
+            int check = 0;
+            do{ 
+                // Ask how many tools to buy
+                System.out.println("\nEach tool costs " + costPerTool + " wheat. " 
+                        + "How much would you like to spend on new tools?");
+                spend = keyboard.nextInt();
+                
+                if (spend > wheat) {
+                    System.out.println("\nYou do not have that much wheat.");
+                }
+                else if (spend == 0) {
+                    System.out.println("\nOkay.  No new tools this year then.");
+                    check = 1;
+                }
+                else if (spend < costPerTool) {
+                    System.out.println("\nThat is not enough to purchase a tool.");
+                }
+                else {
+                    GameControl.buyTools(costPerTool, wheat, spend, cropData);
+                    check = 1;
+                }
+            } while (check != 1);
+        }
+        
     }
 }
