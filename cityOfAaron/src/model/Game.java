@@ -30,6 +30,7 @@ public class Game implements Serializable {
     private ArrayList<ListItem> animals;
     private ArrayList<ListItem> tools;
     private ArrayList<ListItem> provisions;
+    private boolean endOfGame;
 
     public Game () { }
 
@@ -82,7 +83,26 @@ public class Game implements Serializable {
         this.map = _map;
     }
 
-    //a change by Jon
-
+    /**
+     * setEndOfGame
+     * @purpose The purpose for this method to to track the end of the current game
+     * expecting a boolean end of game status.
+     * @param _endOfGame 
+     * @return none
+     */
+    public void setEndOfGame (boolean _endOfGame) {
+        this.endOfGame = _endOfGame;
+    }
+    
+    /**
+     * setEndOfGame
+     * @purpose The purpose for this method to to track the end of the current game
+     * returning a boolean end of game status
+     * @param none 
+     * @return boolean (endOfGame)
+     */    
+    public boolean getEndOfGame() {
+        return this.endOfGame;
+    }
 
 }

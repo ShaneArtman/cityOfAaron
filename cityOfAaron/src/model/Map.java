@@ -32,12 +32,14 @@ public class Map implements Serializable {
      * @param none
      * @return none
      */
-    public Map() {}
+    public Map()
+    {}
 
     /**
     * parameterized Map constructor
-    * Purpose: Set data members to default values
-    * @param 
+    * Purpose: Sets row and column values and creates an array of Location objects
+    * @param _cols
+    * @param _rows
     * @return none
     */
     public Map(int _cols, int _rows) {
@@ -58,7 +60,8 @@ public class Map implements Serializable {
    /**
     * getLocation method
     * Purpose: returns the location object at the given row and column
-    * @param row and column
+    * @param col
+    * @param row
     * @return location object
     */
     public Location getLocation(int col, int row) {
@@ -68,28 +71,12 @@ public class Map implements Serializable {
     /**
     * setLocation method
     * Purpose: stores a location object at the row and column
-    * @param row and column, reference to a location object
+    * @param col
+    * @param row
+    * @param _location object reference
     * @return void
     */
     public void setLocation(int col, int row, Location _location){
         locations[col][row] = _location;
-    }
-    
-    /**
-     * setLocation method
-     * Purpose: stores location objects at the rows and columns
-     * @param col
-     * @param row
-     * @param col2
-     * @param row2
-     * @param _location 
-     * @return none
-     */
-    public void setLocation(int col, int row, int col2, int row2, Location _location){    
-        for (int i = col;i<=col2; i++) {
-            for (int j = row;j<=row2; j++) {
-                locations[i][j] = _location;
-            }
-        }
     }
 }

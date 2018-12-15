@@ -16,21 +16,20 @@
 package view;
 
 import cityofaaron.CityOfAaron;
-import java.util.Scanner;
 import model.*;
 
 public class GameMenuView extends MenuView {
 
-private Game theGame = CityOfAaron.getGame();
+    Game theGame = CityOfAaron.getGame();
 
-    /** 
-    * The GameMenuView constructor
-    * Purpose: Initialize the game menu data
-    * @parameters: none
-    * @returns: none
-    */
+    /**
+     * The GameMenuView constructor Purpose: Initialize the game menu data
+     *
+     * @parameters: none
+     * @returns: none
+     */
     public GameMenuView() {
-        super( "\n"
+        super("\n"
                 + "*********************************\n"
                 + "** CITY OF AARON: IN-GAME MENU **\n"
                 + "*********************************\n"
@@ -38,21 +37,20 @@ private Game theGame = CityOfAaron.getGame();
                 + " 2 - View/Print a list\n"
                 + " 3 - Move to a new location\n"
                 + " 4 - Manage the crops\n"
-                + " 5 - Return to the Main menu\n"
-                , 5);
+                + " 5 - Return to the Main menu\n",
+                5);
     }
 
     /**
-     * doAction Method 
-     * Purpose: Perform action selected by user
-     * Pre-Conditions:
+     * doAction Method Purpose: Perform action selected by user Pre-Conditions:
+     *
      * @param option user input 1-5
      * @returns none
      * ====================================================================
-     */    
-    @Override public void doAction(int option) {
-        switch(option)
-        {
+     */
+    @Override
+    public void doAction(int option) {
+        switch (option) {
             case 1: // view map
                 viewMap();
                 break;
@@ -71,21 +69,64 @@ private Game theGame = CityOfAaron.getGame();
     }
 
     /**
-     * viewMap Method 
-     * Purpose: View map locations
-     * Pre-Conditions:
-     * @param
+     * viewMap Method
+     * @author Jon
+     * Purpose: Display the map in a table to user with legend key for symbols
+     * @param none
      * @returns none
-     * ====================================================================
      */
     public void viewMap() {
-        System.out.println("This is the viewMap method.");
+        System.out.println("\n   ***   Village Map   ***\n");
+        //create 5x5 array for map display
+        String mapDisplayArray[][] = new String[5][5];
+        
+        //I was having difficulty getting my array to display correctly.
+        //I know this is not the most effecient code, but it was what made sense and
+        //displayed correctly for me..
+        
+        //assign string to each cell in array
+        mapDisplayArray[0][0] = "| ~~~ ";
+        mapDisplayArray[0][1] = "| !!! ";
+        mapDisplayArray[0][2] = "| *** ";
+        mapDisplayArray[0][3] = "| *** ";
+        mapDisplayArray[0][4] = "| $$$ |";
+        mapDisplayArray[1][0] = "| ~~~ ";
+        mapDisplayArray[1][1] = "| !!! ";
+        mapDisplayArray[1][2] = "| ### ";
+        mapDisplayArray[1][3] = "| ### ";
+        mapDisplayArray[1][4] = "| ### |";
+        mapDisplayArray[2][0] = "| ~~~ ";
+        mapDisplayArray[2][1] = "| !!! ";
+        mapDisplayArray[2][2] = "| ^^^ ";
+        mapDisplayArray[2][3] = "| ^^^ ";
+        mapDisplayArray[2][4] = "| ^^^ |";
+        mapDisplayArray[3][0] = "| ~~~ ";
+        mapDisplayArray[3][1] = "| ... ";
+        mapDisplayArray[3][2] = "| ... ";
+        mapDisplayArray[3][3] = "| ... ";
+        mapDisplayArray[3][4] = "| ... |";
+        mapDisplayArray[4][0] = "| ~~~ ";
+        mapDisplayArray[4][1] = "| --- ";
+        mapDisplayArray[4][2] = "| --- ";
+        mapDisplayArray[4][3] = "| --- ";
+        mapDisplayArray[4][4] = "| --- |";
+        //iterate through each array cell and display string to user
+        for (int i = 0; i < mapDisplayArray.length; i++) {
+            for (int j = 0; j < mapDisplayArray.length; j++) {
+                System.out.print(mapDisplayArray[i][j]);
+            }
+            System.out.println("");
+        }
+        //legend key for map symbols to display to user
+        System.out.println("\nKey:");
+        System.out.println("~~~ = River\n!!! = Wheat Fields\n--- = Lamanite Border\n"
+                + "... = Desert\n$$$ = Ruler's Court\n*** = Grainary\n"
+                + "### = The Village\n^^^ = Forest");
     }
 
     /**
-     * viewList Method 
-     * Purpose: view list menu
-     * Pre-Conditions:
+     * viewList Method Purpose: view list menu Pre-Conditions:
+     *
      * @param
      * @returns none
      * ====================================================================
@@ -96,9 +137,8 @@ private Game theGame = CityOfAaron.getGame();
     }
 
     /**
-     * moveToNewLocation Method 
-     * Purpose: Change players location
-     * Pre-Conditions:
+     * moveToNewLocation Method Purpose: Change players location Pre-Conditions:
+     *
      * @param
      * @returns none
      * ====================================================================
@@ -108,9 +148,8 @@ private Game theGame = CityOfAaron.getGame();
     }
 
     /**
-     * manageCrops Method 
-     * Purpose: manage crops
-     * Pre-Conditions:
+     * manageCrops Method Purpose: manage crops Pre-Conditions:
+     *
      * @param
      * @returns none
      * ====================================================================

@@ -54,7 +54,8 @@ public class GameControl {
         createToolList();
         // create the provisions list
         createProvisionList();
-        
+        // added to set end of game status at the start
+        game.setEndOfGame(false);
         // declared in the CityOfAaron class.
     }
 
@@ -82,14 +83,13 @@ public class GameControl {
         cropData.setHarvest(3000);
         // added to get CropView working - Nick
         cropData.setWheatForFood(2000);
-
         // Save a reference to the CropData object in the Game object
         game.setCropData(cropData);
     }
 
     /**
-     * createMap method Purpose: creates the location objects and the map
-     *
+     * createMap method 
+     * Purpose: creates the location objects and the map
      * @param none
      * @return none
      */
@@ -97,65 +97,87 @@ public class GameControl {
         // Create the map object, it is 5x5
         // Refer to the Map constructor
         Map map = new Map(MAX_COL, MAX_ROW);
-
+        
+        //create new location object
         Location loc = new Location();
-
-        // Create a string that will go into the Location object
-        // tha contain the river (0,0-0,4)
-        String river = "\nYou have arrived on the west border of the City.";
+        
+        // Create a string for river that will go into the Location object
+        String river = "\nYou have arrived at the river on the west border of the City.";
+        //set description and symbol
         loc.setDescription(river);
-        loc.setSymbol("~~~");
-        //setting range
-        map.setLocation(0, 0, 0, 4, loc);
+        loc.setSymbol("~~~~");
+        //set location object in each cell of array
+        for (int i = 0; i < MAX_ROW; i++) {
+            map.setLocation(0, i, loc);
+        }
 
-        // Wheat Field (1,0-1,2) is the fertile land
-        String wheatField = "\nYou have arrived in the wheat fields";
+        // Wheat Field string for location object
+        String wheatField = "\nYou have arrived in the city's wheat fields";
+        //set description and symbol
         loc.setDescription(wheatField);
         loc.setSymbol("!!!!");
-        //setting range       
-        map.setLocation(1, 0, 1, 2, loc);
+        //set location for wheatfields
+        for (int i = 0; i < 3; i++) {
+            map.setLocation(1, i, loc);
+        }
 
-        // (1,4-4,4) Border of the lamenties
-        String borderLand = "\nYou have arrived in the Lamenite border";
+        //Border string
+        String borderLand = "\nYou have reached the city limits, arrived in the Lamenite border";
+        //set description and symbol
         loc.setDescription(borderLand);
-        loc.setSymbol("||||");
-        map.setLocation(1, 4, 4, 4, loc);
-
-        // (1,3-4,3) Desert separating town from the lamenites
-        String desertLand = "\nYou have arrived in the desert. No crops grow here";
-        loc.setDescription(desertLand);
         loc.setSymbol("----");
-        //setting range       
-        map.setLocation(1, 3, 4, 3, loc);
+        //set location for border
+        for (int i = 1; i < MAX_COL; i++) {
+            map.setLocation(i, 4, loc);
+        }
+        
+        //desert string
+        String desertLand = "\nYou have arrived in the desert. No crops grow here";
+        //set descript and symbol
+        loc.setDescription(desertLand);
+        loc.setSymbol("....");
+        //set location for desert
+        for (int i = 1; i < MAX_COL; i++) {
+            map.setLocation(i, 3, loc);
+        }
 
-        // (4,0) Ruler's court
-        String rulersCourt = "\nIn the rulers court, you are well received";
+        //ruler's court string
+        String rulersCourt = "\nYour are in the rulers court, you are well received";
+        //set descript and symbol
         loc.setDescription(rulersCourt);
         loc.setSymbol("$$$$");
-        //setting range       
+        //set location for court
         map.setLocation(4, 0, loc);
-
-        // (3,0) Grainiery
-        String grainery = "Here you will find the grainery guarded by the city's best";
-        loc.setDescription(grainery);
+        
+        //grainary string
+        String grainary = "Here you will find the grainary/storehouse guarded by the city's best";
+        //set description and symbol
+        loc.setDescription(grainary);
         loc.setSymbol("****");
-        //setting range       
-        map.setLocation(3, 0, loc);
-
-        // (2,0-2,1;3,1-4,1) Pesant Village
-        String village = "\nIn the village, you can rest from your work";
+        //set location for grainary
+        for (int i = 2; i < 4; i++) {
+            map.setLocation(i, 0, loc);
+        }
+        
+        // village string
+        String village = "\nNow in the village, where you can rest from your work";
+        //set description and symbol
         loc.setDescription(village);
         loc.setSymbol("####");
-        //setting range       
-        map.setLocation(2, 0, 2, 1, loc);
-        map.setLocation(3, 1, 4, 1, loc);
+        //set location for village
+        for (int i = 2; i < MAX_COL; i++) {
+            map.setLocation(i, 1, loc);
+        }
 
-        // (2,2-4,2) Forest
-        String forest = "\nThe forest is where we harvest our lumbar";
+        // forest string
+        String forest = "\nHere in the lush forest, we harvest our wood";
+        //set description and symbol
         loc.setDescription(forest);
         loc.setSymbol("^^^^");
-        //setting range       
-        map.setLocation(2, 2, 4, 2, loc);
+       //set location for forest
+       for (int i = 2; i < MAX_COL; i++) {
+           map.setLocation(i, 2, loc);
+       }
         
         game.setMap(map);
     }
