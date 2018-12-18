@@ -52,6 +52,7 @@ public class CropControl {
     * @param acresToSell the number of acres to sell, and
     * @param cropData a reference to a CropData object
     * @return (int) the number of acres owned after the sale
+    * @throws CropException as a String<p>
     * Preconditions: acres to sell must be positive
     * and <= acresOwned
     */
@@ -89,6 +90,7 @@ public class CropControl {
      * @param landPrice the price of land
      * @param acresToBuy the number of acres to buy
      * @param _cropData a reference to a CropData object
+     * @throws CropException as a String<p>
      */
     public static void buyLand(int landPrice, int acresToBuy, CropData _cropData) throws CropException {
         if (acresToBuy < 0) {
@@ -112,7 +114,7 @@ public class CropControl {
      * @author Shane Artman
      * @param bushelsReservedForFood of food to reserve : int
      * @param _cropData CropData object
-     * @return result code of -1 is invalid and 0 is success
+     * @throws CropException as a String<p>
      * 
      */
     public static void feedPeople(int bushelsReservedForFood, CropData _cropData) throws CropException {
@@ -229,6 +231,7 @@ public class CropControl {
      * @author Jonathan Unga
      * @param acresToPlant is number of acres to be used for planting
      * @param _cropData cropData object
+     * @throws CropException as a String<p>
      * Preconditions: acres being planed must be positive and <= acresOwned,
      * population must be >= (acres planted/10), and wheat in store must be >=
      * (acres planted/2)

@@ -10,7 +10,6 @@ package cityofaaron;
 //import the classes from the model package
 import model.*;
 import view.*;
-import control.*; //This may not be needed?
 
 public class CityOfAaron {
 
@@ -57,7 +56,6 @@ public class CityOfAaron {
     /**
      * Purpose: To get the reference to the game object outside this class
      * @author Shane Artman
-     * @param none
      * @return theGame object
      */
     public static Game getGame() {
@@ -68,7 +66,6 @@ public class CityOfAaron {
      * Purpose: To set reference to theGame object
      * @author Shane Artman
      * @param theGame reference
-     * @return theGame object
      */
     public static void setGame(Game theGame) {
         CityOfAaron.theGame = theGame;

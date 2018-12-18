@@ -20,7 +20,6 @@
 
 package view;
 
-import java.util.Scanner;
 //Import the cityofaaron package CityOfAaron class
 // Comment - Shane - Why are we doing this here?
 import cityofaaron.CityOfAaron;
@@ -68,9 +67,8 @@ public class MainMenuView extends MenuView {
     
     /** The doAction method
     * Purpose: performs the selected action
-    * Parameters: option
-    * Returns: none
-    * ===================================  
+    * @param option as int
+    * 
     */
     @Override public void doAction(int option)
     {
@@ -98,8 +96,6 @@ public class MainMenuView extends MenuView {
     /**
      * startNewGame method<p>
      * Purpose: Creates new game object and starts the game<p>
-     * @param none
-     * ===================================  
      */
      public void startNewGame() {
         // Display the Banner Page.
@@ -124,9 +120,6 @@ public class MainMenuView extends MenuView {
     /** 
     * startSavedGame Method
     * Purpose: Retrieves saved game object and starts game
-    * Parameters: none
-    * Returns: none
-    * ===================================  
     */
     public void startSavedGame( ) {
         System.out.println("\nStart saved game option selected.");
@@ -150,9 +143,6 @@ public class MainMenuView extends MenuView {
     /** 
     * displayHelpMenuView Method
     * Purpose: Displays help options
-    * Parameters: none
-    * Returns: none
-    * ===================================  
     */
     public void displayHelpMenuView( ) {
          HelpMenuView hmv = new HelpMenuView();
@@ -162,9 +152,6 @@ public class MainMenuView extends MenuView {
     /** 
     * displaySavedGameView Method
     * Purpose: Saves game
-    * Parameters: none
-    * Returns: none
-    * ===================================  
     */
     public void displaySaveGameView( ) {
          System.out.println("\nDisplay save game option selected.");
@@ -173,8 +160,6 @@ public class MainMenuView extends MenuView {
     /**
      * loadSavedGame Method
      * Purpose: loading a previously saved game
-     * @Param none
-     * @Return none
      */
     public void loadSavedGame() {
         System.out.println("This is the loadSavedGame method");
@@ -183,8 +168,6 @@ public class MainMenuView extends MenuView {
     /**
      * displayHelpMenu Method
      * Purpose: display help menu
-     * @Param none
-     * @Return none
      */
     public void displayHelpMenu() {
         System.out.println("This is the displayHelpMenu method");
@@ -193,8 +176,6 @@ public class MainMenuView extends MenuView {
     /**
      * saveGame Method
      * Purpose: save the existing game
-     * @Param none
-     * @Return none
      */
     public void saveGame() {
         // Check if game exists

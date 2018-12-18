@@ -20,8 +20,6 @@ public class CropException extends Exception {
     /**
      * Default constructor
      * Purpose: Initializes data members to default values
-     * @param none
-     * @return none
      */
     public CropException() { }
     
@@ -29,7 +27,6 @@ public class CropException extends Exception {
      * Parameterized constructor
      * Purpose: Initializes data members to value passed as a parameter
      * @param string containing error message
-     * @return none
      */
     public CropException(String string) {
         super(string);

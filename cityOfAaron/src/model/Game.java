@@ -88,7 +88,6 @@ public class Game implements Serializable {
      * @purpose The purpose for this method to to track the end of the current game
      * expecting a boolean end of game status.
      * @param _endOfGame 
-     * @return none
      */
     public void setEndOfGame (boolean _endOfGame) {
         this.endOfGame = _endOfGame;
@@ -98,7 +97,6 @@ public class Game implements Serializable {
      * setEndOfGame
      * @purpose The purpose for this method to to track the end of the current game
      * returning a boolean end of game status
-     * @param none 
      * @return boolean (endOfGame)
      */    
     public boolean getEndOfGame() {

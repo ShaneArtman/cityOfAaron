@@ -63,8 +63,6 @@ public class GameControl {
      * createCropDataObject method Purpose: create cropData object and set
      * initial values for cropData
      *
-     * @param none
-     * @return none
      */
     public static void createCropDataObject() {
         // Create a CropData object
@@ -90,8 +88,6 @@ public class GameControl {
     /**
      * createMap method 
      * Purpose: creates the location objects and the map
-     * @param none
-     * @return none
      */
     public static void createMap() {
         // Create the map object, it is 5x5
@@ -184,8 +180,6 @@ public class GameControl {
     
     /**
      * Purpose: Create an ArrayList<> of Animals
-     * @Param none
-     * @Return none
      */
     public static void createAnimalList () {
         // Create an ArrayList called animals
@@ -208,8 +202,6 @@ public class GameControl {
      * @author Nick
      * createToolList method
      * purpose: Create ArrayList of tools
-     * @Param none
-     * @Return none
      */
     public static void createToolList () {
         // Create ArrayList tools
@@ -230,8 +222,6 @@ public class GameControl {
      * createProvisionList method
      * Purpose: create an array list of provisions
      * @author Jon
-     * @param none
-     * @return none
      */
     public static void createProvisionList () {
         //create an array list named provisions
@@ -248,11 +238,10 @@ public class GameControl {
         game.setProvisions(provisions);
     }
     
-    // the getSavedGame method
-    // Purpose: load a saved game from disk
-    // Parameters: the file path
-    // Returns: none
-    // Side Effect: the game reference in the driver is updated
+    /**
+     * Purpose: Load a saved game from disk
+     * @param _filePath as a string
+     */
     public static void getSavedGame(String _filePath)
     {
         // Create game object
@@ -279,7 +268,6 @@ public class GameControl {
     * Purpose: save game object to file
     * @param _game
     * @param _filename
-    * @return none
     */
     public static void saveGame (Game _game, String _filename){
         
@@ -303,7 +291,6 @@ public class GameControl {
      * @author Nick
      * Purpose: print to file the tools array
      * @param _filename
-     * @Return none
      */
     public static void printTools (String _filename) {
         
@@ -334,7 +321,6 @@ public class GameControl {
      * printAnimals - Print animals to disk
      * @author Artieman
      * @param _filename
-     * @return none
      * 
      */
     public static void printAnimals (String _filename) {
@@ -390,7 +376,6 @@ public class GameControl {
      * @param wheat Total wheat in store
      * @param spend The amount of what user is spending to buy tools
      * @param _cropData users cropData
-     * @Return none
      */
     public static void buyTools(int cost, int wheat, int spend, CropData _cropData){
         // number of tools bought as a divisible by the cost

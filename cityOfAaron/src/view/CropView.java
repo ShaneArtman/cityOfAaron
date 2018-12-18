@@ -92,8 +92,6 @@ public class CropView {
      * the number of years for the game duration, or if the player has allowed
      * too many to die from starvation.
      * @author Artieman1
-     * @param none
-     * @return none
      */
     public static void endOfGame() {
         Game game = CityOfAaron.getGame();
@@ -106,8 +104,8 @@ public class CropView {
                     System.out.println(
                             "\n\nSorry, game over...  You have allowed "
                             + cropData.getNumberWhoDied() + " people to die.\n\n"
-                            + "You will now be sent to your own peril by being \n" +
-                            "banished from our midst to fend for yourself.\n");
+                            + "You will now be sent to your own peril by being \n"
+                            + "banished from our midst to fend for yourself.\n");
                     game.setEndOfGame(true);
                 } else if (cropData.getYear() >= 10) {
                     System.out.println("\n\nCongratulations! You have done well for our town\n"
@@ -119,7 +117,7 @@ public class CropView {
                 }
             } else {
                 System.out.println(
-                        "\n\nSorry, game over...  You have allowed"
+                        "\n\nSorry, game over...  You have allowed "
                         + cropData.getNumberWhoDied() + " people to die.\n\n"
                         + "You will now be sent to your own peril by being banished "
                         + "from our midst to fend for yourself.\n");
@@ -409,9 +407,10 @@ public class CropView {
         // The number of bushels of wheat in store (model)
         System.out.println("You now have " + cropData.getWheatInStore() + " bushels of wheat in store.");
     }
+
     /**
-     * wheatSurplusView method
-     * Purpose: Offer option to buy more tools to improve harvest
+     * wheatSurplusView method Purpose: Offer option to buy more tools to
+     * improve harvest
      */
     public static void wheatSurplusView() {
         // Get current amount of wheat in store
@@ -419,16 +418,16 @@ public class CropView {
         // Ammount of wheat spent on tools
         int spend;
         // Cost per tool
-        int costPerTool = 50; 
-        
+        int costPerTool = 50;
+
         // Prompt if user wants to buy tools
-        System.out.println("\n\nYou have " + wheat + " extra wheat in store." 
-            + "\nWould you like to buy tools to improve harvesting" 
-            + " returns?\n 1 - Yes\n 2 - No");
-        
+        System.out.println("\n\nYou have " + wheat + " extra wheat in store."
+                + "\nWould you like to buy tools to improve harvesting"
+                + " returns?\n 1 - Yes\n 2 - No");
+
         // get user input
         spend = keyboard.nextInt();
-        
+
         // If yes, run buyTools()
         if (spend == 1) {
             // Display current amount of tools
@@ -436,38 +435,35 @@ public class CropView {
             ArrayList<ListItem> tools = game.getTools();
 
             // Print off header
-            System.out.println("\nHere is a list of tools in store\n" +
-                    "------------------------------------");
+            System.out.println("\nHere is a list of tools in store\n"
+                    + "------------------------------------");
 
             // Print off tools and quantities
-            for (ListItem tool: tools) {
+            for (ListItem tool : tools) {
                 System.out.println(tool.getName() + "\t" + tool.getNumber());
             }
-            
+
             // do while check variable
             int check = 0;
-            do{ 
+            do {
                 // Ask how many tools to buy
-                System.out.println("\nEach tool costs " + costPerTool + " wheat. " 
+                System.out.println("\nEach tool costs " + costPerTool + " wheat. "
                         + "How much would you like to spend on new tools?");
                 spend = keyboard.nextInt();
-                
+
                 if (spend > wheat) {
                     System.out.println("\nYou do not have that much wheat.");
-                }
-                else if (spend == 0) {
+                } else if (spend == 0) {
                     System.out.println("\nOkay.  No new tools this year then.");
                     check = 1;
-                }
-                else if (spend < costPerTool) {
+                } else if (spend < costPerTool) {
                     System.out.println("\nThat is not enough to purchase a tool.");
-                }
-                else {
+                } else {
                     GameControl.buyTools(costPerTool, wheat, spend, cropData);
                     check = 1;
                 }
             } while (check != 1);
         }
-        
+
     }
 }
